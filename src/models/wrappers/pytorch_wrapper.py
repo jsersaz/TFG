@@ -169,7 +169,6 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
             
             print("[Knowledge Distillation] 2/3 Generando predicciones blandas del profesor sobre el dataset...")
             if hasattr(self.teacher_, "predict_logits"):
-                # logits = torch.tensor(self.teacher_.predict_logits(X))
                 logits = torch.from_numpy(self.teacher_.predict_logits(X).astype(np.float32))
                 if self.output_dim == 1:
                     y_teacher = torch.sigmoid(logits / effective_temp).numpy().flatten()
@@ -244,12 +243,10 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
                         # Para binario, PyTorch requiere exactamente las mismas dimensiones (N, 1)
                         student_loss = criterion(outputs, batch_y.view(-1, 1))
                         dist_loss = F.binary_cross_entropy_with_logits(outputs / effective_temp, batch_teacher.view(-1, 1))
-                        # dist_loss = F.binary_cross_entropy_with_logits(outputs, batch_teacher.view(-1, 1))
                     else:
                         student_loss = criterion(outputs, batch_y)
                         # KL Divergence para multiclase: pred de estudiante en log-space vs prob del profesor
                         log_probs = F.log_softmax(outputs / effective_temp, dim=1)
-                        # log_probs = F.log_softmax(outputs, dim=1)
                         dist_loss = F.kl_div(log_probs, batch_teacher, reduction='batchmean')
                         
                     loss = (self.alpha * student_loss) + ((1.0 - self.alpha) * dist_loss * (effective_temp ** 2))
@@ -354,7 +351,6 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
         """
         X_scaled = self.scaler.transform(X).astype(np.float32)
         X_t = torch.from_numpy(X_scaled)
-        # X_t = torch.tensor(X_scaled, dtype=torch.float32)
         self.scripted_model_.eval()
         with torch.no_grad():
             return self.scripted_model_(X_t).numpy()
@@ -368,7 +364,6 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
         
         :returns: Array de probabilidades (n_samples, n_classes).
         """
-        # logits = torch.tensor(self.predict_logits(X))
         logits = torch.from_numpy(self.predict_logits(X))
         if self.output_dim == 1:
             probs = torch.sigmoid(logits).numpy()
@@ -652,7 +647,6 @@ class TorchScriptModelWrapperRegression(BaseEstimator):
         elif self.quantization_mode == 'static':
             # Cuantización estática con FX: se requiere calibración con datos representativos
             # (La fusión de Linear + ReLU y stubs es automática)
-            # backend = "qnnpack" if "qnnpack" in torch.backends.quantized.supported_engines else "x86"
             backend = "x86"
             torch.backends.quantized.engine = backend
             qconfig_mapping = get_default_qconfig_mapping(backend)
@@ -704,7 +698,6 @@ class TorchScriptModelWrapperRegression(BaseEstimator):
         # 1. Estandarizar características y convertir a tensor
         X_scaled = self.scaler_X.transform(X).astype(np.float32)
         X_t = torch.from_numpy(X_scaled)
-        # X_t = torch.tensor(X_scaled, dtype=torch.float32)
 
 		# 2. Inferencia
         self.scripted_model_.eval()

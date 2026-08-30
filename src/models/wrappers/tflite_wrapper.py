@@ -805,8 +805,6 @@ class TFLiteModelWrapperRegression(BaseEstimator):
             # int8 -> float
             out_scale, out_zero = output_details["quantization"]
             outputs = (outputs.astype(np.float32) - out_zero) * out_scale
-        # elif self.quantization_mode == 'dynamic':
-        #     outputs = outputs.astype(np.float32)
 
         # Desescalar a la escala original de y
         preds = self.scaler_y.inverse_transform(outputs.reshape(-1, 1)).ravel()

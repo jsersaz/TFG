@@ -78,6 +78,8 @@ def extract_model_details(col_name):
     :returns: Nombre del framework (ONNX, TFLite, PyTorch o scikit-learn).
     """
     col_lower = col_name.lower()
+    # Si no tiene una marca clara (onnx, tflite, pytorch), asumimos por descarte que es
+    # el modelo base de scikit-learn.
     if 'onnx' in col_lower: 
         return 'ONNX'
     elif 'tflite' in col_lower: 
@@ -106,17 +108,21 @@ def load_and_melt_metric(results_dir, task, metric_keyword):
     df_list = []
     for f in files:
         df_temp = pd.read_csv(f)
-        # Transformar a formato tabular largo: Dataset | Model | Value
+        # Transformar a formato tabular largo: 'Dataset' queda fijo (id_vars), y cada columna de modelo
+        # se convierte en una fila (Dataset | Model | Valor).
+        # Esto es vital para poder hacer cruces (merge) fácilmente.
         df_melted = df_temp.melt(id_vars='Dataset', var_name='Model', value_name=metric_keyword.upper())
 
-        # Extraer el nombre de la configuración desde el nombre del archivo y añadirlo al nombre del modelo
+        # Extraer el nombre de la configuración desde el nombre del archivo (ej. 'onnx_static')
+        # y anexarlo al nombre original del modelo para diferenciar variantes en la tabla final.
         filename = os.path.basename(f)
         config_name = filename.replace(f"_{task}_{metric_keyword}.csv", "")
         df_melted['Model'] = df_melted['Model'] + " (" + config_name + ")"
 
         df_list.append(df_melted)
         
-    # Concatenar todos los DataFrames y limpiar duplicados
+    # Concatenar todos los DataFrames individuales y limpiar duplicados absolutos por si un
+    # mismo modelo se evaluó en varios scripts por error.
     df_final = pd.concat(df_list, ignore_index=True)
     df_final = df_final.drop_duplicates(subset=['Dataset', 'Model'])
     return df_final
@@ -134,14 +140,16 @@ def get_pareto_front(df, x_col, y_col, maximize_x=False, maximize_y=True):
         
     :returns: Subconjunto de datos que forman el frente óptimo.
     """
-    # Ordenar por el eje X de forma ascendente (buscando minimizar por defecto)
+    # 1. Ordenar por el eje X (Por defecto, de menor a mayor tamaño).
     sorted_df = df.sort_values(by=x_col, ascending=not maximize_x)
     pareto_front = []
-    # Inicializar el mejor valor Y con infinito o menos infinito
+    
+    # 2. Inicializar el mejor valor Y. Si buscamos maximizar Y (Rendimiento), partimos de -infinito.
     best_y = -np.inf if maximize_y else np.inf
 
     for _, row in sorted_df.iterrows():
-        # Comprobar si el modelo actual mejora al mejor visto hasta ahora
+        # Al recorrer de menor a mayor tamaño, un punto solo entra en el frente de Pareto 
+        # si también aporta un mejor rendimiento que todos los modelos más pequeños que él.
         is_better = row[y_col] > best_y if maximize_y else row[y_col] < best_y
         if is_better:
             pareto_front.append(row)
@@ -170,23 +178,26 @@ def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir
     col_time = metric_time.upper()
     col_size = metric_size.upper()
 
-    # Scatter plot base
+    # Scatter plot base: 'sizes' mapea el rango visual de las burbujas (min, max)
     sns.scatterplot(
         data=df_avg, x=col_size, y=col_perf, size=col_time,
         hue='Framework', sizes=(20, 800), alpha=0.6, palette='Set1', edgecolor="black"
     )
 
-    # Añadir la línea del frente de Pareto
+    # Calcular y añadir la línea del frente de Pareto visual
     pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
     plt.plot(pareto_df[col_size], pareto_df[col_perf],
              color='red', linestyle='--', linewidth=2, label='Frente de Pareto', zorder=1)
 
-    # Ajuste dinámico de escala solo para el eje X (tamaño)
+    # Ajuste dinámico de escalas:
+    # Se usa logarítmica en tamaño (eje X) por las enormes diferencias entre modelos simples (KNN)
+    # y redes neuronales densas.
     plt.xscale('log')
+    # Aplicar logaritmo a Y solo si la varianza en latencia es extrema (típico en modelos sin optimizar).
     if df_avg[col_time].max() - df_avg[col_time].min() > 1000:
             plt.yscale('log')
     
-    # Forzar límite inferior del eje Y a 0 para omitir outliers negativos en regresón
+    # Forzar límite inferior del eje Y a 0 para omitir outliers negativos
     if task == 'regression':
         plt.ylim(bottom=0)    
 
@@ -226,15 +237,16 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
         min_pareto_x = pareto_df[col_size].min()
         max_pareto_x = pareto_df[col_size].max()
         
-        # Filtrar para incluir todo lo que caiga en este rango visual
+        # Filtrar el DataFrame original para incluir solo los modelos que caigan dentro del rango del frente
         zoom_df = df_avg[(df_avg[col_perf] >= min_pareto_y * 0.95) & (df_avg[col_size] <= max_pareto_x * 1.5)]
         
         x_lim = (min_pareto_x * 0.5, max_pareto_x * 2.0)
         y_lim = (min_pareto_y * 0.95, max_pareto_y * 1.05)
-        # Mantener escala logarítmica suele ser mejor para la gran dispersión en regresión
+        # Mantener escala logarítmica es mejor para la gran dispersión en regresión
         x_scale = 'log' 
     else:
-        # Lógica original focalizada en la cima del rendimiento para clasificación
+        # En clasificación, los mejores modelos suelen estar fuertemente aglomerados en la parte alta.
+        # Enfocamos el zoom solo en esa cima.
         max_f1 = df_avg[col_perf].max()
         max_pareto_size = pareto_df[col_size].max()
         
@@ -246,7 +258,7 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
         y_lim = (min_y_zoom, max_f1 * 1.02)
         x_scale = 'linear'
 
-    # Dibujar el scatter plot
+    # Dibujar el scatter plot focalizado
     sns.scatterplot(
         data=zoom_df, x=col_size, y=col_perf, size=col_time,
         hue='Framework', sizes=(50, 900), alpha=0.7, palette='Set1', edgecolor="black"
@@ -256,7 +268,8 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
     plt.plot(pareto_df[col_size], pareto_df[col_perf],
              color='red', linestyle='--', linewidth=2, label='Frente de Pareto', zorder=1)
 
-    # Imprimir etiquetas iterando DIRECTAMENTE sobre pareto_df para no perder ninguna
+    # Imprimir etiquetas (nombres de modelos). Se itera directamente sobre pareto_df para
+    # asegurar que se rotulan todos y solo los modelos que son óptimos.
     for i, row in pareto_df.iterrows():
         plt.text(row[col_size] * 1.1, row[col_perf], row['Model'],
                  fontsize=9, ha='left', va='center',
@@ -266,7 +279,7 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
     plt.xscale(x_scale)
     plt.xlim(x_lim)
     
-    # Asegurar que el límite inferior en regresión nunca sea menor que 0
+    # Asegurar que el límite inferior en regresión nunca sea menor que 0 para evitar distorsión visual
     if task == 'regression':
         y_lim = (max(0, y_lim[0]), y_lim[1])
         
@@ -297,6 +310,7 @@ def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir
     col_time = metric_time.upper()
     col_size = metric_size.upper()
 
+    # hover_data añade métricas específicas al tooltip que aparece al posar el ratón
     fig = px.scatter(
         df_avg, x=col_size, y=col_perf, size=col_time, color='Framework',
         hover_name='Model',
@@ -347,6 +361,8 @@ def plot_complexity_scatter(df, x_col, y_col, x_label, y_label, plot_title, outp
         alpha=0.6, s=70, palette='Set1', edgecolor="black"
     )
     
+    # Se usa doble escala logarítmica, ya que tanto las características/instancias como los
+    # tiempos/tamaños de los modelos tienden a crecer de forma exponencial.
     plt.yscale('log')
     plt.xscale('log')
     plt.title(plot_title, fontsize=14)
@@ -420,11 +436,12 @@ if __name__ == "__main__":
     if args.metric:
         METRIC_PERF = args.metric
     else:
+        # Lógica por defecto de fallback
         METRIC_PERF = "f1" if TASK == "classification" else "r2"
     METRIC_TIME = "inference"
     METRIC_SIZE = "size"
 
-    # Definir rutas relativas seguras usando el directorio del propio script
+    # Definir rutas relativas seguras usando el directorio absoluto del propio script
     script_dir = os.path.dirname(os.path.abspath(__file__))
     RESULTS_DIR = os.path.abspath(os.path.join(script_dir, "../../results2"))
     OUTPUT_GRAPHS_DIR = os.path.join(RESULTS_DIR, f"graphs/tradeoffs/{TASK}")
@@ -434,15 +451,16 @@ if __name__ == "__main__":
     print(f"Métrica de rendimiento seleccionada: {METRIC_PERF.upper()}")
 
     # 4. Proceso ETL (Extract, Transform, Load)
+    # Cargamos y transformamos las tres dimensiones clave (rendimiento, latencia y tamaño)
     df_perf = load_and_melt_metric(RESULTS_DIR, TASK, METRIC_PERF)
     df_time = load_and_melt_metric(RESULTS_DIR, TASK, METRIC_TIME)
     df_size = load_and_melt_metric(RESULTS_DIR, TASK, METRIC_SIZE)
 
-    # Unir las tres métricas usando cruces internos por dataset y modelo
+    # Unir las tres métricas usando cruces internos (inner join) por dataset y modelo.
     master_df = pd.merge(df_perf, df_time, on=['Dataset', 'Model'], how='inner')
     master_df = pd.merge(master_df, df_size, on=['Dataset', 'Model'], how='inner')
 
-    # Añadir columna de Framework basándose en el nombre de los modelos
+    # Añadir columna identificativa de Framework basándose en el nombre de los modelos
     master_df['Framework'] = master_df['Model'].apply(extract_model_details)
 
     # 5. Mapeo de características e instancias por dataset
@@ -458,11 +476,12 @@ if __name__ == "__main__":
             return DATASETS_INFO[TASK][ds_name_clean]['instances']
         return np.nan
 
+    # Aplicamos funciones mapeadoras y descartamos filas huérfanas (ej. un dataset mal nombrado)
     master_df['Features'] = master_df['Dataset'].apply(get_features)
     master_df['Instances'] = master_df['Dataset'].apply(get_instances)
     master_df = master_df.dropna()
     
-    # 6. Comprobación de seguridad
+    # 6. Comprobación de seguridad para evitar caídas si los directorios están vacíos
     if master_df.empty:
         print("\n¡ADVERTENCIA! No se han encontrado datos para los parámetros especificados.")
         print(f"Revise que existan ficheros con el patrón *_ {TASK} _{METRIC_PERF}.csv en {RESULTS_DIR}")
@@ -470,18 +489,19 @@ if __name__ == "__main__":
     
     print(f"\nDatos combinados generados: {master_df.shape[0]} registros listos para graficar.")
 
-    # 7. Agregación de datos: media de las métricas por cada modelo/framework
+    # 7. Agregación de datos: calculamos la media de las métricas agrupando por modelo y framework.
+    # El objetivo es tener 1 sola burbuja/punto global por algoritmo, en vez de un punto por cada dataset probado.
     df_avg_models = master_df.groupby(['Model', 'Framework']).mean(numeric_only=True).reset_index()
 
     col_time_upper = METRIC_TIME.upper()
     col_size_upper = METRIC_SIZE.upper()
 
-    # 8. Gráfico general y frente de Pareto (estático e interactivo)
+    # 8. Generación de gráficos de trade-off general y frente de Pareto
     plot_pareto_bubble(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
     plot_pareto_zoomed(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
     plot_pareto_plotly(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
     
-    # 9. Gráficos estáticos de complejidad (características e instancias)
+    # 9. Gráficos estáticos de complejidad computacional (características e instancias vs tiempo y tamaño)
     plot_complexity_scatter(
         master_df, 'Features', col_time_upper, "Nº de características", "Tiempo de inferencia (s)",
         "Impacto de características en latencia", "complexity_features_latency.png", OUTPUT_GRAPHS_DIR
@@ -499,7 +519,7 @@ if __name__ == "__main__":
         "Impacto de instancias en tamaño", "complexity_instances_size.png", OUTPUT_GRAPHS_DIR
     )
     
-    # 10. Gráficos interactivos de complejidad (características e instancias)
+    # 10. Versiones interactivas (Plotly) de los mismos gráficos de complejidad
     plot_complexity_plotly(
         master_df, 'Features', col_time_upper, "Nº de características", "Tiempo de inferencia (s)",
         "Impacto de características en latencia", "complexity_features_latency_interactive.html", OUTPUT_GRAPHS_DIR

@@ -102,7 +102,7 @@ def print_global_results(all_results):
 # ------------------------------------
 # GUARDAR RESULTADOS GLOBALES EN CSV
 # ------------------------------------
-def save_global_results_to_csv(all_results, filename="pytorch_dynamic_regression_results.csv"):
+def save_global_results_to_csv(all_results, filename="tflite_distill_static_regression_results.csv"):
     """
     Guarda los resultados globales en archivos CSV dentro de la carpeta 'results'.
     - Un archivo con todos los resultados (DataFrame completo).
@@ -140,7 +140,7 @@ def save_global_results_to_csv(all_results, filename="pytorch_dynamic_regression
     for name, col in metrics.items():
         # Crear tabla pivote: filas = datasets, columnas = modelos, valores = col
         tabla = df_all.pivot(index="Dataset", columns="Model", values=col)
-        file_name = f"pytorch_dynamic_regression_{name}.csv"
+        file_name = f"tflite_distill_static_regression_{name}.csv"
         file_path = os.path.join(results_dir, file_name)
         tabla.to_csv(file_path)
         print(f"Tabla pivote de {col} guardada en {file_path}")

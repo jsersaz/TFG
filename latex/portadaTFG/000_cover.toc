@@ -1,36 +1,37 @@
 \babel@toc {spanish}{}\relax 
+\contentsline {chapter}{Resumen}{\es@scroman {iii}}{chapter*.1}%
+\contentsline {chapter}{Abstract}{\es@scroman {v}}{chapter*.2}%
 \contentsline {chapter}{\numberline {1}Introducción}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Estado de la técnica}{5}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Base y actualidad del aprendizaje automático}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}La emergencia de TinyML}{6}{section.2.2}%
 \contentsline {section}{\numberline {2.3}Restricciones en TinyML}{7}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Modelos ML en TinyML}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.4}Modelos de aprendizaje automático en TinyML}{7}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}Modelos clásicos}{8}{subsection.2.4.1}%
-\contentsline {subsubsection}{Árboles de decisión y bosques aleatorios}{8}{section*.4}%
-\contentsline {subsubsection}{Máquinas de vectores soporte}{9}{section*.5}%
-\contentsline {subsubsection}{K vecinos más cercanos}{9}{section*.6}%
-\contentsline {subsubsection}{Regresión logística, Naive Bayes y perceptrones multicapa clásicos}{9}{section*.7}%
+\contentsline {subsubsection}{Árboles de decisión y bosques aleatorios}{8}{section*.7}%
+\contentsline {subsubsection}{Máquinas de vectores soporte}{9}{section*.8}%
+\contentsline {subsubsection}{K vecinos más cercanos}{9}{section*.9}%
+\contentsline {subsubsection}{Regresión logística, Naive Bayes y perceptrones multicapa clásicos}{9}{section*.10}%
 \contentsline {subsection}{\numberline {2.4.2}Modelos complejos}{10}{subsection.2.4.2}%
-\contentsline {subsubsection}{Redes neuronales convolucionales ligeras y DS-CNN}{10}{section*.8}%
-\contentsline {subsubsection}{Familia MobileNet}{10}{section*.9}%
-\contentsline {subsubsection}{Redes recurrentes (RNN/LSTM) y modelos híbridos CNN-LSTM}{11}{section*.10}%
-\contentsline {subsubsection}{Modelos de biblioteca y modelos canónicos benchmark}{13}{section*.11}%
-\contentsline {section}{\numberline {2.5}Compresión y optimización}{13}{section.2.5}%
+\contentsline {subsubsection}{Redes neuronales convolucionales ligeras y DS-CNN}{10}{section*.11}%
+\contentsline {subsubsection}{Familia MobileNet}{11}{section*.12}%
+\contentsline {subsubsection}{Redes recurrentes (RNN/LSTM) y modelos híbridos CNN-LSTM}{12}{section*.13}%
+\contentsline {subsubsection}{Modelos de biblioteca y modelos canónicos benchmark}{13}{section*.14}%
+\contentsline {section}{\numberline {2.5}Técnicas de compresión y optimización de modelos}{13}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}Cuantización}{14}{subsection.2.5.1}%
-\contentsline {subsubsection}{Tipos según la representación matemática}{14}{section*.12}%
-\contentsline {subsubsection}{Tipos según el enfoque de entrenamiento}{14}{section*.13}%
-\contentsline {subsubsection}{Tipos según el momento del cálculo de escala}{15}{section*.14}%
+\contentsline {subsubsection}{Tipos según la representación matemática}{14}{section*.15}%
+\contentsline {subsubsection}{Tipos según el enfoque de entrenamiento}{14}{section*.16}%
+\contentsline {subsubsection}{Tipos según el momento del cálculo de escala}{15}{section*.17}%
 \contentsline {subsection}{\numberline {2.5.2}Poda}{16}{subsection.2.5.2}%
-\contentsline {subsubsection}{Tipos de poda}{16}{section*.15}%
-\contentsline {subsubsection}{Métodos diferenciables}{16}{section*.16}%
-\contentsline {subsubsection}{Cuándo aplicar la poda}{16}{section*.17}%
+\contentsline {subsubsection}{Tipos de poda}{16}{section*.18}%
+\contentsline {subsubsection}{Cuándo aplicar la poda}{16}{section*.19}%
 \contentsline {subsection}{\numberline {2.5.3}Destilación de conocimiento}{17}{subsection.2.5.3}%
-\contentsline {subsubsection}{Modalidades de destilación}{18}{section*.18}%
+\contentsline {subsubsection}{Modalidades de destilación}{18}{section*.20}%
 \contentsline {subsection}{\numberline {2.5.4}Factorización de bajo rango}{18}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}Clusterización y cuantización de pesos}{19}{subsection.2.5.5}%
 \contentsline {subsection}{\numberline {2.5.6}Búsqueda de arquitecturas neuronales}{19}{subsection.2.5.6}%
 \contentsline {subsection}{\numberline {2.5.7}Fusión de operadores y optimización de grafos}{20}{subsection.2.5.7}%
-\contentsline {section}{\numberline {2.6}Frameworks}{21}{section.2.6}%
+\contentsline {section}{\numberline {2.6}Frameworks y herramientas software}{21}{section.2.6}%
 \contentsline {subsection}{\numberline {2.6.1}Scikit-learn}{22}{subsection.2.6.1}%
 \contentsline {subsection}{\numberline {2.6.2}ONNX y ONNX Runtime}{22}{subsection.2.6.2}%
 \contentsline {subsection}{\numberline {2.6.3}TensorFlow Lite y TensorFlow Lite for Microcontrollers}{23}{subsection.2.6.3}%
@@ -44,188 +45,208 @@
 \contentsline {subsection}{\numberline {2.7.2}Compromisos (\textit {trade-offs})}{30}{subsection.2.7.2}%
 \contentsline {section}{\numberline {2.8}Áreas de aplicación}{31}{section.2.8}%
 \contentsline {subsection}{\numberline {2.8.1}Salud y monitorización personal}{31}{subsection.2.8.1}%
-\contentsline {subsection}{\numberline {2.8.2}Agricultura de precisión e industria}{32}{subsection.2.8.2}%
+\contentsline {subsection}{\numberline {2.8.2}Agricultura de precisión e industria}{31}{subsection.2.8.2}%
 \contentsline {subsection}{\numberline {2.8.3}Transporte y seguridad}{32}{subsection.2.8.3}%
 \contentsline {subsection}{\numberline {2.8.4}Hogar y dispositivos inteligentes}{32}{subsection.2.8.4}%
 \contentsline {subsection}{\numberline {2.8.5}Educación y entornos de aprendizaje}{33}{subsection.2.8.5}%
-\contentsline {chapter}{\numberline {3}Problema y objetivos}{35}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Formulación del problema y objetivos}{35}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Descripción del problema}{35}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Preguntas de investigación}{37}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Preguntas de investigación}{36}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Objetivos del trabajo}{37}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Objetivo general}{37}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Objetivos específicos}{38}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Plan de trabajo}{41}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Enfoque metodológico}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Diseño experimental}{41}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Variables independientes}{42}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}Variables dependientes}{42}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Variables controladas}{43}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Conjuntos de datos}{43}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Criterios de selección}{43}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}Conjuntos de datos para tareas de clasificación}{44}{subsection.4.3.2}%
-\contentsline {subsection}{\numberline {4.3.3}Conjuntos de datos para tareas de regresión}{45}{subsection.4.3.3}%
-\contentsline {section}{\numberline {4.4}Modelos base}{46}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Modelos clásicos}{46}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Redes neuronales ligeras}{47}{subsection.4.4.2}%
-\contentsline {section}{\numberline {4.5}Estrategias y compresión}{47}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Flujo scikit-learn nativo}{47}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Flujo scikit-learn $+$ ONNX}{47}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}Flujos PyTorch y TensorFlow Lite/LiteRT}{47}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}Procedimientos}{48}{section.4.6}%
-\contentsline {section}{\numberline {4.7}Procedimientos de recogida y almacenamiento de datos}{48}{section.4.7}%
-\contentsline {section}{\numberline {4.8}Tratamiento de datos}{49}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Reproducibilidad, control de calidad y consideraciones éticas}{49}{section.4.9}%
-\contentsline {section}{\numberline {4.10}Herramientas}{49}{section.4.10}%
-\contentsline {subsection}{\numberline {4.10.1}Hardware}{49}{subsection.4.10.1}%
-\contentsline {subsection}{\numberline {4.10.2}Software}{49}{subsection.4.10.2}%
-\contentsline {subsubsection}{Scikit-learn $+$ ONNX}{50}{section*.24}%
-\contentsline {subsubsection}{PyTorch}{51}{section*.26}%
-\contentsline {subsubsection}{TensorFlow Lite (LiteRT)}{52}{section*.28}%
-\contentsline {subsubsection}{Tests y análisis de resultados}{53}{section*.30}%
-\contentsline {section}{\numberline {4.11}Limitaciones}{55}{section.4.11}%
-\contentsline {chapter}{\numberline {5}Desarrollo y experimentación}{57}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Entorno}{57}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Organización del código}{58}{subsection.5.1.1}%
-\contentsline {section}{\numberline {5.2}Carga de datos}{59}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Preprocesamiento y representación de los datos}{60}{subsection.5.2.1}%
-\contentsline {subsubsection}{Selección y separación de las variables}{61}{section*.33}%
-\contentsline {subsubsection}{Conversión y representación numérica}{61}{section*.34}%
-\contentsline {subsubsection}{Codificación de variables categóricas}{61}{section*.35}%
-\contentsline {subsubsection}{Codificación de la variable objetivo}{62}{section*.36}%
-\contentsline {subsubsection}{Tratamiento de valores faltantes}{62}{section*.37}%
-\contentsline {subsubsection}{Ingeniería de características temporales}{62}{section*.38}%
-\contentsline {subsubsection}{Generación de variables retardadas}{63}{section*.39}%
-\contentsline {subsubsection}{Adecuación del número de muestras y de la estructura de los datos}{63}{section*.40}%
-\contentsline {subsubsection}{Representación final}{63}{section*.41}%
-\contentsline {section}{\numberline {5.3}Desarrollo de los modelos base}{64}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Clasificación}{64}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}Regresión}{64}{subsection.5.3.2}%
-\contentsline {section}{\numberline {5.4}Desarrollo de los modelos optimizados para despliegue}{65}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Reducción de prototipos en k-NN}{66}{subsection.5.4.1}%
-\contentsline {subsubsection}{Clasificación}{67}{section*.44}%
-\contentsline {subsubsection}{Regresión}{67}{section*.45}%
-\contentsline {subsubsection}{Integración en el \textit {pipeline}}{67}{section*.46}%
-\contentsline {subsection}{\numberline {5.4.2}Poda y \textit {sparsity} en modelos lineales y MLP}{68}{subsection.5.4.2}%
-\contentsline {subsubsection}{Modelos lineales}{68}{section*.47}%
-\contentsline {subsubsection}{MLP}{68}{section*.48}%
-\contentsline {subsection}{\numberline {5.4.3}Poda de árboles de decisión}{69}{subsection.5.4.3}%
-\contentsline {subsection}{\numberline {5.4.4}Destilación de Random Forest}{69}{subsection.5.4.4}%
-\contentsline {subsubsection}{Clasificación}{69}{section*.49}%
-\contentsline {subsubsection}{Regresión}{70}{section*.50}%
-\contentsline {subsection}{\numberline {5.4.5}\textit {Pipeline} integrado de compresión}{70}{subsection.5.4.5}%
-\contentsline {section}{\numberline {5.5}Conversión, cuantización e inferencia mediante ONNX}{70}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Contrato de entrada y mapeo de operadores}{71}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Traducción estructural y compatibilidad (Opsets)}{71}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Inferencia de formas y serialización}{72}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Cuantización post-entrenamiento (PQT) y formato QDQ}{72}{subsection.5.5.4}%
-\contentsline {subsubsection}{Cuantización estática: calibración interactiva y simetría}{73}{section*.51}%
-\contentsline {subsubsection}{Formato QDQ}{73}{section*.52}%
-\contentsline {subsubsection}{Cuantización dinámica}{73}{section*.53}%
-\contentsline {subsubsection}{Ejecución y optimización en tiempo de inferencia}{74}{section*.54}%
-\contentsline {section}{\numberline {5.6}Desarrollo del prototipo basado en PyTorch}{74}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Arquitectura de la red neuronal}{74}{subsection.5.6.1}%
-\contentsline {subsection}{\numberline {5.6.2}Preprocesamiento}{75}{subsection.5.6.2}%
-\contentsline {subsection}{\numberline {5.6.3}Ciclo de entrenamiento}{75}{subsection.5.6.3}%
-\contentsline {subsection}{\numberline {5.6.4}Cuantización mediante PyTorch FX}{77}{subsection.5.6.4}%
-\contentsline {subsection}{\numberline {5.6.5}Compilación con JIT}{77}{subsection.5.6.5}%
-\contentsline {subsection}{\numberline {5.6.6}Inferencia}{78}{subsection.5.6.6}%
-\contentsline {section}{\numberline {5.7}Desarrollo del prototipo basado en TensorFlow, Keras y LiteRT}{79}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Fase de entrenamiento}{79}{subsection.5.7.1}%
-\contentsline {subsection}{\numberline {5.7.2}Conversión a TensorFlow Lite y cuantización}{80}{subsection.5.7.2}%
-\contentsline {subsubsection}{Cuantización}{81}{section*.55}%
-\contentsline {subsection}{\numberline {5.7.3}Inferencia mediante LiteRT}{81}{subsection.5.7.3}%
-\contentsline {section}{\numberline {5.8}Configuración del procedimiento experimental}{82}{section.5.8}%
-\contentsline {subsection}{\numberline {5.8.1}Entrenamiento}{83}{subsection.5.8.1}%
-\contentsline {subsubsection}{Inicialización}{83}{section*.56}%
-\contentsline {subsubsection}{Preparación de los datos}{84}{section*.57}%
-\contentsline {subsubsection}{Validación cruzada}{84}{section*.58}%
-\contentsline {subsubsection}{Construcción y entrenamiento del modelo}{84}{section*.59}%
-\contentsline {subsubsection}{Medición del tiempo de entrenamiento}{85}{section*.60}%
-\contentsline {subsection}{\numberline {5.8.2}Inferencia}{85}{subsection.5.8.2}%
-\contentsline {subsubsection}{Medición de latencia de inferencia}{86}{section*.61}%
-\contentsline {subsection}{\numberline {5.8.3}Medición}{86}{subsection.5.8.3}%
-\contentsline {subsubsection}{Métricas de rendimiento predictivo}{87}{section*.62}%
-\contentsline {subsubsection}{Clasificación}{87}{section*.63}%
-\contentsline {subsubsection}{Regresión}{87}{section*.64}%
-\contentsline {subsubsection}{Métricas de coste computacional}{88}{section*.65}%
-\contentsline {subsubsection}{Tamaño del modelo}{88}{section*.66}%
-\contentsline {subsubsection}{Tiempo de entrenamiento}{88}{section*.67}%
-\contentsline {subsubsection}{Tiempo de conversión}{88}{section*.68}%
-\contentsline {subsubsection}{Tiempo de inferencia}{88}{section*.69}%
-\contentsline {subsection}{\numberline {5.8.4}Almacenamiento de resultados}{88}{subsection.5.8.4}%
-\contentsline {subsubsection}{Organización y generación de resultados globales}{89}{section*.70}%
-\contentsline {subsection}{\numberline {5.8.5}Ejecución completa del experimento}{90}{subsection.5.8.5}%
-\contentsline {section}{\numberline {5.9}Metodología de evaluación estadística y análisis de compromisos}{91}{section.5.9}%
-\contentsline {subsection}{\numberline {5.9.1}Evaluación estadística}{91}{subsection.5.9.1}%
-\contentsline {subsubsection}{Extracción, transformación y normalización de datos (ETL)}{92}{section*.71}%
-\contentsline {subsubsection}{Procedimiento estadístico}{92}{section*.72}%
-\contentsline {subsubsection}{1. Prueba de rangos de Friedman}{93}{section*.74}%
-\contentsline {subsubsection}{2. Corrección de Iman-Davenport}{94}{section*.75}%
-\contentsline {subsubsection}{3. Test post hoc de Nemenyi}{94}{section*.76}%
-\contentsline {subsection}{\numberline {5.9.2}Análisis de compromisos}{95}{subsection.5.9.2}%
-\contentsline {subsubsection}{Preparación de los datos}{95}{section*.77}%
-\contentsline {subsubsection}{Análisis mediante el frente de Pareto}{95}{section*.78}%
-\contentsline {subsubsection}{Evaluación del impacto de la complejidad de los datos}{96}{section*.79}%
-\contentsline {chapter}{\numberline {6}Resultados y discusión}{97}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Estructuración del ecosistema experimental}{97}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Presentación global y análisis de resultados}{98}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Scikit-learn}{99}{subsection.6.2.1}%
-\contentsline {subsubsection}{Clasificación}{99}{section*.81}%
-\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{100}{section*.82}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco)}{102}{section*.86}%
-\contentsline {subsubsection}{Eficiencia operativa y resultados globales}{104}{section*.90}%
-\contentsline {subsubsection}{Regresión}{106}{section*.94}%
-\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{106}{section*.95}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco)}{108}{section*.99}%
-\contentsline {subsubsection}{Eficiencia operativa y resultados globales}{110}{section*.103}%
-\contentsline {subsection}{\numberline {6.2.2}ONNX}{112}{subsection.6.2.2}%
-\contentsline {subsubsection}{Clasificación}{112}{section*.107}%
-\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{112}{section*.108}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco)}{113}{section*.112}%
-\contentsline {subsubsection}{Eficiencia operativa y resultados globales}{115}{section*.116}%
-\contentsline {subsubsection}{scikit-learn vs. ONNX}{116}{section*.120}%
-\contentsline {subsubsection}{Regresión}{118}{section*.125}%
-\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{118}{section*.126}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco)}{120}{section*.130}%
-\contentsline {subsubsection}{Eficiencia operativa y resultados globales}{121}{section*.134}%
-\contentsline {subsubsection}{scikit-learn vs. ONNX}{123}{section*.138}%
-\contentsline {subsection}{\numberline {6.2.3}PyTorch y TensorFlow}{124}{subsection.6.2.3}%
-\contentsline {subsubsection}{Clasificación}{124}{section*.143}%
-\contentsline {subsubsection}{Cuantización}{125}{section*.144}%
-\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{125}{section*.145}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{126}{section*.147}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{126}{section*.149}%
-\contentsline {subsubsection}{Destilación de conocimiento}{128}{section*.154}%
-\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{128}{section*.155}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{129}{section*.157}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{130}{section*.159}%
-\contentsline {subsubsection}{Cuantización y destilación de conocimiento}{132}{section*.164}%
-\contentsline {subsubsection}{Rendimiento predictivo (F1)}{133}{section*.165}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{133}{section*.167}%
-\contentsline {subsubsection}{Resultados globales y comparativa}{134}{section*.169}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en PyTorch}{134}{section*.170}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en TensorFlow}{136}{section*.175}%
-\contentsline {subsubsection}{Regresión}{137}{section*.180}%
-\contentsline {subsubsection}{Cuantización}{137}{section*.181}%
-\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{138}{section*.182}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{138}{section*.184}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{139}{section*.186}%
-\contentsline {subsubsection}{Destilación de conocimiento}{140}{section*.191}%
-\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{141}{section*.192}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{141}{section*.194}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{142}{section*.196}%
-\contentsline {subsubsection}{Cuantización + destilación de conocimiento}{143}{section*.201}%
-\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{144}{section*.202}%
-\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{144}{section*.204}%
-\contentsline {subsubsection}{Resultados globales y comparativa}{145}{section*.206}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en PyTorch}{145}{section*.207}%
-\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en TensorFlow}{147}{section*.212}%
-\contentsline {subsection}{\numberline {6.2.4}MLP}{148}{subsection.6.2.4}%
-\contentsline {subsubsection}{Clasificación}{148}{section*.217}%
-\contentsline {subsubsection}{Regresión}{151}{section*.222}%
-\contentsline {section}{\numberline {6.3}Compromisos y escalabilidad}{154}{section.6.3}%
-\contentsline {chapter}{\numberline {7}Conclusiones y recomendaciones}{155}{chapter.7}%
-\contentsline {chapter}{\numberline {8}Referencias y Bibliografía}{157}{chapter*.227}%
+\contentsline {subsection}{\numberline {3.3.2}Objetivos específicos}{37}{subsection.3.3.2}%
+\contentsline {chapter}{\numberline {4}Metodología de trabajo}{39}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Enfoque metodológico}{39}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Diseño experimental}{39}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Variables independientes}{40}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Variables dependientes}{40}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Variables controladas}{41}{subsection.4.2.3}%
+\contentsline {section}{\numberline {4.3}Selección de conjuntos de datos}{41}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Criterios de selección}{41}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Conjuntos de datos para tareas de clasificación}{42}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Conjuntos de datos para tareas de regresión}{43}{subsection.4.3.3}%
+\contentsline {section}{\numberline {4.4}Selección de modelos base}{44}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Modelos clásicos}{44}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Redes neuronales ligeras}{45}{subsection.4.4.2}%
+\contentsline {section}{\numberline {4.5}Estrategias de implementación y técnicas de compresión}{45}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Flujo scikit-learn nativo}{45}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Flujo scikit-learn $+$ ONNX}{45}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}Flujos PyTorch y TensorFlow Lite/LiteRT}{45}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}Protocolo experimental}{46}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Procedimientos de recogida y almacenamiento de datos}{46}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Reproducibilidad, control de calidad y consideraciones éticas}{47}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Herramientas y equipos}{47}{section.4.9}%
+\contentsline {subsection}{\numberline {4.9.1}Hardware}{47}{subsection.4.9.1}%
+\contentsline {subsection}{\numberline {4.9.2}Software}{47}{subsection.4.9.2}%
+\contentsline {section}{\numberline {4.10}Limitaciones metodológicas}{48}{section.4.10}%
+\contentsline {chapter}{\numberline {5}Desarrollo y experimentación}{49}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Diseño y arquitectura del entorno experimental}{49}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Organización del código}{50}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Integración y preparación de los conjuntos de datos}{51}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Preprocesamiento y representación de los datos}{52}{subsection.5.2.1}%
+\contentsline {subsubsection}{Selección y separación de las variables}{53}{section*.25}%
+\contentsline {subsubsection}{Conversión y representación numérica}{53}{section*.26}%
+\contentsline {subsubsection}{Codificación de variables categóricas}{53}{section*.27}%
+\contentsline {subsubsection}{Codificación de la variable objetivo}{54}{section*.28}%
+\contentsline {subsubsection}{Tratamiento de valores faltantes}{54}{section*.29}%
+\contentsline {subsubsection}{Ingeniería de características temporales}{54}{section*.30}%
+\contentsline {subsubsection}{Generación de variables retardadas}{55}{section*.31}%
+\contentsline {subsubsection}{Adecuación del número de muestras y de la estructura de los datos}{55}{section*.32}%
+\contentsline {subsubsection}{Representación final}{55}{section*.33}%
+\contentsline {section}{\numberline {5.3}Desarrollo de los modelos base}{56}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Clasificación}{56}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Regresión}{56}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Desarrollo de los modelos optimizados para despliegue}{57}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Reducción de prototipos en k-NN}{58}{subsection.5.4.1}%
+\contentsline {subsubsection}{Clasificación}{59}{section*.36}%
+\contentsline {subsubsection}{Regresión}{59}{section*.37}%
+\contentsline {subsubsection}{Integración en el \textit {pipeline}}{60}{section*.38}%
+\contentsline {subsection}{\numberline {5.4.2}Poda y \textit {sparsity} en modelos lineales y MLP}{60}{subsection.5.4.2}%
+\contentsline {subsubsection}{Modelos lineales}{60}{section*.39}%
+\contentsline {subsubsection}{MLP}{60}{section*.40}%
+\contentsline {subsection}{\numberline {5.4.3}Poda de árboles de decisión}{61}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Destilación de Random Forest}{61}{subsection.5.4.4}%
+\contentsline {subsubsection}{Clasificación}{62}{section*.41}%
+\contentsline {subsubsection}{Regresión}{62}{section*.42}%
+\contentsline {subsection}{\numberline {5.4.5}\textit {Pipeline} integrado de compresión}{62}{subsection.5.4.5}%
+\contentsline {section}{\numberline {5.5}Conversión, cuantización e inferencia mediante ONNX}{63}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Contrato de entrada y mapeo de operadores}{63}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Traducción estructural y compatibilidad (Opsets)}{63}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Inferencia de formas y serialización}{64}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Cuantización post-entrenamiento (PQT) y formato QDQ}{65}{subsection.5.5.4}%
+\contentsline {subsubsection}{Cuantización: calibración interactiva y simetría}{65}{section*.43}%
+\contentsline {subsubsection}{Formato QDQ}{65}{section*.44}%
+\contentsline {subsubsection}{Ejecución y optimización en tiempo de inferencia}{66}{section*.45}%
+\contentsline {section}{\numberline {5.6}Desarrollo del prototipo basado en PyTorch}{66}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Arquitectura de la red neuronal}{66}{subsection.5.6.1}%
+\contentsline {subsection}{\numberline {5.6.2}Preprocesamiento}{67}{subsection.5.6.2}%
+\contentsline {subsection}{\numberline {5.6.3}Ciclo de entrenamiento}{67}{subsection.5.6.3}%
+\contentsline {subsection}{\numberline {5.6.4}Cuantización mediante PyTorch FX}{68}{subsection.5.6.4}%
+\contentsline {subsection}{\numberline {5.6.5}Compilación con JIT}{69}{subsection.5.6.5}%
+\contentsline {subsection}{\numberline {5.6.6}Inferencia}{70}{subsection.5.6.6}%
+\contentsline {section}{\numberline {5.7}Desarrollo del prototipo basado en TensorFlow, Keras y LiteRT}{70}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Fase de entrenamiento}{71}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Conversión a TensorFlow Lite y cuantización}{72}{subsection.5.7.2}%
+\contentsline {subsubsection}{Cuantización}{72}{section*.46}%
+\contentsline {subsection}{\numberline {5.7.3}Inferencia mediante LiteRT}{73}{subsection.5.7.3}%
+\contentsline {section}{\numberline {5.8}Configuración del procedimiento experimental}{74}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}Entrenamiento}{74}{subsection.5.8.1}%
+\contentsline {subsubsection}{Inicialización}{74}{section*.47}%
+\contentsline {subsubsection}{Preparación de los datos}{75}{section*.48}%
+\contentsline {subsubsection}{Validación cruzada}{75}{section*.49}%
+\contentsline {subsubsection}{Construcción y entrenamiento del modelo}{76}{section*.50}%
+\contentsline {subsubsection}{Medición del tiempo de entrenamiento}{76}{section*.51}%
+\contentsline {subsection}{\numberline {5.8.2}Inferencia}{77}{subsection.5.8.2}%
+\contentsline {subsubsection}{Medición de latencia de inferencia}{77}{section*.52}%
+\contentsline {subsection}{\numberline {5.8.3}Medición}{78}{subsection.5.8.3}%
+\contentsline {subsubsection}{Métricas de rendimiento predictivo}{78}{section*.53}%
+\contentsline {subsubsection}{Clasificación}{78}{section*.54}%
+\contentsline {subsubsection}{Regresión}{79}{section*.55}%
+\contentsline {subsubsection}{Métricas de coste computacional}{79}{section*.56}%
+\contentsline {subsubsection}{Tamaño del modelo}{79}{section*.57}%
+\contentsline {subsubsection}{Tiempo de entrenamiento}{79}{section*.58}%
+\contentsline {subsubsection}{Tiempo de conversión}{79}{section*.59}%
+\contentsline {subsubsection}{Tiempo de inferencia}{80}{section*.60}%
+\contentsline {subsection}{\numberline {5.8.4}Almacenamiento de resultados}{80}{subsection.5.8.4}%
+\contentsline {subsubsection}{Organización y generación de resultados globales}{80}{section*.61}%
+\contentsline {subsection}{\numberline {5.8.5}Ejecución completa del experimento}{82}{subsection.5.8.5}%
+\contentsline {section}{\numberline {5.9}Metodología de evaluación estadística y análisis de compromisos}{82}{section.5.9}%
+\contentsline {subsection}{\numberline {5.9.1}Evaluación estadística}{83}{subsection.5.9.1}%
+\contentsline {subsubsection}{Extracción, transformación y normalización de datos (ETL)}{83}{section*.62}%
+\contentsline {subsubsection}{Procedimiento estadístico}{84}{section*.63}%
+\contentsline {subsubsection}{1. Prueba de rangos de Friedman}{84}{section*.65}%
+\contentsline {subsubsection}{2. Corrección de Iman-Davenport}{85}{section*.66}%
+\contentsline {subsubsection}{3. Test post hoc de Nemenyi}{86}{section*.67}%
+\contentsline {subsection}{\numberline {5.9.2}Análisis de compromisos}{86}{subsection.5.9.2}%
+\contentsline {subsubsection}{Preparación de los datos}{86}{section*.68}%
+\contentsline {subsubsection}{Análisis mediante el frente de Pareto}{87}{section*.69}%
+\contentsline {subsubsection}{Evaluación del impacto de la complejidad de los datos}{87}{section*.70}%
+\contentsline {chapter}{\numberline {6}Resultados y discusión}{89}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Estructuración del ecosistema experimental}{89}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Presentación global y análisis de resultados}{90}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Scikit-learn}{91}{subsection.6.2.1}%
+\contentsline {subsubsection}{Clasificación}{91}{section*.72}%
+\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{92}{section*.73}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{94}{section*.77}%
+\contentsline {subsubsection}{Eficiencia operativa (ms) y resultados globales}{96}{section*.81}%
+\contentsline {subsubsection}{Regresión}{97}{section*.85}%
+\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{97}{section*.86}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{99}{section*.90}%
+\contentsline {subsubsection}{Eficiencia operativa (ms) y resultados globales}{101}{section*.94}%
+\contentsline {subsection}{\numberline {6.2.2}ONNX}{103}{subsection.6.2.2}%
+\contentsline {subsubsection}{Clasificación}{103}{section*.98}%
+\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{103}{section*.99}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{104}{section*.103}%
+\contentsline {subsubsection}{Eficiencia operativa (ms) y resultados globales}{106}{section*.107}%
+\contentsline {subsubsection}{scikit-learn vs. ONNX}{107}{section*.111}%
+\contentsline {subsubsection}{Regresión}{109}{section*.116}%
+\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{109}{section*.117}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{111}{section*.121}%
+\contentsline {subsubsection}{Eficiencia operativa (ms) y resultados globales}{112}{section*.125}%
+\contentsline {subsubsection}{scikit-learn vs. ONNX}{114}{section*.129}%
+\contentsline {subsection}{\numberline {6.2.3}PyTorch y TensorFlow}{115}{subsection.6.2.3}%
+\contentsline {subsubsection}{Clasificación}{115}{section*.134}%
+\contentsline {subsubsection}{Cuantización}{116}{section*.135}%
+\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{116}{section*.136}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{117}{section*.138}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{117}{section*.140}%
+\contentsline {subsubsection}{Destilación de conocimiento}{119}{section*.145}%
+\contentsline {subsubsection}{Rendimiento predictivo (F1-score)}{119}{section*.146}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{120}{section*.148}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{121}{section*.150}%
+\contentsline {subsubsection}{Cuantización y destilación de conocimiento}{123}{section*.155}%
+\contentsline {subsubsection}{Rendimiento predictivo (F1)}{124}{section*.156}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{124}{section*.158}%
+\contentsline {subsubsection}{Resultados globales y comparativa}{125}{section*.160}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en PyTorch}{125}{section*.161}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en TensorFlow}{127}{section*.166}%
+\contentsline {subsubsection}{Regresión}{128}{section*.171}%
+\contentsline {subsubsection}{Cuantización}{128}{section*.172}%
+\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{129}{section*.173}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{129}{section*.175}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{130}{section*.177}%
+\contentsline {subsubsection}{Destilación de conocimiento}{131}{section*.182}%
+\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{132}{section*.183}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{132}{section*.185}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa}{133}{section*.187}%
+\contentsline {subsubsection}{Cuantización + destilación de conocimiento}{134}{section*.192}%
+\contentsline {subsubsection}{Rendimiento predictivo (R$^2$)}{135}{section*.193}%
+\contentsline {subsubsection}{Huella de memoria (tamaño en disco en KB)}{135}{section*.195}%
+\contentsline {subsubsection}{Resultados globales y comparativa}{136}{section*.197}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en PyTorch}{136}{section*.198}%
+\contentsline {subsubsection}{Eficiencia operativa (ms), resultados globales y comparativa en TensorFlow}{138}{section*.203}%
+\contentsline {subsection}{\numberline {6.2.4}MLP}{139}{subsection.6.2.4}%
+\contentsline {subsubsection}{Clasificación}{139}{section*.208}%
+\contentsline {subsubsection}{Regresión}{142}{section*.213}%
+\contentsline {section}{\numberline {6.3}Compromisos y escalabilidad}{145}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Metodología del análisis multiobjetivo}{145}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Frente de Pareto}{146}{subsection.6.3.2}%
+\contentsline {subsubsection}{Clasificación}{146}{section*.218}%
+\contentsline {subsubsection}{Regresión}{148}{section*.222}%
+\contentsline {subsection}{\numberline {6.3.3}Escalabilidad respecto a la dimensionalidad y el volumen de datos}{150}{subsection.6.3.3}%
+\contentsline {subsubsection}{Impacto del número de características en latencia - Clasificación}{150}{section*.226}%
+\contentsline {subsubsection}{Impacto del número de características en latencia - Regresión}{151}{section*.228}%
+\contentsline {subsubsection}{Impacto del número de características en el tamaño del modelo - Clasificación}{152}{section*.230}%
+\contentsline {subsubsection}{Impacto del número de características en el tamaño del modelo - Regresión}{152}{section*.232}%
+\contentsline {subsubsection}{Impacto del número de instancias en la latencia - Clasificación}{153}{section*.234}%
+\contentsline {subsubsection}{Impacto del número de instancias en la latencia - Regresión}{154}{section*.236}%
+\contentsline {subsubsection}{Impacto del número de instancias en el tamaño del modelo- Clasificación}{155}{section*.238}%
+\contentsline {subsubsection}{Impacto del número de instancias - Regresión}{155}{section*.240}%
+\contentsline {subsection}{\numberline {6.3.4}Proyecciones y extrapolaciones}{156}{subsection.6.3.4}%
+\contentsline {subsubsection}{Evolución de la eficiencia al escalar el volumen de datos}{156}{section*.242}%
+\contentsline {subsubsection}{Efecto de una arquitectura MLP más compleja sobre el tamaño del modelo}{156}{section*.243}%
+\contentsline {chapter}{\numberline {7}Conclusiones y recomendaciones}{159}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Síntesis de los resultados principales}{159}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}El framework de despliegue condiciona tanto el rendimiento como el coste}{159}{subsection.7.1.1}%
+\contentsline {subsection}{\numberline {7.1.2}La cuantización y la destilación de conocimiento no son técnicas intercambiables}{160}{subsection.7.1.2}%
+\contentsline {subsection}{\numberline {7.1.3}Clasificación y regresión no se comportan igual ante la compresión}{160}{subsection.7.1.3}%
+\contentsline {subsection}{\numberline {7.1.4}Ningún modelo domina en solitario: la frontera de Pareto y la escalabilidad}{161}{subsection.7.1.4}%
+\contentsline {section}{\numberline {7.2}Contraste de la hipótesis de trabajo}{161}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Implicaciones prácticas y guía de selección}{161}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Limitaciones del estudio}{163}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Líneas futuras de investigación}{163}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Reflexión final}{164}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Referencias y Bibliografía}{165}{chapter*.245}%
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
@@ -268,49 +289,74 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
-\contentsline {chapter}{\numberline {A}Manual de usuario}{165}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Introducción}{165}{section.Alph1.1}%
-\contentsline {chapter}{\numberline {B}Manual de código}{167}{appendix.Alph2}%
-\contentsline {section}{\numberline {B.1}Introducción}{167}{section.Alph2.1}%
-\contentsline {section}{\numberline {B.2}Estructura de directorios}{167}{section.Alph2.2}%
-\contentsline {section}{\numberline {B.3}Ficheros de código}{167}{section.Alph2.3}%
-\contentsline {subsection}{\numberline {B.3.1}Lógica de la ejecución del proyecto}{167}{subsection.Alph2.3.1}%
-\contentsline {subsubsection}{Pipeline de ejecución}{167}{section*.229}%
-\contentsline {subsubsection}{Funcionalidades para clasificación}{176}{section*.230}%
-\contentsline {subsubsection}{Funcionalidades para regresión}{179}{section*.231}%
-\contentsline {subsection}{\numberline {B.3.2}Modelos e implementaciones}{182}{subsection.Alph2.3.2}%
-\contentsline {subsubsection}{Modelos de clasificación}{182}{section*.232}%
-\contentsline {subsubsection}{Modelos de regresión}{186}{section*.233}%
-\contentsline {subsubsection}{Implentación de ONNX}{190}{section*.234}%
-\contentsline {subsubsection}{Implementación de PyTorch}{207}{section*.235}%
-\contentsline {subsubsection}{Implementación de TensorFlow}{221}{section*.236}%
-\contentsline {subsection}{\numberline {B.3.3}Carga de datos}{237}{subsection.Alph2.3.3}%
-\contentsline {subsubsection}{Agrupación de funciones de carga de clasificación}{237}{section*.237}%
-\contentsline {subsubsection}{Agrupación de funciones de carga de regresión}{238}{section*.238}%
-\contentsline {subsubsection}{Carga del dataset de clasificación CAR}{239}{section*.239}%
-\contentsline {subsubsection}{Carga del dataset de clasificación DIABETES}{240}{section*.240}%
-\contentsline {subsubsection}{Carga del dataset de clasificación GAMA}{241}{section*.241}%
-\contentsline {subsubsection}{Carga del dataset de clasificación IRIS}{242}{section*.242}%
-\contentsline {subsubsection}{Carga del dataset de clasificación LETTER RECOGNITION}{243}{section*.243}%
-\contentsline {subsubsection}{Carga del dataset de clasificación MNIST}{244}{section*.244}%
-\contentsline {subsubsection}{Carga del dataset de clasificación SOYBEAN}{245}{section*.245}%
-\contentsline {subsubsection}{Carga del dataset de clasificación STUDENT DROPOUT}{246}{section*.246}%
-\contentsline {subsubsection}{Carga del dataset de regresión ABALONE}{247}{section*.247}%
-\contentsline {subsubsection}{Carga del dataset de regresión AIR QUALITY}{248}{section*.248}%
-\contentsline {subsubsection}{Carga del dataset de regresión APPLIANCES ENERGY PREDICTION}{251}{section*.249}%
-\contentsline {subsubsection}{Carga del dataset de regresión AUTOMOBILE}{253}{section*.250}%
-\contentsline {subsubsection}{Carga del dataset de regresión BIKE SHARING}{254}{section*.251}%
-\contentsline {subsubsection}{Carga del dataset de regresión COMMUNITIES AND CRIME}{255}{section*.252}%
-\contentsline {subsubsection}{Carga del dataset de regresión OBESITY LEVELS}{257}{section*.253}%
-\contentsline {subsubsection}{Carga del dataset de regresión REAL ESTATE VALUATION}{259}{section*.254}%
-\contentsline {subsubsection}{Carga del dataset de regresión STUDENT PERFORMANCE}{260}{section*.255}%
-\contentsline {subsubsection}{Carga de los datasets de clasificación y regresión WINE Y WINE QUALITY}{261}{section*.256}%
-\contentsline {subsection}{\numberline {B.3.4}Funciones auxiliares}{263}{subsection.Alph2.3.4}%
-\contentsline {subsection}{\numberline {B.3.5}Scripts de ejecución}{264}{subsection.Alph2.3.5}%
-\contentsline {subsubsection}{Script de ejecución de clasificación}{264}{section*.257}%
-\contentsline {subsubsection}{Script de ejecución de regresión}{264}{section*.258}%
-\contentsline {subsection}{\numberline {B.3.6}Análisis de resultados}{265}{subsection.Alph2.3.6}%
-\contentsline {subsubsection}{Tests estadísticos}{265}{section*.259}%
-\contentsline {subsubsection}{Análisis de compromisos}{278}{section*.260}%
-\contentsline {chapter}{\numberline {C}Resultados completos de la experimentación}{289}{appendix.Alph3}%
-\contentsline {section}{\numberline {C.1}Introducción}{289}{section.Alph3.1}%
+\contentsline {chapter}{\numberline {A}Manual de usuario}{173}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Introducción}{173}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Requisitos del sistema}{173}{section.Alph1.2}%
+\contentsline {subsection}{\numberline {A.2.1}Requisitos hardware}{173}{subsection.Alph1.2.1}%
+\contentsline {subsection}{\numberline {A.2.2}Requisitos software}{173}{subsection.Alph1.2.2}%
+\contentsline {section}{\numberline {A.3}Instalación}{174}{section.Alph1.3}%
+\contentsline {subsection}{\numberline {A.3.1}Instalación del software}{174}{subsection.Alph1.3.1}%
+\contentsline {subsection}{\numberline {A.3.2}Instalación de Python}{174}{subsection.Alph1.3.2}%
+\contentsline {subsubsection}{Windows}{174}{section*.246}%
+\contentsline {subsubsection}{GNU/Linux}{175}{section*.247}%
+\contentsline {subsubsection}{Mac OS}{175}{section*.248}%
+\contentsline {subsection}{\numberline {A.3.3}Instalación de librerías}{175}{subsection.Alph1.3.3}%
+\contentsline {subsubsection}{Scikit-learn $+$ ONNX}{176}{section*.249}%
+\contentsline {subsubsection}{PyTorch}{176}{section*.251}%
+\contentsline {subsubsection}{TensorFlow Lite (LiteRT)}{178}{section*.253}%
+\contentsline {subsubsection}{Tests y análisis de resultados}{179}{section*.255}%
+\contentsline {section}{\numberline {A.4}Desinstalación}{181}{section.Alph1.4}%
+\contentsline {subsection}{\numberline {A.4.1}Desinstalación del software}{181}{subsection.Alph1.4.1}%
+\contentsline {subsection}{\numberline {A.4.2}Desinstalación de Python}{181}{subsection.Alph1.4.2}%
+\contentsline {subsubsection}{Windows}{181}{section*.257}%
+\contentsline {subsubsection}{GNU/Linux}{181}{section*.258}%
+\contentsline {subsubsection}{Mac OS}{182}{section*.259}%
+\contentsline {subsection}{\numberline {A.4.3}Desinstalación de librerías}{182}{subsection.Alph1.4.3}%
+\contentsline {section}{\numberline {A.5}Ejecución del flujo de experimentación}{182}{section.Alph1.5}%
+\contentsline {section}{\numberline {A.6}Ejecución de los tests y análisis de datos}{183}{section.Alph1.6}%
+\contentsline {subsection}{\numberline {A.6.1}Argumentos para los tests estadísticos}{183}{subsection.Alph1.6.1}%
+\contentsline {subsection}{\numberline {A.6.2}Argumentos para el análisis de compromisos}{184}{subsection.Alph1.6.2}%
+\contentsline {chapter}{\numberline {B}Manual de código}{185}{appendix.Alph2}%
+\contentsline {section}{\numberline {B.1}Introducción}{185}{section.Alph2.1}%
+\contentsline {section}{\numberline {B.2}Estructura de directorios}{185}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Ficheros de código}{185}{section.Alph2.3}%
+\contentsline {subsection}{\numberline {B.3.1}Lógica de la ejecución del proyecto}{186}{subsection.Alph2.3.1}%
+\contentsline {subsubsection}{Pipeline de ejecución}{186}{section*.261}%
+\contentsline {subsubsection}{Funcionalidades para clasificación}{195}{section*.262}%
+\contentsline {subsubsection}{Funcionalidades para regresión}{198}{section*.263}%
+\contentsline {subsection}{\numberline {B.3.2}Modelos e implementaciones}{201}{subsection.Alph2.3.2}%
+\contentsline {subsubsection}{Modelos de clasificación}{201}{section*.264}%
+\contentsline {subsubsection}{Modelos de regresión}{205}{section*.265}%
+\contentsline {subsubsection}{Implentación de ONNX}{209}{section*.266}%
+\contentsline {subsubsection}{Implementación de PyTorch}{227}{section*.267}%
+\contentsline {subsubsection}{Implementación de TensorFlow}{241}{section*.268}%
+\contentsline {subsection}{\numberline {B.3.3}Carga de datos}{257}{subsection.Alph2.3.3}%
+\contentsline {subsubsection}{Agrupación de funciones de carga de clasificación}{257}{section*.269}%
+\contentsline {subsubsection}{Agrupación de funciones de carga de regresión}{257}{section*.270}%
+\contentsline {subsubsection}{Carga del dataset de clasificación CAR}{258}{section*.271}%
+\contentsline {subsubsection}{Carga del dataset de clasificación DIABETES}{259}{section*.272}%
+\contentsline {subsubsection}{Carga del dataset de clasificación GAMA}{260}{section*.273}%
+\contentsline {subsubsection}{Carga del dataset de clasificación IRIS}{261}{section*.274}%
+\contentsline {subsubsection}{Carga del dataset de clasificación LETTER RECOGNITION}{262}{section*.275}%
+\contentsline {subsubsection}{Carga del dataset de clasificación MNIST}{263}{section*.276}%
+\contentsline {subsubsection}{Carga del dataset de clasificación SOYBEAN}{264}{section*.277}%
+\contentsline {subsubsection}{Carga del dataset de clasificación STUDENT DROPOUT}{265}{section*.278}%
+\contentsline {subsubsection}{Carga del dataset de regresión ABALONE}{266}{section*.279}%
+\contentsline {subsubsection}{Carga del dataset de regresión AIR QUALITY}{267}{section*.280}%
+\contentsline {subsubsection}{Carga del dataset de regresión APPLIANCES ENERGY PREDICTION}{271}{section*.281}%
+\contentsline {subsubsection}{Carga del dataset de regresión AUTOMOBILE}{272}{section*.282}%
+\contentsline {subsubsection}{Carga del dataset de regresión BIKE SHARING}{274}{section*.283}%
+\contentsline {subsubsection}{Carga del dataset de regresión COMMUNITIES AND CRIME}{275}{section*.284}%
+\contentsline {subsubsection}{Carga del dataset de regresión OBESITY LEVELS}{277}{section*.285}%
+\contentsline {subsubsection}{Carga del dataset de regresión REAL ESTATE VALUATION}{278}{section*.286}%
+\contentsline {subsubsection}{Carga del dataset de regresión STUDENT PERFORMANCE}{279}{section*.287}%
+\contentsline {subsubsection}{Carga de los datasets de clasificación y regresión WINE Y WINE QUALITY}{281}{section*.288}%
+\contentsline {subsection}{\numberline {B.3.4}Funciones auxiliares}{283}{subsection.Alph2.3.4}%
+\contentsline {subsection}{\numberline {B.3.5}Scripts de ejecución}{284}{subsection.Alph2.3.5}%
+\contentsline {subsubsection}{Script de ejecución de clasificación}{284}{section*.289}%
+\contentsline {subsubsection}{Script de ejecución de regresión}{284}{section*.290}%
+\contentsline {subsection}{\numberline {B.3.6}Análisis de resultados}{285}{subsection.Alph2.3.6}%
+\contentsline {subsubsection}{Tests estadísticos}{285}{section*.291}%
+\contentsline {subsubsection}{Análisis de compromisos}{298}{section*.292}%
+\contentsline {chapter}{\numberline {C}Resultados completos de la experimentación}{309}{appendix.Alph3}%
+\contentsline {section}{\numberline {C.1}Introducción}{309}{section.Alph3.1}%

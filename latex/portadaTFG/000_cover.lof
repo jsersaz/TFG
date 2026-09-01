@@ -3,75 +3,83 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Árbol de dependencias del flujo scikit-learn $+$ ONNX.}}{51}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Árbol de dependencias del flujo PyTorch.}}{52}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Árbol de dependencias del flujo TensorFlow Lite (LiteRT).}}{53}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Árbol de dependencias del entorno de tests y análisis de resultados.}}{55}{figure.caption.31}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Estructura de directorios del código fuente.}}{59}{figure.caption.32}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Flujo de ejecución del módulo de pruebas estadísticas.}}{93}{figure.caption.73}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Preprocesamiento de datos para el análisis de compromisos.}}{96}{figure.caption.80}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Estructura de directorios del código fuente.}}{50}{figure.caption.24}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Flujo de ejecución del módulo de pruebas estadísticas.}}{85}{figure.caption.64}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Preprocesamiento de datos para el análisis de compromisos.}}{88}{figure.caption.71}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según F1-score.}}{101}{figure.caption.84}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según F1-score.}}{101}{figure.caption.85}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según el tamaño en disco.}}{103}{figure.caption.88}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según el tamaño en disco.}}{103}{figure.caption.89}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según el tiempo de inferencia.}}{105}{figure.caption.92}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según el tiempo de inferencia.}}{105}{figure.caption.93}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según R$^2$.}}{107}{figure.caption.97}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según R$^2$.}}{107}{figure.caption.98}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según el tamaño en disco.}}{109}{figure.caption.101}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según el tamaño en disco.}}{109}{figure.caption.102}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según el tiempo de inferencia.}}{111}{figure.caption.105}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según el tiempo de inferencia.}}{111}{figure.caption.106}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según F1-score.}}{113}{figure.caption.110}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según F1-score.}}{113}{figure.caption.111}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según el tamaño en disco.}}{114}{figure.caption.114}%
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tamaño en disco.}}{115}{figure.caption.115}%
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según el tiempo de inferencia.}}{116}{figure.caption.118}%
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tiempo de inferencia.}}{116}{figure.caption.119}%
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX frente a scikit-learn en clasificación según F1-score.}}{117}{figure.caption.122}%
-\contentsline {figure}{\numberline {6.20}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tamaño del modelo.}}{118}{figure.caption.123}%
-\contentsline {figure}{\numberline {6.21}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tiempo de inferencia.}}{118}{figure.caption.124}%
-\contentsline {figure}{\numberline {6.22}{\ignorespaces Rangos medios de los modelos ONNX en regresión según R$^2$.}}{119}{figure.caption.128}%
-\contentsline {figure}{\numberline {6.23}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según R$^2$.}}{120}{figure.caption.129}%
-\contentsline {figure}{\numberline {6.24}{\ignorespaces Rangos medios de los modelos ONNX en regresión según el tamaño en disco.}}{121}{figure.caption.132}%
-\contentsline {figure}{\numberline {6.25}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tamaño en disco.}}{121}{figure.caption.133}%
-\contentsline {figure}{\numberline {6.26}{\ignorespaces Rangos medios de los modelos ONNX en regresión según el tiempo de inferencia.}}{122}{figure.caption.136}%
-\contentsline {figure}{\numberline {6.27}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tiempo de inferencia.}}{122}{figure.caption.137}%
-\contentsline {figure}{\numberline {6.28}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX frente a scikit-learn en regresión según R$^2$.}}{124}{figure.caption.140}%
-\contentsline {figure}{\numberline {6.29}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tamaño del modelo.}}{124}{figure.caption.141}%
-\contentsline {figure}{\numberline {6.30}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tiempo de inferencia.}}{124}{figure.caption.142}%
-\contentsline {figure}{\numberline {6.31}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según F1-score.}}{127}{figure.caption.151}%
-\contentsline {figure}{\numberline {6.32}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según el tamaño del modelo.}}{127}{figure.caption.152}%
-\contentsline {figure}{\numberline {6.33}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según el tiempo de inferencia.}}{128}{figure.caption.153}%
-\contentsline {figure}{\numberline {6.34}{\ignorespaces Rangos medios de los modelos MLP con destilación de conocimiento en clasificación según F1-score.}}{131}{figure.caption.161}%
-\contentsline {figure}{\numberline {6.35}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con destilación de conocimiento en clasificación según el tamaño del modelo.}}{131}{figure.caption.162}%
-\contentsline {figure}{\numberline {6.36}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con destilación de conocimiento en clasificación según el tiempo de inferencia.}}{132}{figure.caption.163}%
-\contentsline {figure}{\numberline {6.37}{\ignorespaces Rangos medios de los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según F1-score.}}{135}{figure.caption.172}%
-\contentsline {figure}{\numberline {6.38}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según el tamaño en disco.}}{135}{figure.caption.173}%
-\contentsline {figure}{\numberline {6.39}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{136}{figure.caption.174}%
-\contentsline {figure}{\numberline {6.40}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{136}{figure.caption.177}%
-\contentsline {figure}{\numberline {6.41}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{137}{figure.caption.178}%
-\contentsline {figure}{\numberline {6.42}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{137}{figure.caption.179}%
-\contentsline {figure}{\numberline {6.43}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos de redes neuronales con cuantización en regresión según R$^2$.}}{139}{figure.caption.188}%
-\contentsline {figure}{\numberline {6.44}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos de redes neuronales con cuantización en regresión según el tamaño en disco.}}{140}{figure.caption.189}%
-\contentsline {figure}{\numberline {6.45}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con cuantización en regresión según el tiempo de inferencia.}}{140}{figure.caption.190}%
-\contentsline {figure}{\numberline {6.46}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según R$^2$.}}{142}{figure.caption.198}%
-\contentsline {figure}{\numberline {6.47}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según el tamaño en disco.}}{143}{figure.caption.199}%
-\contentsline {figure}{\numberline {6.48}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según el tiempo de inferencia.}}{143}{figure.caption.200}%
-\contentsline {figure}{\numberline {6.49}{\ignorespaces Rangos medios de los modelos PyTorch con cuantización y destilación de conocimiento en regresión según R$^2$.}}{146}{figure.caption.209}%
-\contentsline {figure}{\numberline {6.50}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en regresión según el tamaño en disco.}}{146}{figure.caption.210}%
-\contentsline {figure}{\numberline {6.51}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en regresión según el tiempo de inferencia.}}{147}{figure.caption.211}%
-\contentsline {figure}{\numberline {6.52}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según R$^2$.}}{147}{figure.caption.214}%
-\contentsline {figure}{\numberline {6.53}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según el tamaño en disco.}}{148}{figure.caption.215}%
-\contentsline {figure}{\numberline {6.54}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según el tiempo de inferencia.}}{148}{figure.caption.216}%
-\contentsline {figure}{\numberline {6.55}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según F1-score.}}{150}{figure.caption.219}%
-\contentsline {figure}{\numberline {6.56}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según el tamaño en disco.}}{150}{figure.caption.220}%
-\contentsline {figure}{\numberline {6.57}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según el tiempo de inferencia.}}{150}{figure.caption.221}%
-\contentsline {figure}{\numberline {6.58}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según $R^2$.}}{152}{figure.caption.224}%
-\contentsline {figure}{\numberline {6.59}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en regresión según el tamaño en disco.}}{153}{figure.caption.225}%
-\contentsline {figure}{\numberline {6.60}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en regresión según la el tiempo de inferencia.}}{153}{figure.caption.226}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según F1-score.}}{93}{figure.caption.75}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según F1-score.}}{93}{figure.caption.76}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según el tamaño en disco.}}{95}{figure.caption.79}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según el tamaño en disco.}}{95}{figure.caption.80}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Rangos medios de los modelos scikit-learn en clasificación según el tiempo de inferencia.}}{96}{figure.caption.83}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en clasificación según el tiempo de inferencia.}}{97}{figure.caption.84}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según R$^2$.}}{98}{figure.caption.88}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según R$^2$.}}{99}{figure.caption.89}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según el tamaño en disco.}}{100}{figure.caption.92}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según el tamaño en disco.}}{100}{figure.caption.93}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Rangos medios de los modelos scikit-learn en regresión según el tiempo de inferencia.}}{102}{figure.caption.96}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos scikit-learn en regresión según el tiempo de inferencia.}}{102}{figure.caption.97}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según F1-score.}}{104}{figure.caption.101}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según F1-score.}}{104}{figure.caption.102}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según el tamaño en disco.}}{105}{figure.caption.105}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tamaño en disco.}}{106}{figure.caption.106}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Rangos medios de los modelos ONNX en clasificación según el tiempo de inferencia.}}{107}{figure.caption.109}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tiempo de inferencia.}}{107}{figure.caption.110}%
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX frente a scikit-learn en clasificación según F1-score.}}{108}{figure.caption.113}%
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tamaño del modelo.}}{109}{figure.caption.114}%
+\contentsline {figure}{\numberline {6.21}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en clasificación según el tiempo de inferencia.}}{109}{figure.caption.115}%
+\contentsline {figure}{\numberline {6.22}{\ignorespaces Rangos medios de los modelos ONNX en regresión según R$^2$.}}{110}{figure.caption.119}%
+\contentsline {figure}{\numberline {6.23}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según R$^2$.}}{111}{figure.caption.120}%
+\contentsline {figure}{\numberline {6.24}{\ignorespaces Rangos medios de los modelos ONNX en regresión según el tamaño en disco.}}{112}{figure.caption.123}%
+\contentsline {figure}{\numberline {6.25}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tamaño en disco.}}{112}{figure.caption.124}%
+\contentsline {figure}{\numberline {6.26}{\ignorespaces Rangos medios de los modelos ONNX en regresión según el tiempo de inferencia.}}{113}{figure.caption.127}%
+\contentsline {figure}{\numberline {6.27}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tiempo de inferencia.}}{113}{figure.caption.128}%
+\contentsline {figure}{\numberline {6.28}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX frente a scikit-learn en regresión según R$^2$.}}{115}{figure.caption.131}%
+\contentsline {figure}{\numberline {6.29}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tamaño del modelo.}}{115}{figure.caption.132}%
+\contentsline {figure}{\numberline {6.30}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos ONNX en regresión según el tiempo de inferencia.}}{115}{figure.caption.133}%
+\contentsline {figure}{\numberline {6.31}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según F1-score.}}{118}{figure.caption.142}%
+\contentsline {figure}{\numberline {6.32}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según el tamaño del modelo.}}{118}{figure.caption.143}%
+\contentsline {figure}{\numberline {6.33}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con cuantización en clasificación según el tiempo de inferencia.}}{119}{figure.caption.144}%
+\contentsline {figure}{\numberline {6.34}{\ignorespaces Rangos medios de los modelos MLP con destilación de conocimiento en clasificación según F1-score.}}{122}{figure.caption.152}%
+\contentsline {figure}{\numberline {6.35}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con destilación de conocimiento en clasificación según el tamaño del modelo.}}{122}{figure.caption.153}%
+\contentsline {figure}{\numberline {6.36}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos MLP con destilación de conocimiento en clasificación según el tiempo de inferencia.}}{123}{figure.caption.154}%
+\contentsline {figure}{\numberline {6.37}{\ignorespaces Rangos medios de los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según F1-score.}}{126}{figure.caption.163}%
+\contentsline {figure}{\numberline {6.38}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según el tamaño en disco.}}{126}{figure.caption.164}%
+\contentsline {figure}{\numberline {6.39}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{127}{figure.caption.165}%
+\contentsline {figure}{\numberline {6.40}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{127}{figure.caption.168}%
+\contentsline {figure}{\numberline {6.41}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{128}{figure.caption.169}%
+\contentsline {figure}{\numberline {6.42}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en clasificación según el tiempo de inferencia.}}{128}{figure.caption.170}%
+\contentsline {figure}{\numberline {6.43}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos de redes neuronales con cuantización en regresión según R$^2$.}}{130}{figure.caption.179}%
+\contentsline {figure}{\numberline {6.44}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos de redes neuronales con cuantización en regresión según el tamaño en disco.}}{131}{figure.caption.180}%
+\contentsline {figure}{\numberline {6.45}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con cuantización en regresión según el tiempo de inferencia.}}{131}{figure.caption.181}%
+\contentsline {figure}{\numberline {6.46}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según R$^2$.}}{133}{figure.caption.189}%
+\contentsline {figure}{\numberline {6.47}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según el tamaño en disco.}}{134}{figure.caption.190}%
+\contentsline {figure}{\numberline {6.48}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos redes neuronales con destilación de conocimiento en regresión según el tiempo de inferencia.}}{134}{figure.caption.191}%
+\contentsline {figure}{\numberline {6.49}{\ignorespaces Rangos medios de los modelos PyTorch con cuantización y destilación de conocimiento en regresión según R$^2$.}}{137}{figure.caption.200}%
+\contentsline {figure}{\numberline {6.50}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en regresión según el tamaño en disco.}}{137}{figure.caption.201}%
+\contentsline {figure}{\numberline {6.51}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos PyTorch con cuantización y destilación de conocimiento en regresión según el tiempo de inferencia.}}{138}{figure.caption.202}%
+\contentsline {figure}{\numberline {6.52}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según R$^2$.}}{138}{figure.caption.205}%
+\contentsline {figure}{\numberline {6.53}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según el tamaño en disco.}}{139}{figure.caption.206}%
+\contentsline {figure}{\numberline {6.54}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los modelos TensorFlow con cuantización y destilación de conocimiento en regresión según el tiempo de inferencia.}}{139}{figure.caption.207}%
+\contentsline {figure}{\numberline {6.55}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según F1-score.}}{141}{figure.caption.210}%
+\contentsline {figure}{\numberline {6.56}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según el tamaño en disco.}}{141}{figure.caption.211}%
+\contentsline {figure}{\numberline {6.57}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según el tiempo de inferencia.}}{141}{figure.caption.212}%
+\contentsline {figure}{\numberline {6.58}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en clasificación según $R^2$.}}{143}{figure.caption.215}%
+\contentsline {figure}{\numberline {6.59}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en regresión según el tamaño en disco.}}{144}{figure.caption.216}%
+\contentsline {figure}{\numberline {6.60}{\ignorespaces Diagrama de distancia crítica de Nemenyi para los MLP en regresión según la el tiempo de inferencia.}}{144}{figure.caption.217}%
+\contentsline {figure}{\numberline {6.61}{\ignorespaces Frente de Pareto para clasificación.}}{146}{figure.caption.219}%
+\contentsline {figure}{\numberline {6.62}{\ignorespaces Frente de Pareto ampliado para clasificación.}}{147}{figure.caption.220}%
+\contentsline {figure}{\numberline {6.63}{\ignorespaces Frente de Pareto para regresión.}}{148}{figure.caption.223}%
+\contentsline {figure}{\numberline {6.64}{\ignorespaces Frente de Pareto ampliado para regresión.}}{149}{figure.caption.224}%
+\contentsline {figure}{\numberline {6.65}{\ignorespaces Relación entre el número de características y el tiempo de inferencia por framework en clasificación.}}{150}{figure.caption.227}%
+\contentsline {figure}{\numberline {6.66}{\ignorespaces Relación entre el número de características y el tiempo de inferencia por framework en regresión.}}{151}{figure.caption.229}%
+\contentsline {figure}{\numberline {6.67}{\ignorespaces Relación entre el número de características y el tamaño del modelo por framework en clasificación.}}{152}{figure.caption.231}%
+\contentsline {figure}{\numberline {6.68}{\ignorespaces Relación entre el número de características y el tamaño del modelo por framework en regresión.}}{152}{figure.caption.233}%
+\contentsline {figure}{\numberline {6.69}{\ignorespaces Relación entre el número de instancias y el tiempo de inferencia por framework en clasificación.}}{153}{figure.caption.235}%
+\contentsline {figure}{\numberline {6.70}{\ignorespaces Relación entre el número de instancias y el tiempo de inferencia por framework en regresión.}}{154}{figure.caption.237}%
+\contentsline {figure}{\numberline {6.71}{\ignorespaces Relación entre el número de instancias y el tamaño del modelo por framework en clasificación.}}{155}{figure.caption.239}%
+\contentsline {figure}{\numberline {6.72}{\ignorespaces Relación entre el número de instancias y el tamaño del modelo por framework en regresión.}}{155}{figure.caption.241}%
 \addvspace {10\p@ }
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
@@ -116,6 +124,10 @@
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Árbol de dependencias del flujo scikit-learn $+$ ONNX.}}{176}{figure.caption.250}%
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Árbol de dependencias del flujo PyTorch.}}{178}{figure.caption.252}%
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Árbol de dependencias del flujo TensorFlow Lite (LiteRT).}}{179}{figure.caption.254}%
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Árbol de dependencias del entorno de tests y análisis de resultados.}}{181}{figure.caption.256}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Estructura de directorios.}}{167}{figure.caption.228}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Estructura de directorios.}}{186}{figure.caption.260}%
 \addvspace {10\p@ }

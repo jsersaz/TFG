@@ -2590,20 +2590,22 @@
     <bcf:citekey order="161" intorder="1">somvanshi2025acm</bcf:citekey>
     <bcf:citekey order="162" intorder="1">somvanshi2025acm</bcf:citekey>
     <bcf:citekey order="163" intorder="1">somvanshi2025acm</bcf:citekey>
-    <bcf:citekey order="164" intorder="1">abadade2023ieeeaccess</bcf:citekey>
+    <bcf:citekey order="164" intorder="1">lin2023ieeemcas</bcf:citekey>
+    <bcf:citekey order="164" intorder="2">somvanshi2025acm</bcf:citekey>
     <bcf:citekey order="165" intorder="1">lin2023ieeemcas</bcf:citekey>
-    <bcf:citekey order="165" intorder="2">somvanshi2025acm</bcf:citekey>
+    <bcf:citekey order="165" intorder="2">abadade2023ieeeaccess</bcf:citekey>
+    <bcf:citekey order="165" intorder="3">somvanshi2025acm</bcf:citekey>
     <bcf:citekey order="166" intorder="1">lin2023ieeemcas</bcf:citekey>
-    <bcf:citekey order="166" intorder="2">abadade2023ieeeaccess</bcf:citekey>
-    <bcf:citekey order="166" intorder="3">somvanshi2025acm</bcf:citekey>
-    <bcf:citekey order="167" intorder="1">lin2023ieeemcas</bcf:citekey>
-    <bcf:citekey order="168" intorder="1">mani2024npjmicrogravity</bcf:citekey>
-    <bcf:citekey order="169" intorder="1">daghero2021vlsi</bcf:citekey>
-    <bcf:citekey order="170" intorder="1">abadade2023ieeeaccess</bcf:citekey>
-    <bcf:citekey order="170" intorder="2">somvanshi2025acm</bcf:citekey>
-    <bcf:citekey order="171" intorder="1">malche2025discoveriot</bcf:citekey>
-    <bcf:citekey order="172" intorder="1">mishra2024engproc</bcf:citekey>
-    <bcf:citekey order="173" intorder="1">hinton2015darkknowledge</bcf:citekey>
+    <bcf:citekey order="167" intorder="1">mani2024npjmicrogravity</bcf:citekey>
+    <bcf:citekey order="168" intorder="1">daghero2021vlsi</bcf:citekey>
+    <bcf:citekey order="169" intorder="1">abadade2023ieeeaccess</bcf:citekey>
+    <bcf:citekey order="169" intorder="2">somvanshi2025acm</bcf:citekey>
+    <bcf:citekey order="170" intorder="1">malche2025discoveriot</bcf:citekey>
+    <bcf:citekey order="171" intorder="1">mishra2024engproc</bcf:citekey>
+    <bcf:citekey order="172" intorder="1">hinton2015darkknowledge</bcf:citekey>
+    <bcf:citekey order="173" intorder="1">gou2021ijcv</bcf:citekey>
+    <bcf:citekey order="174" intorder="1">xu2023ieecomst</bcf:citekey>
+    <bcf:citekey order="175" intorder="1">lin2023ieeemcas</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

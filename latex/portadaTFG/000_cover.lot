@@ -4,46 +4,49 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Resumen de configuraciones principales por modelo.}}{65}{table.caption.42}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces Estrategias de optimización aplicadas a cada modelo.}}{66}{table.caption.43}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Resumen de configuraciones principales por modelo.}}{57}{table.caption.34}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Estrategias de optimización aplicadas a cada modelo.}}{58}{table.caption.35}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces F1-score por dataset para los modelos scikit-learn base en clasificación.}}{100}{table.caption.83}%
-\contentsline {table}{\numberline {6.2}{\ignorespaces Tamaño en disco por dataset para los modelos scikit-learn base en clasificación.}}{102}{table.caption.87}%
-\contentsline {table}{\numberline {6.3}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos scikit-learn base en clasificación.}}{104}{table.caption.91}%
-\contentsline {table}{\numberline {6.4}{\ignorespaces R$^2$ por dataset para los modelos scikit-learn base en regresión.}}{106}{table.caption.96}%
-\contentsline {table}{\numberline {6.5}{\ignorespaces Tamaño en disco (KB) por dataset para los modelos scikit-learn base en regresión.}}{108}{table.caption.100}%
-\contentsline {table}{\numberline {6.6}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos scikit-learn base en regresión.}}{110}{table.caption.104}%
-\contentsline {table}{\numberline {6.7}{\ignorespaces F1-score por dataset para los modelos ONNX $+$ cuantización estática en clasificación.}}{112}{table.caption.109}%
-\contentsline {table}{\numberline {6.8}{\ignorespaces Tamaño en disco (KB) por dataset para los modelos ONNX $+$ cuantización estática en clasificación.}}{114}{table.caption.113}%
-\contentsline {table}{\numberline {6.9}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización estática en clasificación .}}{115}{table.caption.117}%
-\contentsline {table}{\numberline {6.10}{\ignorespaces Comparativa de rendimiento y coste de algoritmos tradicionales (scikit-learn frente a ONNX) en clasificación.}}{117}{table.caption.121}%
-\contentsline {table}{\numberline {6.11}{\ignorespaces R$^2$ por dataset para los modelos ONNX $+$ cuantización estática en regresión.}}{119}{table.caption.127}%
-\contentsline {table}{\numberline {6.12}{\ignorespaces Tamaño en disco por dataset para los modelos ONNX $+$ cuantización estática en regresión.}}{120}{table.caption.131}%
-\contentsline {table}{\numberline {6.13}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización estática en regresión.}}{122}{table.caption.135}%
-\contentsline {table}{\numberline {6.14}{\ignorespaces Comparativa de rendimiento y coste de algoritmos tradicionales (scikit-learn frente a ONNX) en regresión.}}{123}{table.caption.139}%
-\contentsline {table}{\numberline {6.15}{\ignorespaces F1-score por dataset para los modelos de redes neuronales con cuantización en clasificación.}}{125}{table.caption.146}%
-\contentsline {table}{\numberline {6.16}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en clasificación.}}{126}{table.caption.148}%
-\contentsline {table}{\numberline {6.17}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con cuantización en clasificación.}}{126}{table.caption.150}%
-\contentsline {table}{\numberline {6.18}{\ignorespaces F1-score por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}}{129}{table.caption.156}%
-\contentsline {table}{\numberline {6.19}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}}{129}{table.caption.158}%
-\contentsline {table}{\numberline {6.20}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con destilación de conocimiento en clasificación.}}{130}{table.caption.160}%
-\contentsline {table}{\numberline {6.21}{\ignorespaces F1-score por dataset para los modelos de modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}}{133}{table.caption.166}%
-\contentsline {table}{\numberline {6.22}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}}{133}{table.caption.168}%
-\contentsline {table}{\numberline {6.23}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en PyTorch con cuantización y destilación de conocimiento en clasificación.}}{134}{table.caption.171}%
-\contentsline {table}{\numberline {6.24}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en TensorFlow con cuantización y destilación de conocimiento en clasificación.}}{136}{table.caption.176}%
-\contentsline {table}{\numberline {6.25}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con cuantización en regresión.}}{138}{table.caption.183}%
-\contentsline {table}{\numberline {6.26}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en regresión.}}{138}{table.caption.185}%
-\contentsline {table}{\numberline {6.27}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con cuantización en regresión.}}{139}{table.caption.187}%
-\contentsline {table}{\numberline {6.28}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}}{141}{table.caption.193}%
-\contentsline {table}{\numberline {6.29}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}}{141}{table.caption.195}%
-\contentsline {table}{\numberline {6.30}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con destilación de conocimiento en regresión.}}{142}{table.caption.197}%
-\contentsline {table}{\numberline {6.31}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}}{144}{table.caption.203}%
-\contentsline {table}{\numberline {6.32}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}}{144}{table.caption.205}%
-\contentsline {table}{\numberline {6.33}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en PyTorch con cuantización y destilación de conocimiento en regresión.}}{145}{table.caption.208}%
-\contentsline {table}{\numberline {6.34}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en TensorFlow con cuantización y destilación de conocimiento en regresión.}}{147}{table.caption.213}%
-\contentsline {table}{\numberline {6.35}{\ignorespaces Comparativa de rendimiento y coste del MLP en los distintos frameworks en clasificación.}}{149}{table.caption.218}%
-\contentsline {table}{\numberline {6.36}{\ignorespaces Comparativa de rendimiento y coste del MLP en los distintos frameworks en regresión.}}{151}{table.caption.223}%
+\contentsline {table}{\numberline {6.1}{\ignorespaces F1-score por dataset para los modelos scikit-learn base en clasificación.}}{92}{table.caption.74}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Tamaño en disco por dataset para los modelos scikit-learn base en clasificación.}}{94}{table.caption.78}%
+\contentsline {table}{\numberline {6.3}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos scikit-learn base en clasificación.}}{96}{table.caption.82}%
+\contentsline {table}{\numberline {6.4}{\ignorespaces R$^2$ por dataset para los modelos scikit-learn base en regresión.}}{97}{table.caption.87}%
+\contentsline {table}{\numberline {6.5}{\ignorespaces Tamaño en disco (KB) por dataset para los modelos scikit-learn base en regresión.}}{99}{table.caption.91}%
+\contentsline {table}{\numberline {6.6}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos scikit-learn base en regresión.}}{101}{table.caption.95}%
+\contentsline {table}{\numberline {6.7}{\ignorespaces F1-score por dataset para los modelos ONNX $+$ cuantización en clasificación.}}{103}{table.caption.100}%
+\contentsline {table}{\numberline {6.8}{\ignorespaces Tamaño en disco (KB) por dataset para los modelos ONNX $+$ cuantización en clasificación.}}{105}{table.caption.104}%
+\contentsline {table}{\numberline {6.9}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización en clasificación .}}{106}{table.caption.108}%
+\contentsline {table}{\numberline {6.10}{\ignorespaces Comparativa de rendimiento y coste de algoritmos tradicionales (scikit-learn frente a ONNX) en clasificación.}}{108}{table.caption.112}%
+\contentsline {table}{\numberline {6.11}{\ignorespaces R$^2$ por dataset para los modelos ONNX $+$ cuantización en regresión.}}{110}{table.caption.118}%
+\contentsline {table}{\numberline {6.12}{\ignorespaces Tamaño en disco por dataset para los modelos ONNX $+$ cuantización en regresión.}}{111}{table.caption.122}%
+\contentsline {table}{\numberline {6.13}{\ignorespaces Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización en regresión.}}{113}{table.caption.126}%
+\contentsline {table}{\numberline {6.14}{\ignorespaces Comparativa de rendimiento y coste de algoritmos tradicionales (scikit-learn frente a ONNX) en regresión.}}{114}{table.caption.130}%
+\contentsline {table}{\numberline {6.15}{\ignorespaces F1-score por dataset para los modelos de redes neuronales con cuantización en clasificación.}}{116}{table.caption.137}%
+\contentsline {table}{\numberline {6.16}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en clasificación.}}{117}{table.caption.139}%
+\contentsline {table}{\numberline {6.17}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con cuantización en clasificación.}}{117}{table.caption.141}%
+\contentsline {table}{\numberline {6.18}{\ignorespaces F1-score por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}}{120}{table.caption.147}%
+\contentsline {table}{\numberline {6.19}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}}{120}{table.caption.149}%
+\contentsline {table}{\numberline {6.20}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con destilación de conocimiento en clasificación.}}{121}{table.caption.151}%
+\contentsline {table}{\numberline {6.21}{\ignorespaces F1-score por dataset para los modelos de modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}}{124}{table.caption.157}%
+\contentsline {table}{\numberline {6.22}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}}{124}{table.caption.159}%
+\contentsline {table}{\numberline {6.23}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en PyTorch con cuantización y destilación de conocimiento en clasificación.}}{125}{table.caption.162}%
+\contentsline {table}{\numberline {6.24}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en TensorFlow con cuantización y destilación de conocimiento en clasificación.}}{127}{table.caption.167}%
+\contentsline {table}{\numberline {6.25}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con cuantización en regresión.}}{129}{table.caption.174}%
+\contentsline {table}{\numberline {6.26}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en regresión.}}{129}{table.caption.176}%
+\contentsline {table}{\numberline {6.27}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con cuantización en regresión.}}{130}{table.caption.178}%
+\contentsline {table}{\numberline {6.28}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}}{132}{table.caption.184}%
+\contentsline {table}{\numberline {6.29}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}}{132}{table.caption.186}%
+\contentsline {table}{\numberline {6.30}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales con destilación de conocimiento en regresión.}}{133}{table.caption.188}%
+\contentsline {table}{\numberline {6.31}{\ignorespaces R$^2$ por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}}{135}{table.caption.194}%
+\contentsline {table}{\numberline {6.32}{\ignorespaces Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}}{135}{table.caption.196}%
+\contentsline {table}{\numberline {6.33}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en PyTorch con cuantización y destilación de conocimiento en regresión.}}{136}{table.caption.199}%
+\contentsline {table}{\numberline {6.34}{\ignorespaces Comparativa de rendimiento y coste de redes neuronales en TensorFlow con cuantización y destilación de conocimiento en regresión.}}{138}{table.caption.204}%
+\contentsline {table}{\numberline {6.35}{\ignorespaces Comparativa de rendimiento y coste del MLP en los distintos frameworks en clasificación.}}{140}{table.caption.209}%
+\contentsline {table}{\numberline {6.36}{\ignorespaces Comparativa de rendimiento y coste del MLP en los distintos frameworks en regresión.}}{142}{table.caption.214}%
+\contentsline {table}{\numberline {6.37}{\ignorespaces Modelos del frente de Pareto en clasificación.}}{147}{table.caption.221}%
+\contentsline {table}{\numberline {6.38}{\ignorespaces Modelos del frente de Pareto en regresión.}}{149}{table.caption.225}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Guía orientativa de selección de configuración según la prioridad de diseño del proyecto.}}{162}{table.caption.244}%
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 
 \babel@toc {spanish}{}\relax 

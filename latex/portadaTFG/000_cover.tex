@@ -48,6 +48,17 @@
 \usepackage[twoside,bindingoffset=0mm,headheight=16pt,margin=25mm]{geometry} %,verbose,showframe
 \usepackage{fancyhdr} % Encabezados
 \pagestyle{fancy}
+
+\fancyhf{} % 1. Limpiamos todas las cabeceras y pies predeterminados
+\fancyfoot[C]{\thepage} % 2. Restauramos el número de página en el centro del pie
+
+% 3. Colocamos el capítulo manteniendo tu estilo de cursiva (\slshape)
+% Opción A (Recomendada): Capítulo hacia los márgenes exteriores de la página
+% \fancyhead[LE,RO]{\slshape \leftmark}
+
+% Opción B: Capítulo hacia los márgenes interiores (exactamente donde estaba en tus imágenes)
+\fancyhead[RE,LO]{\slshape \leftmark}
+
 % XXX Evitar el binding en la portada pero no en el resto del documento
 
 
@@ -57,6 +68,8 @@
 
 \usepackage{caption}
 \usepackage{listings}
+\renewcommand{\lstlistingname}{Fichero}
+\renewcommand{\lstlistlistingname}{Índice de ficheros}
 \lstset{
     inputencoding=utf8,
     extendedchars=true,
@@ -66,7 +79,6 @@
              {±}{{$\pm$}}1
              {²}{{$^2$}}1
 }
-\usepackage{xcolor}
 % Configuración para texto plano / salidas de consola
 \lstset{
   basicstyle=\ttfamily\footnotesize,  % Fuente monoespaciada pequeña
@@ -308,6 +320,73 @@
 \cleardoublepage
 %------------------------------------------------------------------------------------------------------------
 
+\chapter*{Resumen}
+\addcontentsline{toc}{chapter}{Resumen}
+
+El crecimiento de los dispositivos conectados a internet y de las aplicaciones basadas en inteligencia artificial ha
+impulsado la necesidad de ejecutar modelos de aprendizaje automático cada vez más cerca del lugar donde se generan los
+datos. En este contexto, el paradigma conocido como \textit{Tiny Machine Learning} (TinyML) plantea el despliegue de
+algoritmos en microcontroladores y sistemas embebidos con recursos muy limitados de memoria, almacenamiento y capacidad
+de cómputo. Estas restricciones obligan a considerar no solo el rendimiento predictivo de los modelos, sino también su
+tamaño, latencia y coste asociado a las diferentes estrategias de implementación y optimización.\\
+
+El presente trabajo aborda la comparación sistemática de distintas estrategias de implementación de modelos de
+aprendizaje automático orientadas a escenarios TinyML. Para ello, se desarrolla un entorno experimental común que
+permite evaluar modelos de clasificación y regresión sobre un conjunto heterogéneo de conjuntos de datos, empleando
+diferentes frameworks y formatos de inferencia. El estudio contempla modelos de referencia implementados mediante
+scikit-learn, versiones optimizadas y exportadas a ONNX y prototipos basados en redes neuronales implementados mediante
+PyTorch y TensorFlow Lite. En las redes neuronales también se analiza la combinación de cuantización y destilación de
+conocimiento, transfiriendo información desde modelos profesor hacia modelos estudiante de menor complejidad.\\
+
+La evaluación se realiza mediante un protocolo común basado en validación cruzada repetida, utilizando métricas de
+rendimiento predictivo específicas para clasificación y regresión, junto con medidas asociadas al coste de despliegue,
+como el tamaño del modelo y la latencia de inferencia. Los resultados se procesan posteriormente mediante pruebas
+estadísticas no paramétricas, incluyendo Friedman, Iman-Davenport y Nemenyi, así como mediante análisis gráficos del
+compromiso entre rendimiento, tamaño y latencia, incluyendo el cálculo del frente de Pareto y el estudio de la relación
+entre la complejidad de los conjuntos de datos y el coste computacional.\\
+
+En conjunto, el trabajo proporciona un marco de comparación homogéneo para analizar las diferentes alternativas
+disponibles en el ecosistema TinyML y estudiar el equilibrio entre capacidad predictiva y eficiencia de despliegue. La
+metodología desarrollada permite caracterizar las ventajas y limitaciones de cada estrategia y proporciona una base
+objetiva para seleccionar modelos, técnicas de optimización y herramientas de implementación en función de las
+restricciones del escenario de destino.\\
+
+\textbf{Palabras clave}: TinyML, microcontrolador, aprendizaje automático, clasificación, regresión, cuantización,
+destilación de conocimiento, ONNX, PyTorch, TensorFlow Lite, optimización, eficiencia, memoria, tamaño, latencia,
+inferencia, test, compromiso.
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+The growth of internet-connected devices and AI-based applications has driven the need to run machine learning models
+ever closer to the source of data. In this context, the paradigm known as Tiny Machine Learning (TinyML) involves
+deploying algorithms on microcontrollers and embedded systems with very limited memory, storage, and computing power.
+These constraints force us to consider not only the predictive performance of the models but also their size, latency
+and the associated costs of different implementation and optimization strategies.\\
+
+This project systematically compares various machine learning model implementation strategies for TinyML scenarios. To
+this end, a common experimental environment is developed to evaluate classification and regression models on a
+heterogeneous set of datasets, using different frameworks and inference formats. The study includes reference models
+implemented using scikit-learn, optimized versions exported to ONNX, and neural network-based prototypes implemented
+using PyTorch and TensorFlow Lite. In neural networks, the usage of quantization and knowledge distillation is also
+analyzed, transferring information from teacher models to less complex student models.\\
+
+The evaluation is performed using a common protocol based on repeated cross-validation, employing specific predictive
+performance metrics for classification and regression, along with measures associated with deployment cost, such as
+model size and inference latency. The results are subsequently processed using non-parametric statistical tests,
+including Friedman, Iman-Davenport, and Nemenyi, as well as graphical analyses of the trade-off between performance,
+size, and latency, including the calculation of the Pareto front and the study of the relationship between dataset
+complexity and computational cost.\\
+
+Overall, this work provides a homogeneous comparative framework for analyzing the different alternatives available in
+the TinyML ecosystem and studying the balance between predictive capacity and deployment efficiency. The developed
+methodology allows for characterizing the advantages and limitations of each strategy and provides an objective basis
+for selecting models, optimization techniques, and implementation tools based on the constraints of the target scenario.\\
+
+\textbf{Key words}: TinyML, microcontroller, machine learning, classification, regression, quantization,
+knowledge distillation, ONNX, PyTorch, TensorFlow Lite, optimization, efficiency, memory, size, lantency, inference,
+test, trade-off.
+
 %------------------------------------------------------------------------------------------------------------
 \begingroup
 \sloppy % Permite a LaTeX estirar los espacios entre palabras para no invadir el margen
@@ -322,6 +401,7 @@
 %------------------------------------------------------------------------------------------------------------
 \listoffigures
 \listoftables
+\lstlistoflistings
 \cleardoublepage
 %------------------------------------------------------------------------------------------------------------
 
@@ -401,15 +481,11 @@ A luz de lo expuesto, la presente investigación puede justificarse en tres dime
   de esta tecnología en la industria, además de la toma de decisiones y la optimización del desarrollo.
   \item \textbf{Justificación práctica}. Esta investigación y sus conclusiones pueden sentar precedente y usarse como
   referencia para proyectos futuros, dando asistencia basada en datos y resutados empíricos, reduciendo así
-  el tiempo de experimentación.\\
+  el tiempo de experimentación.
 \end{itemize}
 
-METODOLOGÍA BREVE (CREO QUE NO)\\
 
-ESTRUCTURA DE LA MEMORIA
-
-
-\chapter{Estado de la técnica}
+\chapter{Estado de la técnica}\label{chap:estado_tecnica}
 El presente capítulo tiene como objetivo situarse en el estado actual del conocimiento en torno al despliegue de
 modelos de aprendizaje automático sobre dispositivos con recursos hardware severamente limitados, un campo que en la
 última década ha cristalizado en torno al paradigma conocido como \textit{Tiny Machine Learning} (TinyML). Frente a
@@ -487,7 +563,7 @@ hace a costa de problemas ya mencionados como latencia, dependencia de conectivi
 acerca el procesamiento de los datos a los dispositivos finales, pero aún así, suele ejecutarse en sistemas hardware
 con mayores recursos, como gateways, routers o teléfonos móviles. Por el contrario, y como ya se ha explicado, TinyML
 representa el extremo más restrictivo del campo, operando en microcontroladores y sistemas embebidos de muy bajo
-consumo donde cada byte de memoria y cada milivatio de energía cuentan~\cite{ray2022kingsaud}. (REVISAR)
+consumo donde cada byte de memoria y cada milivatio de energía cuentan~\cite{ray2022kingsaud}.
 
 \section{Restricciones en TinyML}
 Las operaciones realizadas en entornos TinyML están condicionadas por tres limitaciones críticas: memoria,
@@ -515,7 +591,7 @@ En definitiva, la elección de la plataforma hardware de despliegue es crítica 
 determina, además de qué modelos pueden ejecutarse sobre ella, las posibles técnicas de optimización que resultan
 viables.
 
-\section[Modelos ML en TinyML]{Modelos de aprendizaje automático en TinyML}
+\section{Modelos de aprendizaje automático en TinyML}
 Otra selección clave es la del modelo de \textit{machine learning} adecuado para el caso de uso. El abanico de
 modelos susceptibles de ser ejecutados en el marco de TinyML es deliberadamente heterogéneo. Las revisiones
 publicadas en el último tiempo muestran un reparto bastante claro, entre por un lado, algoritmos de aprendizaje
@@ -545,7 +621,7 @@ tradicionales, incluso en estudios esencialmente orientados a TinyML, precisamen
 la mayor parte de las herramientas de compresión, optimización y exportación, veáse sklearn-onnx, ONNXMLTools,
 emlearn, m2cgen o microMLgen, entre otras, que traducen los objetos de Python a código C portable para
 microcontroladores~\cite{delnevo2022iot,saha2022ieeejsen,dasilva2022ieeejsen,sipola2022fruct}. Los modelos más
-frecuentes son los siguientes:
+frecuentes son los siguientes.
 
 \subsubsection{Árboles de decisión y bosques aleatorios}
 Son unos de los algoritmos más recurrentes en la fase de prototipado en hardware embebido por su claridad estructural,
@@ -595,6 +671,7 @@ complejas. Sakr y colaboradores~\cite{sakr2022sensors} lo resumen explícitament
 mismo nivel que en sistemas de escritorio para DT, SVM lineal, k-NN y MLP. Por otra parte, el RF y, sobre todo, el
 DT, son los modelos más ligeros, una propiedad muy valorada desde el estricto presupuesto de memoria del dispositivo.
 
+\newpage
 \subsection{Modelos complejos}
 Cuando la fuente de datos es cruda ---un espectrograma de micrófono, una imagen de baja resolución, una serie temporal
 multifrecuencia---, las redes neuronales profundas se imponen ante los modelos clásicos~\cite{zhang2022helloedge,
@@ -602,7 +679,8 @@ miah2022iceiec}. No obstante, las redes profundas estándar fueron diseñadas or
 múltiples GB de RAM, por lo que intentar desplegarlas tal cual en un MCU de apenas 256 kB de SRAM y 1 MB de flash es,
 además de inviable, una locura. Ante esto, la respuesta de los expertos y de la comunidad ha sido la elaboración de
 una familia de arquitecturas específicas que comparten una idea común: factorizar operaciones costosas y limitar el
-número total de parámetros del modelo en la medida de lo posible. Los algoritmos más extendidos son estos:
+número total de parámetros del modelo en la medida de lo posible. Los algoritmos más extendidos son los que se exponen
+a continuación.
 
 \subsubsection{Redes neuronales convolucionales ligeras y DS-CNN}
 La convolución separable en profundidad (\textit{depthwise separable convolution}, DS-conv) es el bloque constructivo
@@ -628,10 +706,11 @@ dominio MCU. Sobre una placa FRDM K66F con ARM Cortex-M4 (180 MHz, 256 kB de SRA
 sistemáticamente arquitecturas entre 2 capas con 10 filtros y 9 capas con 300 filtros, con coeficientes MFCC de 40
 dimensiones como entrada y optimizadas con representaciones mixtas y dinámicas de punto fijo. Los hallazgos más
 relevantes fueron los siguientes: (i) en el espacio de arquitecturas que cabe en un MCU, la exactitud satura mucho
-antes que el cómputo, lo que permite podar capas profundas sin perder rendimiento; (ii) la cuantización mixta
-dinámica de 8 bits en pesos y activaciones no introduce pérdidas de exactitud; (iii) bajar pesos a 4 bits sólo
-produce caídas pequeñas, mientras que las activaciones son lo más sensible a cuantizar.
+antes que el cómputo, lo que permite podar capas profundas sin perder rendimiento; (ii) la cuantización mixta de 8 bits
+en pesos y activaciones no introduce pérdidas de exactitud; (iii) bajar pesos a 4 bits sólo produce caídas pequeñas,
+mientras que las activaciones son lo más sensible a cuantizar.
 
+\newpage
 \subsubsection{Familia MobileNet}
 Esta familia es la otra columna vertebral del TinyML visual. Su punto de partida es el trabajo de Howard y
 colaboradores~\cite{howard2017mobilenets}, donde se introdujeron estos modelos. Trasladan la eficiencia de la DS-conv
@@ -640,7 +719,7 @@ uso de RAM, el mayor cuello de botella en la inferencia en MCU. El modelo origin
 con dos hiperparámetros de escala: un multiplicador de anchura $\alpha$, que ajusta el número de canales por capa, y
 un multiplicador de resolución $\rho$, que reduce la dimensión espacial de entrada. El resultado es una familia
 parametrizable que permite mover la arquitectura sobre una curva continua entre precisión y huella, exactamente lo
-que necesitan los MCU.
+que necesitan los MCU.\\
 
 El desarrollo de MobileNetV2, por parte de Sandler, Howard, Zhu y colaboradores~\cite{sandler2018mobilenetv2}, supuso
 un salto cualitativo muy destacable gracias a la introducción del bloque de residuo invertido con cuello de botella
@@ -747,7 +826,7 @@ la misma metodología de evaluación: 10 iteraciones de al menos 10 segundos cad
 número de inferencias completadas por segundo y la energía se mide con instrumentación dedicada en $\mu$J por
 inferencia~\cite{bartoli2025ijcnn}. Esto es lo que ha hecho de MLPerf Tiny un patrón de facto en la literatura.
 
-\section[Compresión y optimización]{Técnicas de compresión y optimización de modelos}
+\section{Técnicas de compresión y optimización de modelos}
 El núcleo técnico de TinyML reside en las técnicas que permiten reducir el tamaño y el coste computacional de los
 modelos sin sacrificar excesivamente su rendimiento predictivo. La literatura ha organizado estas técnicas en
 varias categorías principales, no excluyentes entre sí.
@@ -858,8 +937,6 @@ muchas redes densas contienen sub-redes dispersas, llamadas ``billetes afortunad
 pesos originales, alcanzan precisiones comparables a la red completa. Aunque la mayor parte del trabajo en TinyML no
 implementa este protocolo completo, su existencia ha servido para legitimar la búsqueda de sub-arquitecturas
 dispersas dentro de arquitecturas grandes como método de compresión~\cite{cheng2024ieetpami}.
-
-\subsubsection{Métodos diferenciables}
 
 \subsubsection{Cuándo aplicar la poda}
 La ubicación de la técnica de poda dentro del ciclo de vida del modelo es un factor determinante tanto para el coste
@@ -1046,7 +1123,7 @@ El ecosistema de optimización a bajo nivel para MCU tiene tres pilares principa
   mismo.
 \end{itemize}
 
-\section[Frameworks]{Frameworks y herramientas software}
+\section{Frameworks y herramientas software}
 El ecosistema software para TinyML ha madurado considerablemente, ofreciendo a los desarrolladores un conjunto de
 herramientas que cubre las distintas etapas del ciclo de vida de un modelo, desde la preparación de los datos y el
 entrenamiento hasta la conversión, optimización y ejecución en el dispositivo final. Esta evolución responde a una
@@ -1387,14 +1464,9 @@ control en tiempo real prima la latencia determinista; en wearables o dispositiv
 se vuelven críticos.\\
 
 Una particularidad importante en este contexto es que las métricas predictivas y las métricas de coste no son
-independientes. La cuantización, la poda o la destilación de conocimiento pueden mejorar la latencia y reducir e
+independientes. La cuantización, la poda o la destilación de conocimiento pueden mejorar drla latencia y reducir e
 tamaño del modelo a costa de una degradación, en general pequeña, de la precisión predictiva~\cite{somvanshi2025acm}.
-Por eso, los estudios rigurosos deben reportar ambas dimensiones de forma conjunta.\\
-
-YA VEREMOS\\
-idealmente mediante gráficos que muestren la frontera de Pareto entre precisión y latencia, precisión y energía o
-precisión y tamaño, ya que la valoración de un trade-off sin esta representación conjunta puede conducir a
-decisiones de diseño subóptimas (Saha et al., 2022; Somvanshi et al., 2025).
+Por eso, los estudios rigurosos deben reportar ambas dimensiones de forma conjunta.
 
 \subsection{Compromisos (\textit{trade-offs})}
 Uno de los aspectos más característicos de TinyML es la necesidad de gestionar compromisos entre diferentes
@@ -1407,13 +1479,11 @@ objetivos. La literatura ha identificado varios \textit{trade-offs} fundamentale
   300 kB~\cite{somvanshi2025acm}.
   \item \textbf{Precisión vs. velocidad}. Modelos más rápidos (menos operaciones, mayor paralelismo) tienden a ser
   menos precisos. La elección de la cuantización INT8 frente a FP32 suele implicar una pérdida de precisión
-  prácticamente despreciable a cambio de reducciones del orden de 4$\times$ en huella de memoria y mejoras equivalentes
-  en latencia~\cite{somvanshi2025acm}.
+  prácticamente despreciable a cambio de reducciones del orden de 4$\times$ en huella de memoria
+  ~\cite{somvanshi2025acm}.
   \item \textbf{Precisión vs. energía}. Modelos más eficientes energéticamente suelen sacrificar precisión. La elección
   de representaciones de baja precisión ha permitido reducciones de hasta 9-13$\times$ en el tamaño de la red con
-  caídas mínimas de accuracy al combinar poda y cuantización~\cite{somvanshi2025acm}. En el otro extremo, mantener
-  FP32 incrementa drásticamente la energía por inferencia, lo que hace inviables muchos modelos para dispositivos
-  alimentados por batería~\cite{abadade2023ieeeaccess}.
+  caídas mínimas de accuracy al combinar poda y cuantización~\cite{somvanshi2025acm}.
   \item \textbf{Tamaño vs. velocidad}. No siempre hay correlación negativa, algunas optimizaciones mejoran ambos
   aspectos. Es el caso de la fusión de operadores, que reduce el número de operaciones primitivas y por tanto mejora
   latencia sin aumentar el tamaño del modelo, o de las optimizaciones específicas por hardware como CMSIS-NN, que han
@@ -1527,7 +1597,7 @@ de \textit{machine learning}, permitiendo que estudiantes, desarrolladores y pro
 experimenten con la IA.
 
 
-\chapter[Problema y objetivos]{Formulación del problema y objetivos}
+\chapter{Formulación del problema y objetivos}\label{chap:objetivos}
 En los capítulos anteriores se han establecido los fundamentos teóricos y se ha revisado la vanguardia del paradigma
 de TinyML, así como las principales técnicas de compresión, frameworks de despliegue o métricas de evaluación. Con
 todo esto, el propósito de este capítulo es formular de manera precisa el problema que motiva esta investigación y
@@ -1537,11 +1607,11 @@ Como se ha ido exponiendo a lo largo del capítulo anterior, el ecosistema de \t
 un creciente abanico de opciones para el despliegue de modelos en microcontroladores. Pese a todo, esta diversidad,
 lejos de simplificar la toma de decisiones, introduce una complejidad significativa para desarrolladores e
 investigadores, que reciben la tarea de seleccionar la combinación más adecuada de modelo, framework, técnicas de
-optimización y/o compresión y plataforma hardware para su caso de uso concreto. La literatura existente actualmente,
-si bien ha avanzado en la caracterización de frameworks individuales y en la evaluación de técnicas aisladas, adolece
-de una carencia notable: estudios comparativos que integren varios estrategias de implementación ---desde modelos
-clásicos hasta redes profundas--- y múltiples técnicas de compresión bajo un mismo protocolo experimental, y que
-además aborden tanto tareas de clasificación como de regresión.\\
+optimización y/o compresión y plataforma hardware para su caso de uso concreto. La literatura existente actualmente, si
+bien ha avanzado en la caracterización de frameworks individuales y en la evaluación de técnicas aisladas, adolece de
+una carencia notable: estudios comparativos que integren varios estrategias de implementación, desde modelos clásicos
+hasta redes profundas, y múltiples técnicas de optimización bajo un mismo protocolo experimental, y que además aborden
+tanto tareas de clasificación como de regresión.\\
 
 Esta laguna constituye el punto de partida del actual trabajo. El problea que se aborda no es exclusivamente de
 naturaleza técnica, sino también metodológica. Se trata de cómo evaluar de manera justa y reproducible las
@@ -1580,27 +1650,18 @@ reducción de prototipos, destilación) y, posteriormente, optimizaciones a nive
 obstante, no se observa una abundancia de estudios que tengan en cuenta el impacto de estas combinaciones para sus
 comparaciones, midiendo tato el rendimiento predictivo como el coste computacional.
 
-\subsubsection*{Ausencia de métricas de tiempo de entrenamiento en las evaluaciones}
-Por norma general, los estudios sobre TinyML se centran en métricas de inferencia: latencia, tamaño del modelo y
-consumo energético. El tiempo de entrenamiento es reportado muy raramente, aún siento un factor relevante en
-escenarios donde los modelos deben actualizarse frecuentemente, como en aplicaciones de aprendizaje continuo o en
-entornos donde los datos cambian con el tiempo. Adicionalmente, el tiempo de entrenamiento puede variar
-sustancialmente entre framworks y técnicas de compresión ---por ejemplo, el entrenamiento consciente de cuantización
-(QAT) es más costoso que la cuantización post-entrenamiento (PTQ)---, lo que introduce un compromiso adicional que
-normalmente se caracteriza adecuadamente.
+%\subsubsection*{Limitada atención a scikit-learn como punto de partida en el ecosistema TinyML}
+%Gran parte de la literatura se orienta a frameworks de \textit{deep learning}, obviando el papel de scikit-learn como
+%herramienta de referencia para el desarrollo rápido de prototipos y para modelos que, como se ha mostrado en el
+%capítulo anterior, son perfectamente competitivos en tareas tabulares y de baja dimensionalidad. La integración de
+%scikit-learn en flujos de trabajo de TinyML mediante herramientas como sklearn-onn o emlearn tiene algo de tracción,
+%pero su evaluación y su consideración frente a soluciones basadas en redes neuronales sigue siendo algo escasa.\\
 
-\subsubsection*{Limitada atención a scikit-learn como punto de partida en el ecosistema TinyML}
-Gran parte de la literatura se orienta a frameworks de \textit{deep learning}, obviando el papel de scikit-learn como
-herramienta de referencia para el desarrollo rápido de prototipos y para modelos que, como se ha mostrado en el
-capítulo anterior, son perfectamente competitivos en tareas tabulares y de baja dimensionalidad. La integración de
-scikit-learn en flujos de trabajo de TinyML mediante herramientas como sklearn-onn o emlearn tiene algo de tracción,
-pero su evaluación y su consideración frente a soluciones basadas en redes neuronales sigue siendo algo escasa.\\
-
-En definitiva, puede resumirse el problema abordado de la siguiente manera. No existe una amplia variedad de estudios
-comparativos que evalúen, bajo un mismo protocolo experimental y sobre un conjunto representativo de modelos y tareas,
-el rendimiento predictivo y coste computacional de diferentes estrategias de implementación en TinyML, integrando
-frameworks de propósito general y motores de inferencia especializados, así como técnicas de compresión y
-optimización adaptadas a cada formato, y que aborden tanto problemas de clasificación como de regresión.
+%En definitiva, puede resumirse el problema abordado de la siguiente manera. No existe una amplia variedad de estudios
+%comparativos que evalúen, bajo un mismo protocolo experimental y sobre un conjunto representativo de modelos y tareas,
+%el rendimiento predictivo y coste computacional de diferentes estrategias de implementación en TinyML, integrando
+%frameworks de propósito general y motores de inferencia especializados, así como técnicas de compresión y
+%optimización adaptadas a cada formato, y que aborden tanto problemas de clasificación como de regresión.
 
 \section{Preguntas de investigación}
 A partir del problema formulado, se derivan las siguientes preguntas, que guiarán el desarrollo experimental y el
@@ -1611,8 +1672,7 @@ análisis de resultados.
   \item ¿Qué técnicas de compresión resultan más efectivas para cada combinación de framework y tipo de modelo?
   \item ¿Se comportan de manera diferente las estrategias de implementación en tareas de clasificación y de
   regresión?
-  \item ¿Qué relación existe entre el tiempo de entrenamiento y las demás métricas de coste? ¿Las técnicas de
-  compresión imponen un coste adicional en tiempo de entrenamiento que debe ser considerado?
+  \item ¿Las técnicas de compresión imponen un coste computacional adicional que debe ser considerado?
 \end{itemize}
 
 \section{Objetivos del trabajo}
@@ -1639,10 +1699,11 @@ el desarrollo experimental del trabajo y el análisis de resultados.
     \item \textbf{Flujo scikit-learn nativo}. Evaluar los modelos base directamente en el entorno de escritorio.
     \item \textbf{Flujo scikit-learn $+$ ONNX}. Exportar los modelos base al formato ONNX mediante sklearn-onnx,
     aplicar técnicas de compresión específicas y ejecutar la inferencia con ONNX Runtime.
-    \item \textbf{Flujo PyTorch}. Entrenar redes neuronales con PyTorch, aplicar cuantización y ejecutar la inferencia
+    \item \textbf{Flujo PyTorch}. Entrenar redes neuronales con PyTorch, aplicar cuantización y destilación de
+    conocimiento y ejecutar la inferencia
     con PyTorch.
-    \item \textbf{Flujo LiteRT}. Entrenar redes neuronales con Keras/TensorFlow, aplicar cuantización y ejecutar la
-    inferencia con TensorFlow Lite.
+    \item \textbf{Flujo LiteRT}. Entrenar redes neuronales con Keras/TensorFlow, aplicar cuantización y destilación y
+    ejecutar la inferencia con TensorFlow Lite.
   \end{itemize}
   
   \item Definir y aplicar un protocolo de evaluación unificado.
@@ -1665,7 +1726,7 @@ el desarrollo experimental del trabajo y el análisis de resultados.
   \begin{itemize}
     \item Realizar un análisis cuantitativo de las diferencias en rendimiento predictivo y coste computacional entre
     las distintas estrategias.
-    \item Identificar los trade-offs más relevantes.
+    \item Identificar los \textit{trade-offs} más relevantes.
     \item Determinar si las conclusiones obtenidas en clasificación son válidas para regresión o si existen
     diferencias sistemáticas.
   \end{itemize}
@@ -1679,7 +1740,7 @@ el desarrollo experimental del trabajo y el análisis de resultados.
 \end{enumerate}
 
 
-\chapter[Plan de trabajo]{Metodología de trabajo}
+\chapter{Metodología de trabajo}\label{chap:metodologia}
 En este capítulo se enuncian y describen los diferentes aspectos de la metodología de trabajo del presente proyecto.
 Entre otros elementos, se tratarán el enfoque metodológico, el diseño experimental y las herramientas, estrategias y
 técnicas de análisis de datos empleadas. La metodología ha sido diseñada siempre presente con el fin de dar respuesta
@@ -1728,7 +1789,7 @@ consideran como la supuesta causa de una relación entre variables, la condició
   \item \textbf{Técnica de compresión}.
   \begin{itemize}
     \item \textbf{En modelos clásicos (scikit-learn $+$ ONNX)}. Poda estructural de árboles de decisión, reducción de
-    prototipos en k-NN y destilación de conocimiento.
+    prototipos en k-NN y destilación de conocimiento, junto con cuantización.
     \item\textbf{En modelos neuronales (PyTorch y LiteRT)}. Destilación de conocimiento utilizando modelos profesores
     preentrenados y cuantización post-entrenamiento (PTQ) tanto en formato dinámico como estático a enteros de 8 bits
     (INT8).
@@ -1785,7 +1846,7 @@ constantes una serie de parámetros.
   cruzada, 20\% test) que permanecerá inalterada durante toda la experimentación.
 \end{itemize}
 
-\section[Conjuntos de datos]{Selección de conjuntos de datos}
+\section{Selección de conjuntos de datos}
 La elección de los datasets no obedece a una selección arbitraria, sino que responde a un diseño meticuloso orientado
 a someter los modelos a un banco de pruebas representativo de retos reales. Para garantizar que las conclusiones
 extraídas posean validez externa y sean generalizables, el proceso de selección se ha fundamentado en tres criterios
@@ -1800,7 +1861,7 @@ conjuntos de datos:
   espectro de escenarios extremadamente heterogéneo. Por ello, se ha buscado que los datos provengan de sectores tan
   dispares como la biometría y la salud, la automoción, la astronomía, la sociología, la botánica, el entorno
   académico y el análisis químico. Esta diversidad permite evaluar si las técnicas de compresión, como la
-  cuantización INT8, degradan el rendimiento de manera uniforme o si, por el contrario, muestran sensibilidad ante
+  cuantización, degradan el rendimiento de manera uniforme o si, por el contrario, muestran sensibilidad ante
   distribuciones de datos específicas de ciertos dominios.
   \item \textbf{Dimensionalidad y naturaleza estructural de los datos}. Más allá del simple volumen de muestras, los
   conjuntos seleccionados abarcan diferentes naturalezas estructurales. Se incluyen datos puramente tabulares basados
@@ -1881,7 +1942,7 @@ de optimización tiende a ser más evidente, se ha configurado la siguiente bate
   calidad del producto.
 \end{enumerate}
 
-\section[Modelos base]{Selección de modelos base}
+\section{Selección de modelos base}
 Los modelos base seleccionados abarcan un amplio espectro de complejidad algorítmica, permitiendo analizar el
 comportamiento tato de enfoques deterministas y de bajo coste computacional como de arquitecturas neuronales
 profundas adaptadas al paradigma TinyML.
@@ -1906,7 +1967,7 @@ El modelo utilizado en los frameworks de PyTorch y LiteRT, además de scikit-lea
 trata de una red neuronal densamente conectada con una o dos capas ocultas de tamaño moderado, empleando funciones
 de activación no lineales como ReLU.
 
-\section[Estrategias y compresión]{Estrategias de implementación y técnicas de compresión}
+\section{Estrategias de implementación y técnicas de compresión}
 Cada flujo metodológico se diseña considerando las transformaciones necesarias para empaquetar, optimizar y traducir
 los modelos lógicos a código ejecutable en dispositivos embebidos.
 
@@ -1934,17 +1995,16 @@ Para las redes neuronales, el proceso comprende tres grandes etapas de optimizac
   entrenado bajo la supervisión de un modelo profesor más complejo. Este proceso transfiere la capacidad predictiva del
   profesor al estudiante minimizando una función de pérdida que pondera el error frente a las etiquetas reales y la
   divergencia frente a las predicciones del profesor, controladas por un parámetro de temperatura.
-  \item \textbf{Cuantización post-entrenamiento (PTQ)}. Una vez entrenado el modelo en coma flotante de 32 bits (FP32),
-  se transforman los pesos y las activaciones a enteros de 8 bits (INT8). Este proceso emplea un conjunto de
-  calibración representativo para calcular los factores de escala y los puntos de compensación (zero-points),
-  minimizando el error de truncamiento sin necesidad de reentrenar la red. También se contempla la cuantización
-  dinámica, donde los pesos se almacenan en INT8 y las activaciones se cuantizan en tiempo de inferencia.
+  \item \textbf{Cuantización estática post-entrenamiento (PTQ)}. Una vez entrenado el modelo en coma flotante de 32
+  bits (FP32), se transforman los pesos y las activaciones a enteros de 8 bits (INT8). Este proceso emplea un conjunto
+  de calibración representativo para calcular los factores de escala y los puntos de compensación (zero-points),
+  minimizando el error de truncamiento sin necesidad de reentrenar la red.
   \item \textbf{Traducción y despliegue embebido}. Los modelos optimizados se compilan a formatos específicos para
   microcontroladores mediante herramientas de traducción a código C portable, permitiendo su ejecución nativa en
   placas basadas en microcontroladores mediante intérpretes ligeros optimizados.
 \end{itemize}
 
-\section[Procedimientos]{Protocolo experimental}
+\section{Protocolo experimental}
 El desarrollo de los ensayos empíricos se estructura en cinco fases secuenciales y estrictamente controladas.
 \begin{enumerate}
   \item \textbf{Fase 1}. Preparación y preprocesamiento de datos: carga de los datasets, análisis exploratorio,
@@ -1969,8 +2029,6 @@ Cada archivo pertencerá a una combinación específica de modelo base $\times$ 
 técnica de compresión (si aplica) $\times$ métrica, y cada uno de los registros del archivo mostrará el valor de la
 métrica medida para un conjunto de datos concreto.
 
-\section[Tratamiento de datos]{Métodos de procesamiento y análisis de datos}
-
 \section{Reproducibilidad, control de calidad y consideraciones éticas}
 Para garantizar que la investigación cumpla con los máximos estándares de rigor científico, se aplicarán los
 siguientes principios de control.
@@ -1986,7 +2044,7 @@ siguientes principios de control.
   éticos ni de privacidad.
 \end{itemize}
 
-\section[Herramientas]{Herramientas y equipos}
+\section{Herramientas y equipos}
 \subsection{Hardware}
 El desarrollo del trabajo y todo el proceso de experimentación se han llevado a cabo íntegramente en un único sistema
 informático con las siguientes características técnicas.
@@ -2009,270 +2067,11 @@ framework y el flujo de trabajo con el fin de evitar posibles conflictos de depe
 sencilla. De esta forma, se han creado tres entornos virtuales independientes, uno para cada flujo de trabajo:
 scikit-learn $+$ ONNX, PyTorch y TensorFlow Lite (LiteRT). El caso del flujo de scikit-learn no requiere un entorno
 propio, y puede ejecutarse en cualquiera de los tres entornos disponibles. Además, también se ha configurado un entorno
-especialmente para la ejecución de los scripts de tests, análisis y visualización de resultados. A continuación se
-muestran los árboles de dependencias de cada entorno virtual, con las versiones exactas de cada paquete y biblioteca
-empleadas en la experimentación.
+especialmente para la ejecución de los scripts de tests, análisis y visualización de resultados. Los árboles de
+dependencias de cada entorno virtual, con las versiones exactas de cada paquete y biblioteca empleadas en la
+experimentación se muestran en detalle en el Apéndice \ref{anexo:manual_usuario}: Manual de usuario.
 
-\subsubsection{Scikit-learn $+$ ONNX}
-\begin{verbatim}
-  arff==0.9
-  onnxconverter-common==1.16.0
-  |-- numpy==2.5.0
-  |-- onnx==1.22.0
-  |   |-- ml_dtypes==0.5.4
-  |   |   |-- numpy==2.5.0
-  |   |-- numpy==2.5.0
-  |   |-- protobuf==7.35.1
-  |   |-- typing_extensions==4.15.0
-  |-- packaging==26.2
-  |-- protobuf==7.35.1
-  onnxruntime==1.27.0
-  |-- flatbuffers==25.12.19
-  |-- numpy==2.5.0
-  |-- packaging==26.2
-  |-- protobuf==7.35.1
-  pandas==3.0.3
-  |-- numpy==2.5.0
-  |-- python-dateutil==2.9.0.post0
-      |-- six==1.17.0
-  pip==26.1.2
-  pipdeptree==3.1.0
-  |-- packaging==26.2
-  setuptools==82.0.1
-  skl2onnx==1.20.0
-  |-- onnx==1.22.0
-  |   |-- ml_dtypes==0.5.4
-  |   |   |-- numpy==2.5.0
-  |   |-- numpy==2.5.0
-  |   |-- protobuf==7.35.1
-  |   |-- typing_extensions==4.15.0
-  |-- scikit-learn==1.9.0
-      |-- joblib==1.5.3
-      |-- narwhals==2.22.1
-      |-- numpy==2.5.0
-      |-- scipy==1.18.0
-      |   |-- numpy==2.5.0
-      |-- threadpoolctl==3.6.0
-\end{verbatim}
-\begin{figure}[ht]
-  \centering
-  \caption{Árbol de dependencias del flujo scikit-learn $+$ ONNX.}
-  \label{fig:dependencias_onnx}
-\end{figure}
-
-\subsubsection{PyTorch}
-\begin{verbatim}
-  arff==0.9
-  pandas==3.0.3
-  |-- numpy==2.5.0
-  |-- python-dateutil==2.9.0.post0
-      |-- six==1.17.0
-  pip==26.1.2
-  pipdeptree==3.1.0
-  |-- packaging==26.2
-  scikit-learn==1.9.0
-  |-- joblib==1.5.3
-  |-- narwhals==2.22.1
-  |-- numpy==2.5.0
-  |-- scipy==1.18.0
-  |   |-- numpy==2.5.0
-  |-- threadpoolctl==3.6.0
-  torchaudio==2.11.0
-  torchvision==0.27.1
-  |-- numpy==2.5.0
-  |-- pillow==12.2.0
-  |-- torch==2.12.1
-      |-- cuda-bindings==13.3.1
-      |   |-- cuda-pathfinder==1.5.5
-      |-- cuda-toolkit==13.0.2
-      |   |-- nvidia-cuda-cupti==13.0.85, extra: cupti
-      |   |-- nvidia-cuda-nvrtc==13.0.88, extra: nvrtc
-      |   |-- nvidia-cuda-runtime==installed: 13.0.96, extra: cudart
-      |   |-- nvidia-cufft==12.0.0.61, extra: cufft
-      |   |   |-- nvidia-nvjitlink==13.0.88
-      |   |-- nvidia-cufile==1.15.1.6, extra: cufile
-      |   |-- nvidia-curand==installed: 10.4.0.35, extra: curand
-      |   |-- nvidia-cusolver==12.0.4.66, extra: cusolver
-      |   |   |-- nvidia-cublas==13.1.1.3
-      |   |   |   |-- nvidia-cuda-nvrtc==13.0.88
-      |   |   |-- nvidia-cusparse==12.6.3.3
-      |   |   |   |-- nvidia-nvjitlink==13.0.88
-      |   |   |-- nvidia-nvjitlink==13.0.88
-      |   |-- nvidia-cusparse==12.6.3.3, extra: cusparse
-      |   |   |-- nvidia-nvjitlink==13.0.88
-      |   |-- nvidia-nvjitlink==13.0.88, extra: nvjitlink
-      |   |-- nvidia-nvtx==13.0.85, extra: nvtx
-      |-- filelock==3.29.4
-      |-- fsspec==2026.6.0
-      |-- Jinja2==3.1.6
-      |   |-- MarkupSafe==3.0.3
-      |-- networkx==3.6.1
-      |-- nvidia-cublas==13.1.1.3
-      |   |-- nvidia-cuda-nvrtc==13.0.88
-      |-- nvidia-cudnn-cu13==9.20.0.48
-      |   |-- nvidia-cublas==13.1.1.3
-      |       |-- nvidia-cuda-nvrtc==13.0.88
-      |-- nvidia-cusparselt-cu13==0.8.1
-      |-- nvidia-nccl-cu13==2.29.7
-      |-- nvidia-nvshmem-cu13==3.4.5
-      |-- setuptools==81.0.0
-      |-- sympy==1.14.0
-      |   |-- mpmath==1.3.0
-      |-- triton==3.7.1
-      |-- typing_extensions==4.15.0
-\end{verbatim}
-\begin{figure}[ht]
-  \centering
-  \caption{Árbol de dependencias del flujo PyTorch.}
-  \label{fig:dependencias_pytorch}
-\end{figure}
-
-\subsubsection{TensorFlow Lite (LiteRT)}
-\begin{verbatim}
-  ai-edge-litert==2.1.5
-  |-- backports.strenum==1.2.8
-  |-- flatbuffers==25.12.19
-  |-- numpy==2.5.0
-  |-- protobuf==7.35.1
-  |-- tqdm==4.68.3
-  |-- typing_extensions==4.15.0
-  arff==0.9
-  pandas==3.0.3
-  |-- numpy==2.5.0
-  |-- python-dateutil==2.9.0.post0
-      |-- six==1.17.0
-  pip==26.1.2
-  pipdeptree==3.1.0
-  |-- packaging==26.2
-  scikit-learn==1.9.0
-  |-- joblib==1.5.3
-  |-- narwhals==2.22.1
-  |-- numpy==2.5.0
-  |-- scipy==1.18.0
-  |   |-- numpy==2.5.0
-  |-- threadpoolctl==3.6.0
-  tensorflow==2.21.0
-  |-- absl-py==2.4.0
-  |-- astunparse==1.6.3
-  |   |-- six==1.17.0
-  |   |-- wheel==0.47.0
-  |       |-- packaging==26.2
-  |-- flatbuffers==25.12.19
-  |-- gast==installed: 0.7.0
-  |-- google-pasta==0.2.0
-  |   |-- six==1.17.0
-  |-- grpcio==1.81.1
-  |   |-- typing_extensions==4.15.0
-  |-- h5py==3.14.0
-  |   |-- numpy==2.5.0
-  |-- keras==3.14.1
-  |   |-- absl-py==2.4.0
-  |   |-- h5py==3.14.0
-  |   |   |-- numpy==2.5.0
-  |   |-- ml_dtypes==0.5.4
-  |   |   |-- numpy==2.5.0
-  |   |-- namex==0.1.0
-  |   |-- numpy==2.5.0
-  |   |-- optree==0.19.1
-  |   |   |-- typing_extensions==4.15.0
-  |   |-- packaging==26.2
-  |   |-- rich==15.0.0
-  |       |-- markdown-it-py==4.2.0
-  |       |   |-- mdurl==0.1.2
-  |       |-- Pygments==2.20.0
-  |-- libclang==18.1.1
-  |-- ml_dtypes==0.5.4
-  |   |-- numpy==2.5.0
-  |-- numpy==2.5.0
-  |-- opt_einsum==3.4.0
-  |-- packaging==26.2
-  |-- protobuf==7.35.1
-  |-- requests==2.34.2
-  |   |-- certifi==2026.6.17
-  |   |-- charset-normalizer==3.4.7
-  |   |-- idna==3.18
-  |   |-- urllib3==2.7.0
-  |-- setuptools==82.0.1
-  |-- six==1.17.0
-  |-- termcolor==3.3.0
-  |-- typing_extensions==4.15.0
-  |-- wrapt==2.2.2
-\end{verbatim}
-\begin{figure}[ht]
-  \centering
-  \caption{Árbol de dependencias del flujo TensorFlow Lite (LiteRT).}
-  \label{fig:dependencias_litert}
-\end{figure}
-
-\subsubsection{Tests y análisis de resultados}
-\begin{verbatim}
-  adjustText==1.4.0
-  |-- matplotlib== 3.11.0
-  |   |-- contourpy==1.3.3
-  |   |   |-- numpy==2.5.0
-  |   |-- cycler==0.12.1
-  |   |-- fonttools==4.63.0
-  |   |-- kiwisolver==1.5.0
-  |   |-- numpy==2.5.0
-  |   |-- packaging==26.2
-  |   |-- pillow==12.2.0
-  |   |-- pyparsing==3.3.2
-  |   |-- python-dateutil==2.9.0.post0
-  |       |-- six==1.17.0
-  |-- numpy==2.5.0
-  |-- scipy==1.18.0
-      |-- numpy==2.5.0
-  arff==0.9
-  pip==26.2.1
-  pipdeptree==3.1.0
-  |-- packaging==26.2
-  plotly==6.9.0
-  |-- narwhals==2.24.0
-  |-- packaging==26.2
-  seaborn==0.13.2
-  |-- matplotlib==3.11.0
-  |   |-- contourpy==1.3.3
-  |   |   |-- numpy==2.5.0
-  |   |-- cycler==0.12.1
-  |   |-- fonttools==4.63.0
-  |   |-- kiwisolver==1.5.0
-  |   |-- numpy==2.5.0
-  |   |-- packaging==26.2
-  |   |-- pillow==12.2.0
-  |   |-- pyparsing==3.3.2
-  |   |-- python-dateutil==2.9.0.post0
-  |       |-- six==1.17.0
-  |-- numpy==2.5.0
-  |-- pandas==3.0.3
-      |-- numpy==2.5.0
-      |-- python-dateutil==2.9.0.post0
-          |-- six==1.17.0
-  statds==1.1.7
-  |-- matplotlib==3.11.0
-  |   |-- contourpy==1.3.3
-  |   |   |-- numpy==2.5.0
-  |   |-- cycler==0.12.1
-  |   |-- fonttools==4.63.0
-  |   |-- kiwisolver==1.5.0
-  |   |-- numpy==2.5.0
-  |   |-- packaging==26.2
-  |   |-- pillow==12.2.0
-  |   |-- pyparsing==3.3.2
-  |   |-- python-dateutil==2.9.0.post0
-  |       |-- six==1.17.0
-  |-- numpy==2.5.0
-  |-- pandas==3.0.3
-      |-- numpy==2.5.0
-      |-- python-dateutil==2.9.0.post0
-          |-- six==1.17.0
-\end{verbatim}
-\begin{figure}[ht]
-  \centering
-  \caption{Árbol de dependencias del entorno de tests y análisis de resultados.}
-  \label{fig:dependencias_tests}
-\end{figure}
-
-\section[Limitaciones]{Limitaciones metodológicas}
+\section{Limitaciones metodológicas}
 Es importante reconocer las siguientes limitaciones del diseño experimental.
 \begin{itemize}
   \item \textbf{Generalización limitada}. Los resultados se basan en un número finito de conjuntos de datos y
@@ -2313,7 +2112,7 @@ desarrollado son las siguientes.
   sobre los que se aplican diferentes técnicas de compresión y optimización.
 \end{itemize}
 
-\section[Entorno]{Diseño y arquitectura del entorno experimental}
+\section{Diseño y arquitectura del entorno experimental}
 Con el objetivo principal del trabajo siempre en mente, el entorno experimental ha sido diseñado y desarrollado de
 forma modular, permitiendo la integración de diferentes conjuntos de datos, algoritmos de aprendizaje y mecanismos
 de optimización y despliegue. La infraestructura se ha construido de forma que los distintos modelos pudieran ser
@@ -2335,13 +2134,30 @@ Una característica relevante del diseño es la utilización de una interfaz hom
 implementaciones se incluyen en el flujo experimental mediante las operaciones de entrenamiento e inferencia, de
 modo que los modelos desarrollados con distintas tecnologías pueden ser procesados y evaluados mediante una
 infraestructura común. Esta decisión simplifica la comparación entre alternativas y permite incorporar
-progresivamente nuevas propuestas sin modificar la estructura general del banco de experimentos.\\
+progresivamente nuevas propuestas sin modificar la estructura general del banco de experimentos.
 
 \subsection{Organización del código}
 Como se ha adelantado antes, el código y el resto de recursos han sido estructurados de forma modular y jerárquica
 para facilitar su comprensión, mantenimiento y acceso. Cada uno de los módulos tiene una responsabilidad concreta,
 con funciones y clases específicas que responden a la lógica de cada parte del trabajo. La organización de
 directorios es la siguiente.
+% \vspace{1em}
+% \dirtree{%
+%     .1 code/.
+%     .2 results/.
+%     .2 src/.
+%     .3 core/.
+%     .3 datasets/.
+%     .4 loaders/.
+%     .3 models/.
+%     .4 wrappers/.
+%     .3 scripts/.
+%     .3 tests/.
+%     .3 utils/.
+% }
+% \captionof{figure}{Estructura de directorios (resumen).}
+% \label{fig:fig:resumen_directorios}
+
 \begin{verbatim}
 code
 |-- data
@@ -2362,6 +2178,7 @@ code
   \label{fig:estructura_codigo}
 \end{figure}
 
+\newpage
 \begin{itemize}
   \item \textbf{data}. Contiene los conjuntos de datos descargados que se utilizarán en la experimentación.
   \item \textbf{results}. Almacena los resultados obtenidos de la ejecución de los experimentos incluyendo todas las
@@ -2386,7 +2203,7 @@ Esta descripción se trata de una visión general de cómo se encuentran estruct
 datos y los resultados del trabajo. Se profundizará en los detalles de cada fichero de código en el Apéndice
 \ref{anexo:manual_codigo}: Manual de código.
 
-\section[Carga de datos]{Integración y preparación de los conjuntos de datos}
+\section{Integración y preparación de los conjuntos de datos}
 Se incorporan dos grupos diferenciados de conjuntos de datos, uno destinado a problemas de clasificación y otro para
 tareas de regresión. Los datasets empleados son los descritos en el capítulo anterior, y se encuentran identificados
 en el código de la siguiente manera.\\
@@ -2503,7 +2320,7 @@ ausentes que pueden conservarse, se emplea imputación estadística.\\
 
 En las variables numéricas, la sustitución se realiza mediante la mediana, mientras que determinadas variables
 categóricas utilizan la categoría más frecuente, es decir, la moda. Este tratmiento permite conservar las observaciones
-disponibles sin introducir valores arbitrarios.\\
+disponibles sin introducir valores arbitrarios.
 
 \subsubsection{Ingeniería de características temporales}
 Cuando los datos incorporan una componente temporal, la información de fecha y hora se transforma en características
@@ -2585,25 +2402,25 @@ de implementaciones convencionales de distintos paradigmas de aprendizaje autom�
 Los modelos seleccionados para problemas de clasificación son los siguientes, resaltando los hiperparámetros que se han
 ajustado respecto a los valores por defecto.
 \begin{itemize}
-  \item \textbf{Árbol de decisión (\textit{DecisionTreeClassifier})}: \path{max_depth=10}.
-  \item \textbf{Bosque aleatorio (\textit{RandomForestClassifier})}: \path{n_estimators=20}, \path{max_depth=10},
+  \item \textbf{Árbol de decisión (\path{DecisionTreeClassifier})}: \path{max_depth=10}.
+  \item \textbf{Bosque aleatorio (\path{RandomForestClassifier})}: \path{n_estimators=20}, \path{max_depth=10},
   \path{n_jobs=-1}.
-  \item \textbf{K vecinos más cercanos (\textit{KNeighborsClassifier})}: \path{weights="distance"}.
-  \item \textbf{Máquina de vectores de soporte (\textit{LinearSVC})}: \path{C=1.0}, \path{class_weight="balanced"},
+  \item \textbf{K vecinos más cercanos (\path{KNeighborsClassifier})}: \path{weights="distance"}.
+  \item \textbf{Máquina de vectores de soporte (\path{LinearSVC})}: \path{C=1.0}, \path{class_weight="balanced"},
   \path{dual=False}.
-  \item \textbf{Perceptrón multicapa (\textit{MLPClassifier})}: \path{hidden_layer_sizes=(32, 16)},
+  \item \textbf{Perceptrón multicapa (\path{MLPClassifier})}: \path{hidden_layer_sizes=(32, 16)},
   \path{max_iter=500}, \path{learning_rate_init=0.01}, \path{tol=0.001}, \path{batch_size=64}.
 \end{itemize}
 
 \subsection{Regresión}
 De la misma forma, estos son los modelos utilizados en caso de tareas de regresión.
 \begin{itemize}
-  \item \textbf{Árbol de decisión (\textit{DecisionTreeRegressor})}: \path{max_depth=10}.
-  \item \textbf{Bosque aleatorio (\textit{RandomForestRegressor})}: \path{n_estimators=20}, \path{max_depth=10},
+  \item \textbf{Árbol de decisión (\path{DecisionTreeRegressor})}: \path{max_depth=10}.
+  \item \textbf{Bosque aleatorio (\path{RandomForestRegressor})}: \path{n_estimators=20}, \path{max_depth=10},
   \path{n_jobs=-1}.
-  \item \textbf{K vecinos más cercanos (\textit{KNeighborsRegressor})}: \path{weights="distance"}.
-  \item \textbf{Regresión lineal (\textit{LinearRegression})}: \path{n_jobs=-1}
-  \item \textbf{Perceptrón multicapa (\textit{MLPRegressor})}: \path{hidden_layer_sizes=(32, 16)},
+  \item \textbf{K vecinos más cercanos (\path{KNeighborsRegressor})}: \path{weights="distance"}.
+  \item \textbf{Regresión lineal (\path{LinearRegression})}: \path{n_jobs=-1}
+  \item \textbf{Perceptrón multicapa (\path{MLPRegressor})}: \path{hidden_layer_sizes=(32, 16)},
   \path{max_iter=500}, \path{learning_rate_init=0.01}, \path{tol=0.001}, \path{batch_size=64}.
 \end{itemize}
 
@@ -2688,7 +2505,7 @@ El algoritmo de los K vecinos más cercanos (k-NN) presenta una característica 
 vista del despliegue: el modelo no aprende un conjunto pequeño de parámetros que represente de forma compacta los
 datos, sino que requiere almacenar en el sistema todo el conjunto de datos de entrenamiento para calcular las
 distancias respecto a las nuevas muestras. Como consecuencia, el tamaño de la representación crece directamente con el
-número de muestra empleadas.
+número de muestra empleadas.\\
 
 Para reducir este coste, se ha desarrollado un mecanismo de reducción de prototipos mediante \path{MiniBatchKMeans}.
 La idea general consiste en sustituir una colección potencialmente grande de muestras por un número reducido de
@@ -2905,7 +2722,7 @@ multidimensionales.\\
 
 Para automatizar este flujo, se han desarrollado dos clases específicas: \path{ONNXModelFromSklearnClassification} y su
 equivalente para regresión, \path{ONNXModelFromSklearnRegression}. Estos clases encapsulan todo el ciclo de vida
-post-entrenamiento: conversión, cuantización, gestión de la sesión de inferencia  registro de métricas.
+post-entrenamiento: conversión, cuantización, gestión de la sesión de inferencia y registro de métricas.
 
 \subsection{Contrato de entrada y mapeo de operadores}
 El proceso de conversión, mediado por la librería \path{skl2onnx}, comienza definiendo un ``contrato de entrada''
@@ -2981,13 +2798,7 @@ donde:
   cuantizado.
 \end{itemize}
 
-El proyecto aborda este proceso implementando un sistema dual de cuantización (estática y dinámica) con mecanismos de
-\textit{fallback} para garantizar máxima compatibilidad.
-
-\subsubsection{Cuantización estática: calibración interactiva y simetría}
-La vía preferida es la cuantización estática, configurada mediante la inyección de tensores INT8 tanto en pesos como en
-activaciones.\\
-
+\subsubsection{Cuantización: calibración interactiva y simetría}
 Para determinar los parámetros $S$ y $Z$ de los tensores dinámicos (las activaciones), es indispensable un proceso
 previo de calibración \textit{offline}. El \textit{wrapper} implementa un \path{CalibrationDataReader}, el cual inyecta
 iterativamente hasta 100 muestras representativas del conjunto de entrenamiento al grafo. Durante este paso, ONNX
@@ -3016,20 +2827,6 @@ entera, y el resultado se descuantiza inmediatamente a FP32. Este diseño permit
 decida en tiempo de ejecución si fusiona las operaciones o no, dependiendo de la compatibilidad del hardware (CPU, GPU
 o NPU).
 
-\subsubsection{Cuantización dinámica}
-Para arquitecturas complejas donde el cálculo de la calibración falla (o cuando el formato QDQ no es compatible con la
-topología generada por \path{skl2onnx}), el \textit{wrapper} cuenta con un mecanismo de respaldo en cascada.\\
-
-Si la estática falla, se invoca automáticamente la cuantización dinámica. En esta modalidad, los pesos del modelo ($S$
-y $Z$ estáticos) se almacenan en disco en INT8 (reduciendo el tamaño del archivo), pero los parámetros $S$ y $Z$ para
-las activaciones no se calibran previamente. En su lugar, el motor inyecta nodos \path{DynamicQuantizeLinear} que
-calculan el mínimo y máximo de cada tensor entrante ``al vuelo'' durante la inferencia, proyectándolos a enteros de 8
-bits milisegundos antes del cómputo.\\
-
-Si la topología del grafo rechaza ambas metodologías de cuantización, el \textit{wrapper} aborta la transformación y
-conserva el modelo original en coma flotante (FP32), asegurando que el pipeline de generación del modelo no sufra
-caídas inesperadas.
-
 \subsubsection{Ejecución y optimización en tiempo de inferencia}
 El proceso no concluye con la serialización en disco. El \textit{wrapper} culmina instanciando el modelo mediante:
 \begin{verbatim}
@@ -3047,7 +2844,7 @@ Como segunda ruta de despliegue, se ha desarrollado un \textit{wrapper} personal
 diferencia del uso directo de estimadores de scikit-learn, esta implementación diseña y entrena un perceptrón multicapa 
 nativo en PyTorch, pero lo encapsula heredando de \path{sklearn.base.BaseEstimator}. Esto permite que el modelo exponga
 sus métodos \path{.fit()} y \path{.predict()} a la vez que se oculta por completo la complejidad de la gestión interna
-de tensores, grafos computacionales y compiladores.\\
+de tensores, grafos computacionales y compiladores.
 
 \subsection{Arquitectura de la red neuronal}
 La red neuronal se construye dinámicamente utilizando el contenedor \path{nn.Sequential}. Al heredar de \path{nn.Module},
@@ -3178,20 +2975,13 @@ donde $S$ (Scale en FP32) define la resolución escalar, y $Z$ (Zero-Point en IN
 real se represente exactamente sin errores de redondeo, algo crítico para activar correctamente neuronas silenciadas
 por la capa ReLU.\\
 
-Se incluye soporte para las dos modalidades también presentes en ONNX.
-\begin{itemize}
-  \item \textbf{Cuantización dinámica}. l¡Los pesos se mapean a INT8 permanentemente en memoria. Durante la ejecución, las
-  activaciones entran en la capa en FP32, se estima su factor de escala dinámicamente, se cuantizan a INT8 en tiempo
-  real, se computa la multiplicación matricial usando instrucciones vectoriales de CPU ultrarrápidas y se devuelven en
-  FP32.
-  \item \textbf{Cuantización estática}. Tanto pesos como activaciones operan en INT8 puro. Exige una fase de calibración,
-  iterando el \textit{DataLoader} de entrenamiento sobre el grafo simbólico para que los nodos observadores recojan el
-  rango dinámico (mínimos y máximos histográficos). Tras esto, se realiza la transformación, leyendo los registros de
-  los observadores y calculando la dupla $(S, Z)$ estática para cada capa, y se ejecuta la fusión de operadores. Dado
-  que la inferencia de un MLP suele estar limitada por el ancho de banda de la memoria y no por el cómputo, fusionar
-  capas secuenciales como Linear + ReLU en un solo núcleo de C$+$$+$ evita tener que escribir y leer activaciones
-  intermedias en la memoria caché, disparando el rendimiento.
-\end{itemize}
+Se incluye soporte para la cuantización, igual que en ONNX. Tanto pesos como activaciones operan en INT8 puro. Exige una
+fase de calibración, iterando el \textit{DataLoader} de entrenamiento sobre el grafo simbólico para que los nodos
+observadores recojan el rango dinámico (mínimos y máximos histográficos). Tras esto, se realiza la transformación,
+leyendo los registros de los observadores y calculando la dupla $(S, Z)$ estática para cada capa, y se ejecuta la fusión
+de operadores. Dado que la inferencia de un MLP suele estar limitada por el ancho de banda de la memoria y no por el
+cómputo, fusionar capas secuenciales como Linear + ReLU en un solo núcleo de C$+$$+$ evita tener que escribir y leer
+activaciones intermedias en la memoria caché, disparando el rendimiento.
 
 \subsection{Compilación con JIT}
 Una vez entrenado y cuantizado, el modelo sigue siendo un objeto dependiente del intérprete de Python (GIL), lo que
@@ -3268,7 +3058,7 @@ hace uso de un módulo denominado AutoGraph. Durante la instanciación, AutoGrap
 Python y lo traduce a una representación intermedia denominada ConcreteFunction, que constituye un grafo acíclico
 dirigido estático escrito en C$+$$+$. En este grafo precompilado, las capas \path{Dense} inicializan nodos de estado
 (\path{tf.Variable}) para almacenar los pesos y sesgos en formato de coma flotante de 32 bits, garantizando la máxima
-precisión numérica necesaria para el cálculo de gradientes.\\
+precisión numérica necesaria para el cálculo de gradientes.
 
 \subsection{Fase de entrenamiento}
 Antes de la inyección de datos en la red, las características de entrada se estandarizan mediante \path{StandardScaler}.
@@ -3306,7 +3096,7 @@ procedimiento de \textit{early stopping} que monitoriza la pérdida y detiene el
 convergencia tras un número determinado de épocas.
 
 \subsection{Conversión a TensorFlow Lite y cuantización}
-Finalizado el entrenamiento, el grafo de TensorFlow tal cual es inviable para su despliegue en escenarios Edge/TinyML.
+Finalizado el entrenamiento, el grafo de TensorFlow tal cual es inviable para su despliegue en escenarios TinyML.
 Contiene operaciones derivadas del entrenamiento, variables mutables y una alta huella de memoria debido al uso de
 tensores Float32. Para adaptar este modelo, la ConcreteFunction se transfiere al compilador:
 \begin{verbatim}
@@ -3329,13 +3119,12 @@ de alterar los datos:
 \end{enumerate}
 
 \subsubsection{Cuantización}
-Para maximizar la eficiencia y reducir el tamaño del modelo, se implementa la cuantización. Como se ha estado haciendo
-hasta ahora, se ofrece la posibilidad de hacerla de forma estática o dinámica.\\
+Para maximizar la eficiencia y reducir el tamaño del modelo, se implementa la cuantización, como se ha estado haciendo
+hasta ahora.\\
 
-En la cuantización estática, transformar las activaciones y pesos de Float32 a enteros de 8 bits (rango $[-128, 127]$)
-requiere calcular factores de transformación precisos. Para ello, el compilador exige un \path{representative_dataset}
-o generador de calibración que, en esta implementación, inyecta hasta 100 muestras reales del entorno de entrenamiento
-con forma $(1, d)$.\\
+Transformar las activaciones y pesos de Float32 a enteros de 8 bits (rango $[-128, 127]$) requiere calcular factores de
+transformación precisos. Para ello, el compilador exige un \path{representative_dataset} o generador de calibración que,
+en esta implementación, inyecta hasta 100 muestras reales del entorno de entrenamiento con forma $(1, d)$.\\
 
 Este conjunto no entrena la red, sino que actúa como sonda. Al realizar inferencias con estos datos, el conversor
 registra el comportamiento estadístico de cada nodo. Dado que las funciones ReLU generan activaciones estrictamente
@@ -3356,10 +3145,6 @@ La configuración exige el cumplimiento estricto de este entorno:
   converter.inference_input_type = tf.int8
   converter.inference_output_type = tf.int8
 \end{verbatim}
-
-Por su parte, la cuantización dinámica se limita a declarar \path{converter.optimizations = [tf.lite.Optimize.DEFAULT]}
-sin proporcionar un dataset representativo ni fijar restricciones de tipos de entrada y salida. El funcionamiento básico
-de esta modalidad es equivalente al que ya se ha explicado para prototipos anteriores.\\
 
 Finalmente, el modelo se serializa en un archivo binario FlatBuffers (\path{.tflite}). Esta arquitectura de datos
 permite que el sistema acceda directamente a las estructuras sin rutinas de \textit{parsing} o descompresión previa,
@@ -3540,8 +3325,8 @@ a tensores y se ejecutan sobre el modelo exportado a TorchScript. Esta ejecució
 evaluación (\path{model.eval()}) y bajo un contexto que deshabilita el motor de diferenciación automática
 (\path{torch.no_grad()}), lo que reduce el consumo de memoria y acelera la inferencia.\\
 
-En TensorFlow, las características se escalan y, cuando se utiliza cuantización estática, se convierten explícitamente
-a INT8 utilizando el factor de escala (\textit{scale}) y el punto de compensación (\textit{zero-point}) extraídos de los
+En TensorFlow, las características se escalan y, cuando se utiliza cuantización, se convierten explícitamente a INT8
+utilizando el factor de escala (\textit{scale}) y el punto de compensación (\textit{zero-point}) extraídos de los
 detalles del tensor de entrada. Posteriormente, se alimentan los tensores al intérprete de LiteRT, se ejecuta
 \path{invoke()} y se recupera la salida del tensor correspondiente.\\
 
@@ -3608,7 +3393,7 @@ frecuencia en el conjunto de prueba.\\
 Puesto que se emplean métricas agregadas, en el código se utiliza la opción \path{average="macro"}, de modo que primero
 se calcula cada métrica por clase y posteriormente se obtiene la media aritmética entre todas ellas. Además, se usa
 \path{zero_division=0} para controlar los casos en que alguna clase carezca de predicciones positivas y evitar errores
-de división por cero[cite: 5].
+de división por cero.
 
 \subsubsection{Regresión}
 En los problemas de regresión se utilizan error absoluto medio (MAE), la raíz del error cuadrático medio (RMSE) y el
@@ -3640,7 +3425,7 @@ y TensorFlow, que almacenan su artefacto en la propiedad \path{_model_path}, se 
 archivo físico generado en disco mediante \path{os.path.getsize}.\\
 
 El cálculo se realiza una única vez durante la evaluación de un modelo al comienzo de la iteración, asumiéndose
-constante, aunque su valor se propaga y promedia estadísticamente sobre el resto de folds\\.
+constante, aunque su valor se propaga y promedia estadísticamente sobre el resto de folds.
 
 \subsubsection{Tiempo de entrenamiento}
 El tiempo de entrenamiento representa el coste de ajustar los parámetros del modelo y, en los casos correspondientes,
@@ -3717,10 +3502,10 @@ las columnas recogen las arquitecturas de los modelos implementados (\path{Model
 Estas columnas representan todas las configuraciones experimentadas, incluyendo:
 \begin{itemize}
   \item Modelos de scikit-learn tradicionales sin optimizar.
-  \item Modelos exportados a ONNX con cuantización dinámica o estática.
+  \item Modelos exportados a ONNX con cuantización.
   \item Redes neuronales de \path{PyTorch} y \path{TensorFlow Lite} cuantizadas dinámicamente o estáticamente.
   \item Redes neuronales entredanas como modelos estudiante derivados mediante destilación de conocimiento, bajo
-  distintos parámetros de temperatura ($T=1$ o $T=2$), combinados a su vez, con cuantización PTQ dinámica o estática.
+  distintos parámetros de temperatura ($T=1$ o $T=2$), combinados a su vez, con cuantización PTQ.
 \end{itemize}
 
 El código genera y almacena independientemente estas matrices en archivos de formato CSV con la nomenclatura
@@ -3792,7 +3577,11 @@ tamaño de los modelo o su tiempo de inferencia.\\
 
 Para ambos bloques se parte de los archivos CSV generados por el procedimiento experimental descrito anteriormente. Así,
 el análisis queda desacoplado de la ejecución de los modelos y puede repetirse sobre los resultados almacenados sin que
-sea necesario reentrenar o hacer una nueva ejecución.
+sea necesario reentrenar o hacer una nueva ejecución.\\
+
+Cabe destacar que, aunque se han usado múltiples métricas de rendimiento en clasificación y regresión, para garantizar
+una mayor rigurosidad y eficiencia a la hora de realizar el análisis, se ha seleccionado una métrica representativa por
+cada tipo de problema. En clasificación, se ha optado por analizar F1, mientras que en regresión mantenemos R$^2$.
 
 \subsection{Evaluación estadística}
 El módulo \path{tests_statistical.py} implementa una batería de pruebas no paramétricas orientadas a la comparación
@@ -3815,30 +3604,44 @@ consolidar las múltiples fuentes de datos distribuidas en un único \path{DataF
   extrae el framework (\path{tflite}) y, existe, la técnica de optimización aplicada (\path{distill_t2_static}).
   \item \textbf{Estandarización semántica de identificadores}. Mediante diccionarios de traducción y formateo, se
   reemplazan los identificadores técnicos por denominaciones legibles para su utilización en las tablas y gráficos (ej.
-  cambiando \path{distill_t2_static} por ``Dest. T2 + Est.'').
+  cambiando \path{distill_t2_static} por ``Dest. T2 + Quant.'').
   \item \textbf{Alineación multidimensional por índice}. A continuación, los datos son cargados fijando la columna
   \path{Dataset} como índice. Mediante una unión externa cruzada, se alinean exactamente los resultados de cada modelo
   para el mismo conjunto de datos, garantizando la consistencia de los datos apareados. Para poder diferenciar modelos
   que comparten nombre pero que emplean configuraciones distintas, se añade un sufijo a la columna \path{Model} que
   identifica el framework y la configuración utilizada. Por ejemplo, el modelo de
   \path{tflite_distill_t2_static_classification_f1} pasa de ser ``MLP\_TFLite\_Clas'' a ``MLP\_Clas (TFLite | Dest. T2
-  + Est.)''
+  + Quant.)''
 \end{itemize}
 
 De este modo, el análisis estadístico se realiza utilizando los diferentes datasets como unidades de comparación. La
 estructura de los datos queda organizada de forma que cada fila representa un dataset y cada columna equivale a un
-tratamiento o configuración de modelo.
+tratamiento o configuración de modelo.\\
+
+Adicionalmente, el diseño del módulo organiza la ejecución del análisis estadístico en distintas fases experimentales.
+\begin{enumerate}
+    \item Evaluación base de scikit-learn.
+    \item Evaluación de modelos exportados a ONNX.
+    \item Comparativa intra-framework entre scikit-learn y ONNX.
+    \item Análisis aislado de cuantización y destilación en PyTorch y TensorFlow Lite.
+    \item Evaluación de la interacción entre ambas técnicas.
+    \item Análisis global de modelos neuronales entre todos los frameworks.
+    \item 
+\end{enumerate}
+Para habilitar comparaciones cruzadas precisas, el sistema emplea funciones de construcción en formato largo, asegurando
+que los test de Friedman se apliquen exclusivamente sobre bloques de sujetos matemáticamente válidos y sin sesgos
+inter-algorítmicos.
 
 \subsubsection{Procedimiento estadístico}
 Antes de efectuar las pruebas, el procedimiento determina automáticamente si la métrica debe interpretarse como una
-variable que se desea maximizar o minimizar. Las métricas relacionada con errores y costes (MAE, RMSE, tiempos de
-entrenamiento e inferencia y tamaño del modelo) son medidas de minimización. Por el contrario, las métricas de
-rendimiento predictivo (accuracy, precision, recall, F1 y R$^2$) se consideran de maximización.\\
+variable que se desea maximizar o minimizar. Las métricas relacionada con errores y costes computacionales (MAE, RMSE,
+tiempos de entrenamiento e inferencia y tamaño del modelo) son medidas de minimización, recibiendo rangos prioritarios
+los valores numéricamente inferiores. Por el contrario, las métricas de rendimiento predictivo (accuracy, precision,
+recall, F1 y R$^2$) se consideran de maximización, premiando con el rango 1 al valor más alto.\\
 
 En la figura siguiente se muestra un diagrama que resume el procedimiento de evaluación estadística implementado en el
 módulo correspondiente.
 
-\newpage
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.75\textwidth]{tests.png}
@@ -3953,11 +3756,13 @@ Algorítmicamente, el script opera del siguiente modo.
   $Y$ \path{best_y}.
   \item Incorpora al frente óptimo únicamente aquellas configuraciones que superan el umbral \path{best_y} acumulado,
   garantizando la extracción de la frontera no dominada.
+  \item Paralelamente, se exporta una versión web interactiva basada en la biblioteca Plotly, posibilitando la
+  exploración pormenorizada de cada configuración mediante descripciones emergentes.
 \end{enumerate}
 
 \subsubsection{Evaluación del impacto de la complejidad de los datos}
 Además del compromiso entre rendimiento, tamaño y latencia, también se incorpora un estudio de la escalabilidad de los
-modelo frente a las características de los conjuntos de datos. Para ello, se analizan dos indicadores de complejidad.
+modelos frente a las características de los conjuntos de datos. Para ello, se analizan dos indicadores de complejidad.
 \begin{itemize}
   \item \textbf{Escalabilidad por características}. Modela la variación de la lantencia y el tamaño del modelo en
   función del número de atributos de entrada.
@@ -3966,8 +3771,10 @@ modelo frente a las características de los conjuntos de datos. Para ello, se an
 \end{itemize}
 
 Mediante el uso de diccionarios para mapear los nombres de los datasets con sus identificadores en el código, se
-inyecta la dimensión del problema en el \path{DataFrame} analítico, vinculando a cada registro el número exacto de
-características e instancias del conjunto de datos.\\
+inyecta la topología del problema en el \path{DataFrame} analítico, vinculando a cada registro el número exacto de
+características e instancias del conjunto de datos. A partir de esta integración, se generan gráficos de dispersión que
+relacionan la complejidad topológica con la latencia y el tamaño resultantes, exportándose tanto en formato estático
+como en formato web interactivo.\\
 
 Ahora, por tanto, queda descrita por completo la fase de preprocesamiento de este módulo. Puede resumirse
 conceptualmente con el siguiente esquema.
@@ -3999,10 +3806,6 @@ métricas más representativas para evaluar los compromisos principales:
   \item \textbf{Eficiencia}. De igual manera para ambas tareas, se evalúan el tiempo de inferencia, medido para
   cuantificar la latencia operativa, y el tamaño del modelo en disco, crítico para las restricciones de memoria.
 \end{itemize}
-
-Asimismo, aunque no sea una parte intrínseca del análisis del rendimiento y la eficiencia en entornos TinyML, se 
-incluye de forma complementaria el tiempo de entrenamiento, con el objetivo de ofrecer una visión completa del coste
-computacional asociado a cada moelo y su preparación para despliegue.\\
 
 El conjunto de configuraciones desplegado es exahustivo y equivalente tanto para clasificación como para regresión. Se
 ha realizado a lo largo de los cuatro frameworks principales ya mencionados: scikit-learn, ONNX, PyTorch y TensorFlow,
@@ -4102,7 +3905,7 @@ de inferencia.
     STUDENT DROPOUT    & 0.64624 & 0.61125 & 0.69164 & 0.65760 & 0.67459 \\
     WINE               & 0.90380 & 0.96666 & 0.98328 & 0.97627 & 0.98179 \\
     \hline
-    \textbf{Media Global} & \textbf{0.82853} & \textbf{0.83775} & \textbf{0.84554} & \textbf{0.88738} & \textbf{0.87371} \\
+    \textbf{Media global} & \textbf{0.82853} & \textbf{0.83775} & \textbf{0.84554} & \textbf{0.88738} & \textbf{0.87371} \\
     \hline
   \end{tabularx}
   \caption{F1-score por dataset para los modelos scikit-learn base en clasificación.}
@@ -4124,10 +3927,10 @@ en datasets inherentemente ruidosos o con clases fuertemente solapadas como \tex
 y 0.73, lo que indica que el límite de conocimiento está marcado por los propios datos más que por la arquitectura
 del modelo.\\
 
-Cabe destacar el comportamiento de \textbf{LinearSVC}, que pese a ser un modelo lineal y quedar en tercera posición
-global, logra resultados sobresalientes en conjuntos de alta dimensionalidad como \textbf{HAR} o \textbf{WINE},
-superando incluso al MLP en el caso de \textbf{HAR}. Esto demuestra que, en espacios donde las clases son linealmente
-separables, un hiperplano de margen máximo puede ofrecer resultados óptimos.\\
+Cabe destacar el comportamiento de LinearSVC, que pese a ser un modelo lineal y quedar en tercera posición global,
+logra resultados sobresalientes en conjuntos de alta dimensionalidad como \textbf{HAR} o \textbf{WINE}, superando
+incluso al MLP en el caso de \textbf{HAR}. Esto demuestra que, en espacios donde las clases son linealmente separables,
+un hiperplano de margen máximo puede ofrecer resultados óptimos.\\
 
 \newpage
 \begin{figure}[htbp]
@@ -4159,7 +3962,7 @@ RF, MLP, LinearSVC e incluso k-NN bajo este nivel de confianza, lo que indica qu
 dataset, cualquiera de estos cuatro podría ofrecer resultados competitivos.
 
 \newpage
-\subsubsection{Huella de memoria (tamaño en disco)}
+\subsubsection{Huella de memoria (tamaño en disco en KB)}
 \begin{table}[htbp]
   \centering
   \small % Reduce ligeramente el tamaño de la fuente para mejorar la legibilidad
@@ -4179,7 +3982,7 @@ dataset, cualquiera de estos cuatro podría ofrecer resultados competitivos.
     STUDENT DROPOUT    & 48.15820  & 527.23047   & 2.66016  & 37.41113  & 937.64160  \\
     WINE               & 2.26465   & 27.34277    & 1.57324  & 24.49023  & 38.24316   \\
     \hline
-    \textbf{Media Global} & \textbf{49.92061} & \textbf{6485.99521} & \textbf{14.31367} & \textbf{126.65029} & \textbf{1070.22705} \\
+    \textbf{Media global} & \textbf{49.92061} & \textbf{6485.99521} & \textbf{14.31367} & \textbf{126.65029} & \textbf{1070.22705} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos scikit-learn base en clasificación.}
@@ -4229,7 +4032,7 @@ almacena decenas o cientos de árboles de decisión completos, quedan invalidado
 al MLP las únicas opciones fiables y estadísticamente inferiores en coste.\\
 
 \newpage
-\subsubsection{Eficiencia operativa y resultados globales}
+\subsubsection{Eficiencia operativa (ms) y resultados globales}
 \begin{table}[htbp]
   \centering
   \small
@@ -4263,13 +4066,13 @@ botella tanto de almacenamiento como energéticos, LinearSVC se postula como la 
 apenas un $\sim4.7\%$ de F1 respecto al MLP, pero reduciendo el tamaño en memoria en un factor de $\times 8.8$ y
 superándolo en velocidad de inferencia.\\
 
-\newpage
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1.0\textwidth]{sklearn_average_ranks_inference.png}
+    \includegraphics[width=0.82\textwidth]{sklearn_average_ranks_inference.png}
     \caption{Rangos medios de los modelos scikit-learn en clasificación según el tiempo de inferencia.}
     \label{fig:sklearn_ranks_inference}
 \end{figure}
+\newpage
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{sklearn_nemenyi_inference.png}
@@ -4315,7 +4118,7 @@ perceptrón multicapa (MLP) y Random Forest (RF), empleando como métrica de ren
     STUDENT PERFORMANCE          & 0.76874 & 0.31862 & 0.79571 & 0.65802 & 0.71844 \\
     WINE QUALITY                 & 0.21155 & 0.47764 & 0.27424 & 0.33979 & 0.44201 \\
     \hline
-    \textbf{Media Global} & \textbf{0.62899} & \textbf{0.62849} & \textbf{0.60921} & \textbf{0.71102} & \textbf{0.72671} \\
+    \textbf{Media global} & \textbf{0.62899} & \textbf{0.62849} & \textbf{0.60921} & \textbf{0.71102} & \textbf{0.72671} \\
     \hline
   \end{tabularx}
   \caption{R$^2$ por dataset para los modelos scikit-learn base en regresión.}
@@ -4341,7 +4144,6 @@ generalización (0.21155). Por su parte, la regresión lineal muestra una clara 
 como límite inferior esperado cuando la topología del problema carece de linealidad directa entre los descriptores y la
 variable objetivo.\\
 
-\newpage
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{sklearn_reg_average_ranks_r2.png}
@@ -4367,8 +4169,7 @@ mejor modelo (Random Forest, 1.9) y el peor (k-NN, 3.8) es exactamente 1.9, roza
 del rendimiento según el dataset en regresión es tan acusada que no se puede afirmar con un 95\% de confianza que una
 arquitectura simple vaya a ser siempre inferior a una compleja para cualquier problema tabular arbitrario.
 
-\newpage
-\subsubsection{Huella de memoria (tamaño en disco)}
+\subsubsection{Huella de memoria (tamaño en disco en KB)}
 \begin{table}[htbp]
   \centering
   \small
@@ -4387,7 +4188,7 @@ arquitectura simple vaya a ser siempre inferior a una compleja para cualquier pr
     STUDENT PERFORMANCE          & 18.25488  & 75.15527   & 2.67480 & 48.24414 & 347.50879  \\
     WINE QUALITY                 & 47.22656  & 604.54004  & 1.19727 & 23.04004 & 830.22168  \\
     \hline
-    \textbf{Media Global} & \textbf{55.25889} & \textbf{800.64717} & \textbf{2.06221} & \textbf{38.56562} & \textbf{983.09521} \\
+    \textbf{Media global} & \textbf{55.25889} & \textbf{800.64717} & \textbf{2.06221} & \textbf{38.56562} & \textbf{983.09521} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco (KB) por dataset para los modelos scikit-learn base en regresión.}
@@ -4410,7 +4211,6 @@ alcanzando los 800.64 KB de media, pero disparándose hasta los 2.2 MB en conjun
 \textbf{BIKE SHARING HOURLY} o \textbf{APPLIANCES ENERGY PREDICTION}, lo que limita severamente su viabilidad en sistemas
 embebidos.\\
 
-\newpage
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=1.0\textwidth]{sklearn_reg_average_ranks_size.png}
@@ -4436,8 +4236,7 @@ estadísticamente más ligera que k-NN y Random Forest. De igual manera, MLP y D
 significativamente de Random Forest, demostrando que la memorización estructural de conjuntos de árboles es el enfoque
 menos viable para un despliegue bajo estrictas restricciones de hardware.
 
-\newpage
-\subsubsection{Eficiencia operativa y resultados globales}
+\subsubsection{Eficiencia operativa (ms) y resultados globales}
 \begin{table}[htbp]
   \centering
   \small
@@ -4522,10 +4321,10 @@ numérica logran mitigar los cuellos de botella detectados en scikit-learn, y a 
     STUDENT DROPOUT      & 0.64624 & 0.60265 & 0.69164 & 0.63269 & 0.66253 \\
     WINE                 & 0.90380 & 0.95275 & 0.98328 & 0.97251 & 0.89902 \\
     \hline
-    \textbf{Media Global} & \textbf{0.77330} & \textbf{0.59189} & \textbf{0.84554} & \textbf{0.81938} & \textbf{0.72860} \\
+    \textbf{Media global} & \textbf{0.77330} & \textbf{0.59189} & \textbf{0.84554} & \textbf{0.81938} & \textbf{0.72860} \\
     \hline
   \end{tabularx}
-  \caption{F1-score por dataset para los modelos ONNX $+$ cuantización estática en clasificación.}
+  \caption{F1-score por dataset para los modelos ONNX $+$ cuantización en clasificación.}
   \label{tab:onnx_est_f1}
 \end{table}
 En este escenario, LinearSVC (0.84554) y MLP (0.81938) se alzan como las arquitecturas más estables y robustas. El éxito
@@ -4566,7 +4365,10 @@ superior a Random Forest y k-NN. La diferencia de rangos supera la distancia cr�
 que la reducción de prototipos y la destilación, combinadas con cuantización, introducen una penalización predictiva
 insalvable frente a la robustez geométrica de un hiperplano.
 
-\subsubsection{Huella de memoria (tamaño en disco)}
+\subsubsection{Huella de memoria (tamaño en disco en KB)}
+El impacto de las técnicas de compresión y la serialización a ONNX obtiene huellas de almacenamiento extremadamente
+eficientes para la mayoría de arquitecturas.
+\newpage
 \begin{table}[htbp]
   \centering
   \small
@@ -4585,14 +4387,12 @@ insalvable frente a la robustez geométrica de un hiperplano.
     STUDENT DROPOUT      & 27.62988  & 33.27148   & 1.34082  & 9.40430  & 6.70898  \\
     WINE                 & 1.40918   & 9.81055    & 0.77734  & 8.45898  & 1.40918  \\
     \hline
-    \textbf{Media Global} & \textbf{30.98779} & \textbf{241.19912} & \textbf{8.08135} & \textbf{14.34600} & \textbf{8.09229} \\
+    \textbf{Media global} & \textbf{30.98779} & \textbf{241.19912} & \textbf{8.08135} & \textbf{14.34600} & \textbf{8.09229} \\
     \hline
   \end{tabularx}
-  \caption{Tamaño en disco (KB) por dataset para los modelos ONNX $+$ cuantización estática en clasificación.}
+  \caption{Tamaño en disco (KB) por dataset para los modelos ONNX $+$ cuantización en clasificación.}
   \label{tab:onnx_est_clas_size}
 \end{table}
-El impacto de las técnicas de compresión y la serialización a ONNX obtiene huellas de almacenamiento extremadamente
-eficientes para la mayoría de arquitecturas.\\
 
 Los modelos paramétricos como LinearSVC (8.08 KB) y MLP (14.34 KB) alcanzan niveles de compresión idóneos para la
 computación en el borde, favorecidos tanto por las reducciones implementadas.\\
@@ -4624,7 +4424,7 @@ Al observar la distancia crítica de Nemenyi, ambos modelos se aíslan significa
 Tree original (3.6). Queda probado que la destilación transforma un ensamble masivo en una estructura que es
 estadísticamente más ligera que un árbol de decisión estándar sin podar.
 
-\subsubsection{Eficiencia operativa y resultados globales}
+\subsubsection{Eficiencia operativa (ms) y resultados globales}
 \begin{table}[htbp]
   \centering
   \small
@@ -4639,7 +4439,7 @@ estadísticamente más ligera que un árbol de decisión estándar sin podar.
     RandomForest    & 0.72860 & 0.01  & 8.09229   \\
     \hline
   \end{tabularx}
-  \caption{Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización estática en clasificación .}
+  \caption{Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización en clasificación .}
   \label{tab:onnx_est_clas_resumen}
 \end{table}
 Las arquitecturas lógicas y lineales convergen de manera unánime en el límite de latencia inferior medible para este
@@ -4759,6 +4559,15 @@ clustering (k-NN) y la destilación de conocimiento para ensamblados (Random For
 comportamiento interno de este ecosistema optimizado.
 
 \subsubsection{Rendimiento predictivo (R$^2$)}
+El hito más llamativo en este escenario es el colapso catastrófico (-4.90574). Mientras que en clasificación la red
+soportó la poda y la cuantización (porque la salida final pasa por una función de activación acotada como coftmax o
+sigmoid), en regresión la salida es continua y no acotada. Anular los pesos menores a $10^{-4}$ y forzar la representación
+de las activaciones a enteros de 8 bits destruye la escala paramétrica de la red. Esto provoca que las predicciones
+diverjan bastante de la varianza real de los datos, obteniendo un R$^2$ negativo que invalida al modelo. Cabe destacar que
+esto no es un comportamiento generalizado del MLP, sino que se da únicamente para ciertos datasets. Estos conjuntos de
+datos presentan una distribución de valores que hace que la cuantización y la poda de pesos afecten de manera más drástica
+a la capacidad de predicción del modelo, llevándolo a un estado de ineficacia que no lo hace aplicable en todos los casos.
+\newpage
 \begin{table}[htbp]
   \centering
   \small
@@ -4777,20 +4586,12 @@ comportamiento interno de este ecosistema optimizado.
     STUDENT PERFORMANCE          & 0.76874 & 0.57664 & 0.79570 & 0.65416   & 0.80021 \\
     WINE QUALITY                 & 0.21155 & 0.12021 & 0.27424 & -44.1284  & 0.33044 \\
     \hline
-    \textbf{Media Global} & \textbf{0.62899} & \textbf{0.54576} & \textbf{0.60921} & \textbf{-4.90574} & \textbf{0.69039} \\
+    \textbf{Media global} & \textbf{0.62899} & \textbf{0.54576} & \textbf{0.60921} & \textbf{-4.90574} & \textbf{0.69039} \\
     \hline
   \end{tabularx}
-  \caption{R$^2$ por dataset para los modelos ONNX $+$ cuantización estática en regresión.}
+  \caption{R$^2$ por dataset para los modelos ONNX $+$ cuantización en regresión.}
   \label{tab:onnx_est_r2}
 \end{table}
-El hito más llamativo en este escenario es el colapso catastrófico (-4.90574). Mientras que en clasificación la red
-soportó la poda y la cuantización (porque la salida final pasa por una función de activación acotada como coftmax o
-sigmoid), en regresión la salida es continua y no acotada. Anular los pesos menores a $10^{-4}$ y forzar la representación
-de las activaciones a enteros de 8 bits destruye la escala paramétrica de la red. Esto provoca que las predicciones
-diverjan bastante de la varianza real de los datos, obteniendo un R$^2$ negativo que invalida al modelo. Cabe destacar que
-esto no es un comportamiento generalizado del MLP, sino que se da únicamente para ciertos datasets. Estos conjuntos de
-datos presentan una distribución de valores que hace que la cuantización y la poda de pesos afecten de manera más drástica
-a la capacidad de predicción del modelo, llevándolo a un estado de ineficacia que no lo hace aplicable en todos los casos.\\
 
 Por el contrario, el árbol destilado del Random Forest (0.69039) y el Decision Tree original podado (0.62899) exhiben una
 notable robustez. El éxito del Random Forest demuestra que la destilación de conocimiento es altamente efectiva en
@@ -4824,7 +4625,7 @@ significativamente superior al MLP (4.1) y al k-NN (3.6). Esto demuestra que, al
 Random Forest en un árbol estudiante conserva una capacidad de generalización superior frente al intento de aplicar
 cuantización a una red densa o calcular distancias sobre prototipos reducidos en un espectro continuo.
 
-\subsubsection{Huella de memoria (tamaño en disco)}
+\subsubsection{Huella de memoria (tamaño en disco en KB)}
 \begin{table}[htbp]
   \centering
   \small
@@ -4843,10 +4644,10 @@ cuantización a una red densa o calcular distancias sobre prototipos reducidos e
     STUDENT PERFORMANCE          & 9.58203  & 8.17480  & 1.17676 & 9.36230  & 5.08691 \\
     WINE QUALITY                 & 25.27441 & 13.86523 & 0.48535 & 7.43262  & 5.08691 \\
     \hline
-    \textbf{Media Global} & \textbf{29.62363} & \textbf{19.03301} & \textbf{0.88994} & \textbf{8.56172} & \textbf{5.08691} \\
+    \textbf{Media global} & \textbf{29.62363} & \textbf{19.03301} & \textbf{0.88994} & \textbf{8.56172} & \textbf{5.08691} \\
     \hline
   \end{tabularx}
-  \caption{Tamaño en disco por dataset para los modelos ONNX $+$ cuantización estática en regresión.}
+  \caption{Tamaño en disco por dataset para los modelos ONNX $+$ cuantización en regresión.}
   \label{tab:onnx_est_reg_size}
 \end{table}
 Los resultados confirman el éxito rotundo del pipeline de compresión a nivel de almacenamiento físico.\\
@@ -4881,7 +4682,7 @@ El test de Nemenyi certifica que ambos son estadísticamente más ligeros que el
 (4.6) y el k-NN (3.9). Queda matemáticamente probado que la estrategia aplicada al Random Forest, además de obtener unos
 los mejores resultados en rendimiento predictivo, logra la compresión espacial más eficiente. 
 
-\subsubsection{Eficiencia operativa y resultados globales}
+\subsubsection{Eficiencia operativa (ms) y resultados globales}
 La ejecución en el ecosistema ONNX en C++ vuelve a generar una convergencia radical en la latencia de inferencia.
 \newpage
 \begin{table}[htbp]
@@ -4898,7 +4699,7 @@ La ejecución en el ecosistema ONNX en C++ vuelve a generar una convergencia rad
     RandomForest    & 0.69039  & 0.01  & 5.08691  \\
     \hline
   \end{tabularx}
-  \caption{Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización estática en regresión.}
+  \caption{Resumen de eficiencia operativa y coste computacional de los modelos ONNX $+$ cuantización en regresión.}
   \label{tab:onnx_est_reg_resumen}
 \end{table}
 Decision Tree, regresión lineal y Random Forest comparten un tiempo de ejecución idéntico de 0.01 ms. Es fundamental
@@ -5038,7 +4839,7 @@ se ha hecho antes, el objetivo es mostrar la información relevante sin saturar 
     STUDENT DROPOUT    & 0.64264 & 0.64600 \\
     WINE               & 0.98140 & 0.97461 \\
     \hline
-    \textbf{Media Global} & \textbf{0.88395} & \textbf{0.87741} \\
+    \textbf{Media global} & \textbf{0.88395} & \textbf{0.87741} \\
     \hline
   \end{tabularx}
   \caption{F1-score por dataset para los modelos de redes neuronales con cuantización en clasificación.}
@@ -5072,7 +4873,7 @@ o \textbf{HAR}.
     STUDENT DROPOUT    & 9.38184  & 5.36719  \\
     WINE               & 8.63184  & 4.64844  \\
     \hline
-    \textbf{Media Global} & \textbf{13.06836} & \textbf{9.08594} \\
+    \textbf{Media global} & \textbf{13.06836} & \textbf{9.08594} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en clasificación.}
@@ -5154,10 +4955,10 @@ de PyTorch.\\
     \label{fig:nn_quant_nemenyi_inference}
 \end{figure}
 La distancia crítica de Nemenyi certifica el pequeeño cuello de botella de PyTorch. A pesar de estar cuantizado, el modelo
-no logra separarse significativamente del lento modelo original en Python. El \textit{overhead} de inicialización dinámica
-de tensores y la invocación del JIT de TorchScript para inferencias individuales hace que la aceleración sea limitada. Por
-el contrario, TFLite y ONNX sí se aíslan significativamente del modelo base, demostrando que sus intérpretes en C++ y C
-subyacentes son una buena vía en este estudio para garantizar baja latencia.
+no logra separarse significativamente del lento modelo original en Python. El \textit{overhead} de inicialización
+dinámica de tensores y la invocación del JIT de TorchScript para inferencias individuales hace que la aceleración sea
+limitada. Por el contrario, TFLite y ONNX sí se aíslan significativamente del modelo base, demostrando que sus
+intérpretes en C++ y C subyacentes son una buena vía en este estudio para garantizar baja latencia.
 
 \subsubsection{Destilación de conocimiento}
 A diferencia de la cuantización, cuyo objetivo es reducir la precisión numérica de los pesos para comprimir el modelo
@@ -5196,7 +4997,7 @@ ligera.
     STUDENT DROPOUT    & 0.65424 & 0.65972 & 0.66100 & 0.65239 \\
     WINE               & 0.98110 & 0.97953 & 0.97436 & 0.97945 \\
     \hline
-    \textbf{Media Global} & \textbf{0.89003} & \textbf{0.89124} & \textbf{0.88725} & \textbf{0.88935} \\
+    \textbf{Media global} & \textbf{0.89003} & \textbf{0.89124} & \textbf{0.88725} & \textbf{0.88935} \\
     \hline
   \end{tabularx}
   \caption{F1-score por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}
@@ -5234,7 +5035,7 @@ consiguiente, la huella de memoria es completamente independiente del hiperpará
     STUDENT DROPOUT    & 10.77051  & 8.91016  \\
     WINE               & 7.89551   & 6.03516  \\
     \hline
-    \textbf{Media Global} & \textbf{25.18242} & \textbf{23.31563} \\
+    \textbf{Media global} & \textbf{25.18242} & \textbf{23.31563} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en clasificación.}
@@ -5273,11 +5074,11 @@ A partir de esta tabla a modo de resumen, se extraen las siguientes conclusiones
   durante la fase de inferencia. El modelo en producción sigue siendo un MLP ligero que requiere los mismos ciclos de
   reloj y memoria RAM que un modelo entrenado de forma convencional, pero exhibiendo un comportamiento predictivo propio
   de una red neuronal mucho más profunda. Por tanto, diríamos que se tiene una precisión ``gratuita'' en inferencia.
-  \item Al operar en FP32 y prescindir de la cuantización estática, se observa un cambio radical en los tiempos de
-  inferencia de PyTorch respecto a fases anteriores. La latencia desciende de 0.174 ms a unos 0.13 ms, demostrando que
-  el \textit{overhead} detectado previamente residía en el motor de cuantización, si bien sigue operando más
-  lentamente que su contraparte en TensorFlow Lite. Por su parte, este otro framework sigue demostrando una estabilidad
-  computacional excelente, manteniendo latencias de 0.071 ms.
+  \item Al operar en FP32 y prescindir de la cuantización, se observa un cambio radical en los tiempos de inferencia de
+  PyTorch respecto a fases anteriores. La latencia desciende de 0.174 ms a unos 0.13 ms, demostrando que el
+  \textit{overhead} detectado previamente residía en el motor de cuantización, si bien sigue operando más lentamente que
+  su contraparte en TensorFlow Lite. Por su parte, este otro framework sigue demostrando una estabilidad computacional
+  excelente, manteniendo latencias de 0.071 ms.
 \end{itemize}
 
 \newpage
@@ -5321,14 +5122,14 @@ La evaluación de latencias muestra de nuevo un rechazo unánime de la hipótesi
 implementaciones de TensorFlow Lite como las más rápidas. El análisis de distancias críticas permite obtener dos
 conclusiones fundamentales para el despliegue de estos modelos. En primer lugar, TensorFlow Lite (1.5) es el único framework que
 logra una aceleración estadísticamente significativa frente a scikit-learn (5.0) operando en coma flotante. En segundo
-lugar, al ejecutar inferencias nativas en FP32 sin el proceso de cuantización estática, PyTorch logra reducir su cuello de
+lugar, al ejecutar inferencias nativas en FP32 sin el proceso de cuantización, PyTorch logra reducir su cuello de
 botella anterior, situándose a una distancia no significativa del modelo base. No obstante, la solidez del motor C++ de
 TensorFlow Lite prevalece, logrando incluso distanciarse significativamente de la latencia ofrecida por el intérprete JIT
 de PyTorch.
 
 \subsubsection{Cuantización y destilación de conocimiento}
-En esta fase se evalúa la aplicación simultánea de ambas técnicas: la compresión numérica mediante cuantización estática a
-8 bits y el enriquecimiento semántico a través de la destilación de conocimiento, utilizando la misma arquitectura para el
+En esta fase se evalúa la aplicación simultánea de ambas técnicas: la compresión numérica mediante cuantización a 8 bits
+y el enriquecimiento semántico a través de la destilación de conocimiento, utilizando la misma arquitectura para el
 profesor que en la fase previa. El objetivo analítico es determinar si la inyección del \textit{dark knowledge} es capaz
 de compensar o mitigar la degradación métrica provocada por la pérdida de precisión en los pesos y activaciones durante el
 despliegue.
@@ -5354,7 +5155,7 @@ despliegue.
     STUDENT DROPOUT    & 0.64640 & 0.65388 & 0.65578 & 0.65287 \\
     WINE               & 0.98110 & 0.97953 & 0.97788 & 0.97774 \\
     \hline
-    \textbf{Media Global} & \textbf{0.88709} & \textbf{0.88871} & \textbf{0.88040} & \textbf{0.88292} \\
+    \textbf{Media global} & \textbf{0.88709} & \textbf{0.88871} & \textbf{0.88040} & \textbf{0.88292} \\
     \hline
   \end{tabularx}
   \caption{F1-score por dataset para los modelos de modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}
@@ -5388,7 +5189,7 @@ cuantización.
     STUDENT DROPOUT    & 9.38184  & 5.36719  \\
     WINE               & 8.63184  & 4.64844  \\
     \hline
-    \textbf{Media Global} & \textbf{13.06875} & \textbf{9.08984} \\
+    \textbf{Media global} & \textbf{13.06875} & \textbf{9.08984} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en clasificación.}
@@ -5565,7 +5366,7 @@ preservar la integridad de las predicciones continuas de forma más efectiva que
     STUDENT PERFORMANCE          & 0.72273 & 0.63071 \\
     WINE QUALITY                 & 0.35256 & 0.31263 \\
     \hline
-    \textbf{Media Global} & \textbf{0.72042} & \textbf{0.61276} \\
+    \textbf{Media global} & \textbf{0.71539} & \textbf{0.61276} \\
     \hline
   \end{tabularx}
   \caption{R$^2$ por dataset para los modelos de redes neuronales con cuantización en regresión.}
@@ -5573,7 +5374,7 @@ preservar la integridad de las predicciones continuas de forma más efectiva que
 \end{table}
 Los frameworks nativos ponen en evidencia el valor de sus algoritmos internos de calibración, aunque con resultados
 dispares. PyTorch demuestra una robustez notable, no solo evitando la degradación, sino que el modelo cuantizado (PT
-quant.) logra un $R^2$ medio de $0.72042$, superando ligeramente al modelo original en FP32 de scikit-learn ($0.71102$).
+quant.) logra un $R^2$ medio de $0.71539$, superando ligeramente al modelo original en FP32 de scikit-learn ($0.71102$).
 Esto puede deberse bien a la capacidad de PyTorch de preservar la precisión en las capas finales, o a que la cuantización
 introduce un efecto regularizador que ayuda a la generalización. Por el contrario, TensorFlow sufre una degradación
 pronunciada. cayendo a un $R^2$ global de $0.61276$. Este descenso se explica por el comportamiento del modelo en el
@@ -5602,7 +5403,7 @@ continua.
     STUDENT PERFORMANCE          & 10.06934 & 5.96094 \\
     WINE QUALITY                 & 8.56934  & 4.49219 \\
     \hline
-    \textbf{Media Global} & \textbf{9.44961} & \textbf{5.33906} \\
+    \textbf{Media global} & \textbf{9.44961} & \textbf{5.33906} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con cuantización en regresión.}
@@ -5627,7 +5428,7 @@ microcontroladores.
     \hline
     \textbf{ONNX quant.}  & -4.90574 & 0.02  & 8.56172  \\
     \hline
-    \textbf{PT quant.}    & 0.72042  & 0.229 & 9.44961  \\
+    \textbf{PT quant.}    & 0.71539  & 0.229 & 9.44961  \\
     \hline
     \textbf{TF quant.}    & 0.61276  & 0.13  & 5.33906  \\
     \hline
@@ -5710,7 +5511,7 @@ evalúa cómo la transferencia de este mapa de características en coma flotante
     STUDENT PERFORMANCE          & 0.71700 & 0.65274 \\
     WINE QUALITY                 & 0.34048 & 0.33380 \\
     \hline
-    \textbf{Media Global} & \textbf{0.72075} & \textbf{0.70331} \\
+    \textbf{Media global} & \textbf{0.72075} & \textbf{0.70331} \\
     \hline
   \end{tabularx}
   \caption{R$^2$ por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}
@@ -5745,7 +5546,7 @@ asimiladas del profesor.
     STUDENT PERFORMANCE          & 13.39551 & 11.52344 \\
     WINE QUALITY                 & 7.52051  & 5.64844  \\
     \hline
-    \textbf{Media Global} & \textbf{10.95742} & \textbf{9.07266} \\
+    \textbf{Media global} & \textbf{10.95742} & \textbf{9.07266} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con destilación de conocimiento en regresión.}
@@ -5847,7 +5648,7 @@ suficiente para amortiguar pérdida en rendimiento predictivo al truncar los ten
     STUDENT PERFORMANCE          & 0.72508 & 0.63761 \\
     WINE QUALITY                 & 0.33464 & 0.33449 \\
     \hline
-    \textbf{Media Global} & \textbf{0.71637} & \textbf{0.62547} \\
+    \textbf{Media global} & \textbf{0.71637} & \textbf{0.62547} \\
     \hline
   \end{tabularx}
   \caption{R$^2$ por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}
@@ -5881,7 +5682,7 @@ scikit-learn (0.71102).
     STUDENT PERFORMANCE          & 10.06934 & 5.96094 \\
     WINE QUALITY                 & 8.56934  & 4.49219 \\
     \hline
-    \textbf{Media Global} & \textbf{9.45000} & \textbf{5.34219} \\
+    \textbf{Media global} & \textbf{9.45000} & \textbf{5.34219} \\
     \hline
   \end{tabularx}
   \caption{Tamaño en disco por dataset para los modelos de redes neuronales con cuantización y destilación de conocimiento en regresión.}
@@ -5918,7 +5719,7 @@ no penaliza el despliegue.
     \hline
     \textbf{scikit-learn}     & 0.71102  & 0.157 & 38.56562 \\
     \hline
-    \textbf{PT quant.}        & 0.72042 & 0.229 & 9.44961   \\
+    \textbf{PT quant.}        & 0.71539 & 0.229 & 9.44961   \\
     \textbf{PT KD}            & 0.72075 & 0.188 & 10.95742  \\
     \textbf{PT quant. $+$ KD} & 0.71637 & 0.228 & 9.45000   \\
     \hline
@@ -6136,7 +5937,7 @@ de la plataforma de destino y el objetivo a priorizar.
     \hline
     \textbf{ONNX quant.}      & -4.90574 & 0.02  & 8.56172  \\
     \hline
-    \textbf{PT quant.}        & 0.72042  & 0.229 & 9.44961  \\
+    \textbf{PT quant.}        & 0.71539  & 0.229 & 9.44961  \\
     \textbf{PT KD}            & 0.72075  & 0.188 & 10.95742 \\
     \textbf{PT quant. $+$ KD} & 0.71637  & 0.228 & 9.45000  \\
     \hline
@@ -6224,16 +6025,559 @@ factores analizados y de las restricciones de la plataforma de destino.
 \end{itemize}
 
 \section{Compromisos y escalabilidad}
-A lo largo de las secciones previas, el rendimiento predictivo, la huella de memoria y la latencia computacional se han
-diseccionado de forma mayoritariamente aislada o mediante comparativas directas entre pares de frameworks. Sin embargo,
-el diseño de sistemas TinyML y de inteligencia artificial en el borde constituye, por definición, un problema de
-optimización multiobjetivo. En entornos de producción real, rara vez es posible maximizar una métrica sin degradar otra.\\
+Tal y como se anticipaba al inicio de este capítulo, tras haber diseccionado el comportamiento individual de cada
+framework y técnica de optimización a través del contraste estadístico de Friedman y Nemenyi, corresponde ahora
+sintetizar todos estos hallazgos bajo un prisma multiobjetivo. Mientras que las secciones anteriores han evaluado cada
+métrica de forma aislada, ningún sistema de despliegue real puede permitirse optimizar una sola de ellas ignorando el
+resto. Por ejemplo, un modelo perfecto en F1-score pero inasumible en memoria es tan inviable para el
+\textit{edge computing} como uno instantáneo pero inútil. El presente apartado aborda, por tanto, la búsqueda de la
+frontera óptima de compromiso, así como el estudio de cómo la complejidad y el volumen de los datos condicionan la
+escalabilidad de las soluciones evaluadas.
+%A lo largo de las secciones previas, el rendimiento predictivo, la huella de memoria y la latencia computacional se han
+%diseccionado de forma mayoritariamente aislada o mediante comparativas directas entre pares de frameworks. Sin embargo,
+%el diseño de sistemas TinyML y de inteligencia artificial en el borde constituye, por definición, un problema de
+%optimización multiobjetivo. En entornos de producción real, rara vez es posible maximizar una métrica sin degradar otra.\\
 
-Por consiguiente, esta sección finaliza el análisis empírico abordando la evaluación conjunta de estos factores,
-empleando para ello el cálculo del frente de Pareto. Asimismo, se evalúa la escalabilidad de los modelos analizando cómo
-la complejidad intrínseca de los conjuntos de datos impacta en la viabilidad operativa de las arquitecturas evaluadas.
+%Por consiguiente, esta sección finaliza el análisis empírico abordando la evaluación conjunta de estos factores,
+%empleando para ello el cálculo del frente de Pareto. Asimismo, se evalúa la escalabilidad de los modelos analizando cómo
+%la complejidad intrínseca de los conjuntos de datos impacta en la viabilidad operativa de las arquitecturas evaluadas.%
+
+\subsection{Metodología del análisis multiobjetivo}
+El análisis se apoya en dos herramientas complementarias, ambas implementadas de forma programática para garantizar la
+reproducibilidad y la actualización automática ante cualquier variación en los datos de origen.\\
+
+En primer lugar, se emplea el concepto del frente de Pareto. Dado un conjunto de modelos caracterizados por su tamaño
+en disco (KB) y su rendimiento predictivo (F1 o $R^2$, según la tarea), un modelo pertenece a la frontera óptima si
+ningún otro modelo evaluado lo supera simultáneamente en ambas dimensiones, de modo que este límite está formado por
+aquellos modelos que no son ``dominados''. Formalmente, ordenando el conjunto de candidatos de forma ascendente por
+tamaño, un modelo se incorpora a la frontera si su rendimiento predictivo supera estrictamente al del mejor candidato
+visto hasta ese punto del recorrido. El resultado es una secuencia de modelos que representa, para cada nivel de tamaño,
+la mejor opción disponible: cualquier otro modelo del estudio es, o bien más grande sin ser mejor, o bien peor sin ser
+más pequeño. La latencia de inferencia, tercera variable del compromiso, se codifica en estos gráficos mediante el
+tamaño de la burbuja de cada punto, permitiendo una lectura simultánea de las tres dimensiones sin necesidad de
+recurrir a una representación tridimensional.\\
+
+Es importante señalar una diferencia metodológica deliberada frente al bloque de contraste estadístico previo. Si bien
+para los tests de Friedman y Nemenyi era recomendable aislar comparaciones limpias entre subconjuntos homogéneos para no
+confundir el efecto del framework con el del algoritmo o la técnica de compresión, el cálculo del frente de Pareto
+persigue el objetivo contrario: identificar la mejor opción de despliegue en términos absolutos, para lo cual es
+imprescindible enfrentar todos los candidatos disponibles a la vez. Trocear este análisis en los mismos subconjuntos que
+los tests estadísticos generaría fronteras locales que no permitirían responder a la pregunta relevante en esta fase:
+``de entre todo lo evaluado, ¿qué elijo?''.\\
+
+En segundo lugar, se estudia la escalabilidad del ecosistema, entendida como la sensibilidad de las métricas de
+eficiencia, tamaño y latencia, frente a dos ejes de complejidad de los datos: la dimensionalidad, medida como el número
+de características de entrada, y el volumen, medido como el número de instancias del conjunto de datos. Para cada eje
+se han generado representaciones gráficas, tanto estáticas como interactivas, que relacionan dicha variable de
+complejidad con el tamaño y la latencia de todos los modelos evaluados, coloreados por framework.
+
+\subsection{Frente de Pareto}
+\subsubsection{Clasificación}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{global_tradeoff_pareto_class.png}
+    \caption{Frente de Pareto para clasificación.}
+    \label{fig:pareto_class}
+\end{figure}
+Con un primer vistazo al gráfico de compromisos en clasificación, se observa que el frente de Pareto se localiza en la
+lo que sugiere que los modelos que lo conforman son especialmente óptimos en este caso. Al haber una notable dispersión
+de arquitecturas en el espacio, esta vista no permite apreciar con claridad qué modelos concretos conforman la frontera.
+Para solventar esta limitación, se ha generado un segundo gráfico que amplía la zona de interés, permitiendo identificar
+los modelos seleccionados. Al mismo tiempo, mediante el gráfico interactivo generado con Plotly, es posible inspeccionar
+los modelos uno a uno para ver sus detalles al completo.
+
+\newpage
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{global_tradeoff_pareto_ZOOM_class.png}
+    \caption{Frente de Pareto ampliado para clasificación.}
+    \label{fig:pareto_zoom_class}
+\end{figure}
+
+Haciendo uso del diagrama interactivo, se distinguen los siguientes modelos en el frente de Pareto, ordenador de menor a
+mayor F1 y tamaño en disco.
+\begin{table}[htbp]
+  \centering
+  \begin{tabularx}{\textwidth}{Xccc}
+    \hline
+    \textbf{Modelo} & \textbf{F1} & \textbf{Inferencia (ms)} & \textbf{Tamaño (KB)} \\
+    \hline
+    LinearSVC (ONNX) & 0.84554 & 0.01  & 8.08135  \\
+    TF quant.               & 0.87741 & 0.081 & 9.08594  \\
+    TF quant. $+$ T1        & 0.88040 & 0.081 & 9.08984  \\
+    TF quant. $+$ T2        & 0.88292 & 0.081 & 9.08984  \\
+    PT quant.               & 0.88395 & 0.174 & 13.06836 \\
+    PT quant. $+$ T1        & 0.88709 & 0.172 & 13.06875 \\
+    PT quant. $+$ T2        & 0.88871 & 0.174 & 13.06875 \\
+    TF T2                   & 0.88935 & 0.071 & 23.31563 \\
+    PT T1                   & 0.89003 & 0.137 & 25.18242 \\
+    PT T2                   & 0.89124 & 0.136 & 25.18242 \\
+    \hline
+  \end{tabularx}
+  \caption{Modelos del frente de Pareto en clasificación.}
+  \label{tab:pareto_global_clas}
+\end{table}
+
+La lectura de la frontera permite extraer conclusiones de interés. De los cinco algoritmos clásicos evaluados, es solo
+LinearSVC en su versión exportada a ONNX el que logra sobrevivir al filtro de Pareto, ocupando el extremo de menor
+tamaño a cambio del F1 más modesto del frente. Ninguno de los demás modelos tradicionales consiguen entrar en este grupo,
+ya que cada uno de ellos es, o bien más pesado sin mejorar alguna configuración de MLP nativa, o bien más ligero pero
+peor que LinearSVC.\\
+
+A partir de aquí, la totalidad del recorrido óptimo está conformado por variantes del MLP en PyTorch y TensorFlow Lite,
+alternándose en función del punto de la curva. TensorFlow domina el tramo más económico al mostar menores tamaños y
+latencias, mientras que PyTorch se impone en el tramo superior de rendimiento, con F1-scores más altos a cambio de un
+ligero incremento en el tamaño y la latencia.\\
+
+Cabe destacar que, salvo por la configuración de TensorFlow con cuantización pura con $T=1$, los modelos MLP de PyTorch
+y TensorFlow en su totalidad entran en el frente de Pareto, lo que evidencia que la destilación de conocimiento y la
+cuantización son técnicas eficaces para mejorar la eficiencia de los modelos sin degradar su capacidad predictiva, a la
+vez que necesarias para hacer al MLP competitivo en el espacio de despliegue. Analizando los resultados que ofrecen
+estos, modelos, podemos hacer algunos descartes sin ningún reparo. En cuanto a las configuraciones con cuantización de
+TensorFlow, las tres presentan inferencias y tamaños idénticos, por lo que, fijándonos únicamente en el F1-score, la
+alternativa que combina cuantización y destilación de conocimiento con $T=2$ es la que obtiene la mejor puntuación, de
+modo que pueden desecharse las otras dos. El caso de PyTorch es idéntico, tanto en sus configuraciones puras como en las
+híbridas. Añadir la destilación de conocimiento a la ejecución siempre es mejor que no hacerlo y aplicar solo la
+cuantización. Asimismo, a la hora de aplicar la destilación, una temperatura de 2 permitirá obtener los mejores
+resultados.
+
+\subsubsection{Regresión}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{global_tradeoff_pareto_reg.png}
+    \caption{Frente de Pareto para regresión.}
+    \label{fig:pareto_reg}
+\end{figure}
+Igual que antes, generamos una vista ampliada de la zona de interés para poder identificar los modelos que conforman el
+frente de Pareto.
+
+\newpage
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{global_tradeoff_pareto_ZOOM_reg.png}
+    \caption{Frente de Pareto ampliado para regresión.}
+    \label{fig:pareto_zoom_reg}
+\end{figure}
+La frontera de regresión es sensiblemente más corta que la de clasificación, notando que en el tramo final se decide
+incluir al Random Forest base de scikit-learn, viéndose el tamaño previo multiplicado por casi 90 veces para obtener una
+mejora de apenas 0.006 en R$^2$, una ganancia marginal que no debería suponer una significancia estadística, hablando en
+términos de los tests previos. Por tanto, este Random Forest debería ser candidato a eliminarse del frente de Pareto
+pese a obtener un R$^2$ ligeramente superior al de los modelos MLP, puesto que su peso y dependencia del intérprete de
+Python no hacen posible su despliegue en un microcontrolador.\\
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabularx}{\textwidth}{Xccc}
+    \hline
+    \textbf{Modelo} & \textbf{R$^2$} & \textbf{Inferencia (ms)} & \textbf{Tamaño (KB)} \\
+    \hline
+    LinearReg (ONNX)            & 0.60921 & 0.01   & 0.88994   \\
+    LinearReg (scikit-learn)    & 0.60921 & 0.153  & 2.06221   \\
+    RandomForest (ONNX)         & 0.69039 & 0.01   & 5.08691   \\
+    TF KD                       & 0.70331 & 0.12   & 9.07266   \\
+    PT quant.                   & 0.71539 & 0.229  & 9.44961   \\
+    PT quant. + KD              & 0.71637 & 0.228  & 9.45000   \\
+    PT KD                       & 0.72075 & 0.188  & 10.95742  \\
+    RandomForest (scikit-learn) & 0.72671 & 14.014 & 983.09521 \\
+    \hline
+  \end{tabularx}
+  \caption{Modelos del frente de Pareto en regresión.}
+  \label{tab:pareto_global_reg}
+\end{table}
+
+El resto del trayecto reproduce fielmente lo contemplado en clasificación. La exportación a ONNX domina el extremo más
+ligero, PyTorch ocupa la zona de mejor rendimiento predictivo y TensorFlow Lite se sitúa en una posición intermedia. Por
+otra parte, la destilación de conocimiento y la cuantización también replican su comportamiento. La pérdida de precisión
+provocada por la cuantización es mitigada por la destilación, siendo la combinación de ambas preferible frente a la
+cuantización aislada en cualquier caso.
+
+\subsection{Escalabilidad respecto a la dimensionalidad y el volumen de datos}
+El segundo eje analítico de esta sección evalúa la fortaleza de los algoritmos ante el aumento de la complejidad 
+estructural de los datos de entrada. A través de diagramas de dispersión, se ha modelado cómo el número de instancias y 
+el número de características de los datasets perturban la latencia y la memoria.   
+
+\subsubsection{Impacto del número de características en latencia - Clasificación}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{complexity_features_latency_class.png}
+    \caption{Relación entre el número de características y el tiempo de inferencia por framework en clasificación.}
+    \label{fig:features_latency_class}
+\end{figure}
+
+\newpage
+\subsubsection{Impacto del número de características en latencia - Regresión}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{complexity_features_latency_reg.png}
+    \caption{Relación entre el número de características y el tiempo de inferencia por framework en regresión.}
+    \label{fig:features_latency_reg}
+\end{figure}
+
+La primera pareja de gráficas, que enfrenta el número de características con la latencia de inferencia, muestra que,
+para la inmensa mayoría de los algoritmos evaluados, la latencia no crece de forma visible con el número de
+características, ni en clasificación ni en regresión. En su lugar, cada framework ocupa una banda prácticamente
+horizontal y constante a lo largo de todo el eje, con independencia de si el modelo procesa 4 o 784 características.
+Esto se explica porque, para una única inferencia sobre modelos de dimensiones tan reducidas como los aquí evaluados, el
+coste puramente aritmético de la multiplicación matricial resulta órdenes de magnitud inferior a la sobrecarga fija del
+propio motor de ejecución, que es la que realmente domina el tiempo medido. Dentro del rango de dimensionalidad
+estudiado, qué framework y algoritmo se emplea pesa mucho más sobre la latencia que cuántas características tenga el
+problema.\\
+
+Se observa una excepción más clara, correspondiente a k-NN, más acentuado en el caso de la clasificación, con puntos
+que despegan hacia arriba en los datasets con más características, HAR y MNIST, alcanzando latencias varias veces
+superiores a las del resto de algoritmos clásicos. Al tratarse de un método de aprendizaje perezoso, cada predicción
+exige calcular explícitamente la distancia euclídea componente a componente frente a las instancias almacenadas, por
+lo que su coste sí escala de forma más visible con el número de características, a diferencia de los métodos
+paramétricos, cuyo coste aritmético queda enmascarado por la sobrecarga fija del entorno de ejecución.
+
+\subsubsection{Impacto del número de características en el tamaño del modelo - Clasificación}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.728\textwidth]{complexity_features_size_class.png}
+    \caption{Relación entre el número de características y el tamaño del modelo por framework en clasificación.}
+    \label{fig:features_size_class}
+\end{figure}
+\vspace{-2em}
+\subsubsection{Impacto del número de características en el tamaño del modelo - Regresión}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.728\textwidth]{complexity_features_size_reg.png}
+    \caption{Relación entre el número de características y el tamaño del modelo por framework en regresión.}
+    \label{fig:features_size_reg}
+\end{figure}
+
+El tamaño en disco sí exhibe la tendencia creciente con el número de características que cabría esperar, aunque con
+intensidades muy distintas según el algoritmo. Las configuraciones del MLP en PyTorch y TensorFlow Lite muestran un
+crecimiento más suave y acotado, de apenas un dígito a dos dígitos de KB entre los datasets de menor y mayor
+dimensionalidad, coherente con que solo la primera capa de la red ($I \times H_1$ parámetros) depende directamente del
+número de características de entrada. En el extremo opuesto, son algunos de los algoritmos tradicionales los que
+muestran el crecimiento más acusado y menos regular. Los puntos que escalan de forma más drástica con la dimensionalidad
+corresponden de nuevo a k-NN, cuyo tamaño depende del volumen bruto de datos almacenados, y en menor medida a Random
+Forest, cuya complejidad estructural, el número de nodos por árbol, también tiende a crecer en datasets de mayor
+dimensionalidad.
+
+\subsubsection{Impacto del número de instancias en la latencia - Clasificación}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{complexity_instances_latency_class.png}
+    \caption{Relación entre el número de instancias y el tiempo de inferencia por framework en clasificación.}
+    \label{fig:instances_latency_class}
+\end{figure}
+
+\newpage
+\subsubsection{Impacto del número de instancias en la latencia - Regresión}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=1.0\textwidth]{complexity_instances_latency_reg.png}
+    \caption{Relación entre el número de instancias y el tiempo de inferencia por framework en regresión.}
+    \label{fig:instances_latency_reg}
+\end{figure}
+
+El efecto que tiene el número de instancias sobre la latencia es bastante similar al que se observa con el número de
+características. El tiempo de inferencia es prácticamente constante en todos los casos siendo nuevamente una vez más
+k-NN el algoritmo que muestra una variación mayor en clasificación, mientras que la regresión muestra una estabilidad
+generalizada.
+
+\newpage
+\subsubsection{Impacto del número de instancias en el tamaño del modelo- Clasificación}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.728\textwidth]{complexity_instances_size_class.png}
+    \caption{Relación entre el número de instancias y el tamaño del modelo por framework en clasificación.}
+    \label{fig:instances_size_class}
+\end{figure}
+
+\subsubsection{Impacto del número de instancias - Regresión}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.728\textwidth]{complexity_instances_size_reg.png}
+    \caption{Relación entre el número de instancias y el tamaño del modelo por framework en regresión.}
+    \label{fig:instances_size_reg}
+\end{figure}
+
+Aunque de forma menos agravada que con el número de características, las instancias también tienen un impacto visible
+sobre algunos modelos. Por norma general, los MLP nativos de PyTorch y TensorFlow Lite vuelven a presentarse sólidos
+ante la variación del volumen de datos, al contrario que k-NN y, en parte, Random Forest. Pese a que este comportamiento
+también se observa en regresión, es más acusado en clasificación. Examinando qué datasets concretos generan los picos
+más altos revela un matiz que el propio bloque de resultados no llegaba a precisar: cuando el tamaño del modelo crece,
+esto no depende únicamente del número de instancias, sino, aproximadamente, del producto entre instancias y
+características, esto es, del volumen total de datos almacenados. Así, Letter Recognition, pese a ser el conjuntos de
+datos de clasificación con más instancias (20000), genera modelos considerablemente más ligeros que HAR, solo 10299
+instancias pero 561 características, o MNIST, con 10000 instancias y 784 características, precisamente porque su
+dimensionalidad (16 características) es muy inferior. Esta observación lleva a deducir que, para un algoritmo de
+aprendizaje automático, ambos ejes de escalabilidad, dimensionalidad y volumen, no actúan de forma independiente, sino
+conjunta.
+
+\subsection{Proyecciones y extrapolaciones}
+Sobre la base de los patrones descritos, esta sección se permite extrapolar, con la cautela propia de toda inferencia
+que excede el rango efectivamente observado, dos escenarios de interés práctico para el diseño de futuros sistemas: el
+crecimiento del volumen de datos disponible y el uso de arquitecturas más complejas que la empleada en este estudio.
+ 
+\subsubsection{Evolución de la eficiencia al escalar el volumen de datos}
+De acuerdo con los patrones establecidos en el apartado anterior, cabría esperar que, si los conjuntos de datos
+empleados en este estudio crecieran varios órdenes de magnitud, pasando, por ejemplo, de las decenas de miles de
+instancias aquí evaluadas a cientos de miles o millones, el tamaño y la latencia de todos los algoritmos paramétricos
+permanecerían esencialmente inalterados, o con un crecimiento moderado, siempre que la arquitectura o los
+hiperparámetros de entrenamiento no se modificasen. Sería de esperar que la fase de entrenamiento consumiera más tiempo y
+recursos, pero el artefacto final, el que realmente importa para las restricciones de memoria de un microcontrolador, no
+vería incrementado su coste de manera exponencial o significativa. La única excepción a esta regla, si se consideran
+como opciones para el despliegue en el entorno práctico, modelos como k-NN o Random Forest, sí verían agravados su ya
+documentado problema de escalabilidad. Dado que su huella de memoria crece con la dimensionalidad y volumen del problema,
+un crecimiento sostenido de los mismos terminaría por hacerlos completamente inviables para cualquier plataforma con
+restricciones de memoria, incluso con las técnicas de reducción de aplicadas en la fase de exportación a ONNX, que
+mitigan el problema pero no lo eliminan estructuralmente.
+ 
+\subsubsection{Efecto de una arquitectura MLP más compleja sobre el tamaño del modelo}
+Dado que el MLP sería el modelo preferido para el despliegue en microcontroladores, según lo observado en el frente de
+Pareto, conviene analizar cómo se vería afectado su tamaño en disco si se optase por una arquitectura más profunda o más
+ancha que la empleada en este estudio. Para razonar sobre este escenario resulta útil recurrir al conteo de parámetros
+de un perceptrón multicapa con dos capas ocultas de anchos $H_1$ y $H_2$, dimensión de entrada $I$ y dimensión de salida
+$O$:
+\[
+P(I, H_1, H_2, O) = \underbrace{I \cdot H_1 + H_1}_{\text{capa oculta 1}} + 
+\underbrace{H_1 \cdot H_2 + H_2}_{\text{capa oculta 2}} + \underbrace{H_2 \cdot O + O}_{\text{capa de salida}}
+\]
+
+Para la arquitectura empleada en este trabajo ($H_1=32$, $H_2=26$), esta expresión se reduce a $P = 32I + 27O + 890$. La
+observación clave de esta fórmula es que sus tres términos no escalan de la misma manera ante un incremento de la
+complejidad del problema. Si se amplía el número de características de entrada $I$, el eje de escalabilidad estudiado en
+el apartado anterior, el crecimiento del número de parámetros es lineal, gobernado únicamente por el ancho de la primera
+capa oculta ($H_1$). Sin embargo, si se optase por una arquitectura más profunda o más ancha, por ejemplo, doblando
+ambos anchos ocultos a $H_1=64$, $H_2=52$, el término dominante, $H_1 \cdot H_2$, pasaría de $832$ a $3328$ parámetros:
+un crecimiento cuadrático, cuatro veces superior al que produciría duplicar el número de características de entrada. En
+otras palabras, el tamaño del modelo es mucho más sensible a la profundidad/anchura de la red que a la dimensionalidad
+de los datos que procesa.\\
+ 
+En cuanto al factor de reducción aplicable a dicha arquitectura ampliada, conviene una lectura prudente de la cifra de
+compresión del $\sim 92.8\%$ documentada para TensorFlow Lite cuantizado frente al modelo base de scikit-learn en
+clasificación. Dicho porcentaje supera el techo teórico que cabría esperar de la cuantización numérica en solitario:
+pasar de coma flotante a enteros de 8 bits suele suponer una reducción del $75\%$--$80\%$ sobre el tamaño bruto de los
+tensores de pesos. Que la reducción observada sea superior a ese límite sugiere que una parte no despreciable del ahorro
+actual no proviene de la cuantización en sí, sino de eliminar la sobrecarga fija de serialización del ecosistema Python
+(\path{pickle}/\path{joblib}), que, para una red tan compacta como la aquí empleada, representa una fracción
+significativa del tamaño total del archivo. Esta sobrecarga es, precisamente, constante y no escala con el número de
+parámetros del modelo. Por consiguiente, cabría esperar que, al aplicar las mismas técnicas de cuantización a una
+arquitectura sensiblemente más compleja, el peso relativo de dicha sobrecarga fija se diluyese frente al de los tensores
+de pesos, ahora mucho más voluminosos, y que el porcentaje de reducción alcanzable convergiese progresivamente hacia el
+límite teórico del $75\%$--$80\%$ propio de la cuantización numérica. Esto no implica en absoluto que la cuantización
+pierda utilidad al escalar la arquitectura, sino todo lo contrario. El ahorro en KB absolutos seguiría siendo, de hecho,
+mayor cuantos más parámetros hubiera que comprimir. De este modo, el porcentaje de reducción reportado en este estudio
+debe entenderse como una cota optimista, particularmente favorable por tratarse de una red de reducidas dimensiones, y
+no como una constante universal extrapolable sin matices a cualquier topología de red.
+
 
 \chapter{Conclusiones y recomendaciones}
+El presente trabajo partía de una pregunta con vocación práctica: dada la creciente demanda de inteligencia artificial
+en dispositivos con recursos extremadamente limitados, ¿qué combinación de framework, técnica de compresión y algoritmo
+ofrece el mejor compromiso entre rendimiento predictivo, tamaño y latencia? Para responderla, se ha diseñado y
+ejecutado un banco de pruebas experimental que evalúa, bajo un protocolo común y reproducible, cinco algoritmos de
+aprendizaje automático clásico y una arquitectura de perceptrón multicapa, desplegados a través de cuatro rutas de
+implementación (scikit-learn nativo, ONNX, PyTorch y TensorFlow Lite), combinadas con cuantización post-entrenamiento y
+destilación de conocimiento, diez conjuntos de datos de clasificación y diez de regresión, procedentes de dominios tan
+dispares como la salud, la automoción, la astrofísica o la sociología. Este capítulo cierra el trabajo sintetizando los
+hallazgos obtenidos en el capítulo de resultados, discutiendo sus implicaciones prácticas para el diseño de sistemas
+TinyML y proponiendo líneas de continuación para investigaciones futuras.
+ 
+\section{Síntesis de los resultados principales}
+A lo largo del capítulo anterior se han acumulado una gran cantidad de observaciones puntuales, respaldadas por
+tablas descriptivas y por el contraste inferencial de Friedman y Nemenyi. Corresponde ahora destilar estas
+observaciones en un conjunto reducido de hallazgos generales, organizados en torno a las preguntas de investigación
+formuladas en el capítulo \autoref{chap:objetivos}: Formulación del problema y objetivos.
+ 
+\subsection{El framework de despliegue condiciona tanto el rendimiento como el coste}
+El hallazgo más transversal del trabajo es que la elección del motor de inferencia no es una decisión neutra desde el
+punto de vista predictivo, contrariamente a lo que cabría esperar si se asumiera que todo motor de cuantización a
+INT8 aplica esencialmente la misma transformación matemática. Los resultados demuestran justo lo contrario: existe
+una brecha entre los frameworks que cuentan con un calibrador de cuantización propio y ajustado a su arquitectura,
+como PyTorch, mediante FX Graph Mode, y TensorFlow Lite, mediante su conversor nativo, y la exportación genérica a
+través de ONNX. Esta misma brecha se observa, de forma aún más acusada, en el tamaño y la latencia: TensorFlow Lite,
+gracias a su serialización mediante \textit{FlatBuffers}, se consolida como el formato más compacto del estudio en
+prácticamente todos los escenarios evaluados, mientras que PyTorch, pese a ofrecer con frecuencia el mejor techo
+predictivo, arrastra durante todo el trabajo una penalización de latencia achacable a la sobrecarga de instanciación
+dinámica de tensores y al despacho del intérprete de TorchScript en inferencias unitarias. En definitiva, no existe un
+framework universalmente superior, sino un compromiso explícito entre capacidad predictiva (PyTorch), eficiencia de
+almacenamiento y velocidad (TensorFlow Lite) e interoperabilidad sin necesidad de reentrenar (ONNX), cuyo peso relativo
+depende de la prioridad del proyecto.
+ 
+\subsection{La cuantización y la destilación de conocimiento no son técnicas intercambiables}
+El estudio permite además distinguir con claridad el papel funcional de cada técnica de compresión, algo que rara vez
+se aborda de forma aislada en la literatura consultada en el \autoref{chapt_estado_tecnica}: Estado de la técnica. La
+cuantización post-entrenamiento reduce el tamaño, pero lo hace a costa de una cierta degradación predictiva, que es
+mayor cuanto menos maduro es el calibrador del framework. La destilación de conocimiento, por el contrario, se ha
+revelado como una técnica prácticamente sin contrapartidas dentro del alcance de este trabajo: al operar exclusivamente
+sobre la función de pérdida durante el entrenamiento, no introduce ningún coste adicional de tamaño ni de latencia en el
+modelo desplegado, mientras que en la inmensa mayoría de los casos evaluados iguala o supera el rendimiento del modelo
+original, incluso cuando el estudiante conserva una arquitectura mucho más ligera que el profesor. Esta observación
+coincide con lo apuntado en la literatura sobre destilación~\cite{gou2021ijcv}. La combinación de cuantización y
+destilación no solo es viable, sino que, por ejemplo, en TensorFlow permite recuperar una parte sustancial del
+rendimiento perdido por la cuantización pura. En cuanto al hiperparámetro de temperatura, la configuración $T=2$ superó
+de forma consistente a $T=1$, o lo que es lo mismo, no usarla, en todos los escenarios de clasificación evaluados,
+confirmando empíricamente el efecto beneficioso del suavizado de las distribuciones del profesor descrito en la
+literatura~\cite{xu2023ieecomst}.
+ 
+\subsection{Clasificación y regresión no se comportan igual ante la compresión}
+Uno de los hallazgos más relevantes desde el punto de vista metodológico, y que justifica a posteriori la decisión de
+incluir ambas tareas en el mismo protocolo experimental, es que las técnicas de compresión no son igualmente seguras en
+clasificación y en regresión. El caso más extremo es el colapso del MLP cuantizado mediante ONNX en regresión, cuyo
+coeficiente de determinación medio se desploma a valores negativos, frente a una degradación mucho más contenida en
+clasificación. La explicación reside en la naturaleza de la capa de salida: en clasificación, la función de activación
+acotada (softmax o sigmoide) actúa como un amortiguador natural frente al ruido de cuantización, mientras que en
+regresión la salida continua y no acotada carece de ese margen de seguridad, de modo que cualquier error de escala se
+propaga directamente al valor predicho. Este mismo patrón, aunque de forma menos dramática, se observa en TensorFlow,
+cuya política de cuantización estricta a \path{tf.int8} produce recortes de rango notable en datasets de alta varianza.
+PyTorch, por el contrario, demuestra en este trabajo ser el framework más seguro para cuantizar modelos de regresión,
+gracias a la protección de escala que ofrece su calibrador FX Graph Mode. La implicación práctica es clara: las
+recomendaciones de compresión que funcionan bien en clasificación no pueden extrapolarse sin más a la regresión, y
+cualquier proyecto orientado a estimar magnitudes continuas debe validar explícitamente el comportamiento del
+calibrador de cuantización elegido antes de darlo por bueno.
+ 
+\subsection{Ningún modelo domina en solitario: la frontera de Pareto y la escalabilidad}
+El análisis multiobjetivo desarrollado en el bloque final de resultados confirma, con datos, la intuición que motivó
+todo el trabajo: no existe un ganador absoluto, sino una frontera de soluciones no dominadas cuya composición depende
+de la prioridad de diseño. En clasificación, la frontera de Pareto queda copada casi en su totalidad por
+configuraciones del MLP en PyTorch y TensorFlow. Ni Decision Tree, ni k-NN, ni Random Forest en sus variantes
+optimizadas sobreviven al filtro de dominancia. En regresión, el patrón es similar, aunque la frontera incorpora en su
+tramo. El estudio de escalabilidad añade otra pieza fundamental al razonamiento. Para una gran parte de los algoritmos
+evaluados, aunque su tamaño y latencia dependen en poca medida del número de características e instancias, lo que
+realmente tiene un efecto condicionante es la arquitectura o los hiperparámetros fijados.
+k-NN, es el algoritmo que peor escala con el producto entre instancias y características, lo descarta para cualquier
+escenario cuyo volumen de datos pueda crecer con el tiempo.
+ 
+\section{Contraste de la hipótesis de trabajo}
+La hipótesis planteada al inicio de la fase experimental sostenía que las técnicas de compresión permitirían reducir
+de forma significativa el tamaño de los modelos y su tiempo de inferencia a cambio de una pequeña pérdida de calidad
+predictiva. A la luz de los resultados obtenidos, podemos afirmar que esta hipótesis se confirma. Por un lado, la
+reducción de tamaño y latencia se confirma de forma prácticamente universal, alcanzando reducciones muy generosas en
+tamaño y aceleraciones de inferencia. Por otro lado, la pérdida de calidad predictiva dista de ser sistemáticamente
+``pequeña''. Al aplicar exclusivamente la cuantización, queda demostrado que sí se produce una pérdida en precisión.
+Ahora bien, si se añade la destilación de conocimiento de forma aislada, lo que se observa es un aumento de la capacidad
+predictiva, comportamiento que cabría esperar de un modelo entrenado a partir de uno más complejo. Esto no invalida la
+hipótesis, sino que la matiza: la cuantización y la destilación de conocimiento no son técnicas intercambiables, sino
+complementarias.
+ 
+\section{Implicaciones prácticas y guía de selección}
+Recuperando la justificación planteada en la introducción de este trabajo, los resultados obtenidos permiten formular
+una serie de recomendaciones orientativas para equipos de desarrollo que deban seleccionar una estrategia de
+implementación en un proyecto TinyML real. Estas recomendaciones no pretenden sustituir una validación específica sobre
+el hardware objetivo final, pero sí ofrecen un punto de partida fundamentado en evidencia empírica, cubriendo
+precisamente la laguna señalada en la justificación académica de este trabajo: la escasez de criterios unificados de
+comparación entre estrategias de implementación.
+ 
+\begin{table}[htbp]
+  \centering
+  \begin{tabularx}{\textwidth}{lXX}
+    \hline
+    \textbf{Prioridad de diseño} & \textbf{Clasificación} & \textbf{Regresión} \\
+    \hline
+    Máxima capacidad predictiva &
+    PyTorch, KD, $T=2$ (F1 = 0.89124, 25.18 KB) &
+    PyTorch, KD (R$^2$ = 0.72075, 10.96 KB) \\
+    \hline
+    Equilibrio tamaño / latencia / rendimiento &
+    TensorFlow Lite, Quant. $+$ KD, $T=2$ (F1 = 0.88292, 9.09 KB, 0.081 ms) &
+    TensorFlow Lite, KD (R$^2$ = 0.70331, 9.07 KB, 0.12 ms) \\
+    \hline
+    Mínimo tamaño y latencia absolutos &
+    TensorFlow Lite, KD (F1 = 0.87741, 9.09 KB, 0.081 ms) &
+    TensorFlow Lite, KD (R$^2$ = 0.61276, 5.34 KB, 0.13 ms) \\
+    \hline
+    Modelo clásico interpretable con restricciones severas &
+    LinearSVC $+$ ONNX (F1 = 0.84554, 8.08 KB, 0.01 ms) &
+    LinearRegression $+$ ONNX (R$^2$ = 0.60921, $<$1 KB, 0.01 ms) \\
+    \hline
+  \end{tabularx}
+  \caption{Guía orientativa de selección de configuración según la prioridad de diseño del proyecto.}
+  \label{tab:guia_seleccion}
+\end{table}
+ 
+Más allá de la guía puntual recogida en la tabla anterior, se derivan tres recomendaciones de carácter
+más general para la práctica del despliegue en microcontroladores.\\
+ 
+En primer lugar, cuando el objetivo sea desplegar redes neuronales, se recomienda evitar por defecto la exportación
+genérica a través de ONNX y optar por el motor de cuantización nativo del framework de entrenamiento, PyTorch o
+TensorFlow, reservando ONNX para modelos clásicos (árboles, modelos lineales), donde su comportamiento ha demostrado
+ser fiable. Esta recomendación es tanto más importante en regresión, donde el riesgo de colapso numérico es real y no
+anecdótico.\\
+ 
+En segundo lugar, la destilación de conocimiento debería considerarse una técnica de aplicación casi rutinaria en
+cualquier flujo de trabajo que entrene una red neuronal ligera para TinyML, dado que su coste (disponer de un modelo
+profesor más complejo y entrenar el estudiante con una función de pérdida combinada) se paga una única vez durante
+el desarrollo y, a cambio, no introduce ninguna penalización en el modelo final desplegado.\\
+ 
+En tercer lugar, la selección de un modelo no debería fundamentarse exclusivamente en la métrica de rendimiento
+predictivo ganadora en la tabla comparativa, sino en su posición dentro de la frontera de Pareto y, sobre todo, en la
+magnitud absoluta de tamaño y latencia que dicha posición implica.
+ 
+\section{Limitaciones del estudio}
+Los resultados y recomendaciones anteriores deben interpretarse a la luz de las limitaciones metodológicas ya
+avanzadas en el \autoref{chap:metodologia}: Metodología de trabajo, que conviene ahora revisar tras lo observado en la
+experimentación.\\
+ 
+La limitación más relevante es que todas las mediciones de latencia y tamaño se han obtenido sobre una estación de
+trabajo de escritorio, no sobre un microcontrolador real. Si bien la literatura consultada sugiere que el orden de
+magnitud relativo entre frameworks tiende a mantenerse al trasladar la ejecución a hardware
+embebido~\cite{lin2023ieeemcas}, las cifras absolutas de latencia y, sobre todo, el consumo energético, no medido
+directamente en este trabajo, podrían variar sustancialmente en un ARM Cortex-M real, donde la ausencia de unidad de
+coma flotante dedicada o las restricciones de SRAM introducen factores no representados en un procesador de propósito
+general. Las recomendaciones de este capítulo deben entenderse, por tanto, como una priorización relativa entre
+estrategias, no como una predicción exacta del comportamiento en el dispositivo final.\\
+ 
+Por otra parte, el estudio se ha limitado a una única topología de perceptrón multicapa de dos capas ocultas
+$[32, 16]$, y a un conjunto acotado de datasets. Las extrapolaciones formuladas en el apartado de proyecciones de
+escalabilidad, en particular, la relación cuadrática entre la anchura de las capas ocultas y el crecimiento del tamaño
+del modelo, son coherentes con el conteo de parámetros de un MLP, pero no han sido validadas empíricamente sobre
+arquitecturas efectivamente entrenadas de mayor tamaño, ni sobre familias de modelos de aprendizaje profundo.\\
+ 
+En última instancia, el soporte desigual de técnicas de compresión entre frameworks introduce una asimetría en la
+comparación. No se ha podido evaluar, por ejemplo, la destilación de conocimiento sobre modelos tradicionales exportados
+a ONNX de la misma forma que sobre los MLP nativos. Esta asimetría es, hasta cierto punto, inherente al propio objeto
+de estudio, ya que la heterogeneidad de madurez entre ecosistemas es en sí misma parte de lo que el trabajo pretendía
+documentar. Aún así, esto limita la posibilidad de aislar completamente la influencia de cada técnica del efecto del
+framework que la implementa.\\
+ 
+\section{Líneas futuras de investigación}
+A partir de los hallazgos y de las limitaciones expuestas, se proponen las siguientes líneas de continuación para
+trabajos futuros, ordenadas de mayor a menor cercanía respecto al alcance del presente estudio.
+ 
+\begin{itemize}
+  \item \textbf{Validación sobre hardware embebido real}. Repetir el conjunto de mediciones de latencia, y añadir
+  mediciones directas de consumo energético por inferencia, sobre uno o varios microcontroladores representativos de
+  la familia ARM Cortex-M, cerrando así el ciclo entre las estimaciones de escritorio de este trabajo y su
+  comportamiento efectivo en el borde de la red.
+  \item \textbf{Barrido sistemático de arquitecturas del MLP}. Entrenar y evaluar una familia de perceptrones
+  multicapa de anchura y profundidad crecientes, para contrastar empíricamente la relación entre el ancho de las capas
+  ocultas y el tamaño del modelo, así como la hipótesis de convergencia del ratio de compresión hacia el límite teórico
+  de la cuantización numérica.
+  \item \textbf{Extensión a arquitecturas de aprendizaje profundo ligero}. Ampliar el protocolo experimental aquí
+  desarrollado a redes convolucionales ligeras, como DS-CNN o la familia MobileNet, y a datos secuenciales, de audio o
+  imágenes, extendiendo el estudio desde el TinyML clásico hacia el terreno emergente del TinyDL.
+  \item \textbf{Incorporación de técnicas de compresión adicionales}. Integrar en el mismo banco de pruebas otras
+  familias de optimización revisadas en el estado de la técnica pero no evaluadas experimentalmente en este trabajo,
+  como la poda estructural progresiva, la factorización de bajo rango, la clusterización de pesos o la búsqueda de
+  arquitecturas conscientes del hardware (HW-NAS).
+  \item \textbf{Ampliación de la colección de conjuntos de datos}. Incorporar conjuntos de datos de mayor volumen y
+  dimensionalidad que los aquí evaluados, con el fin de contrastar las proyecciones de escalabilidad formuladas en el
+  capítulo de resultados.
+  \item \textbf{Refinamiento del análisis estadístico multiobjetivo}. Aplicar corrección por comparaciones múltiples
+  sobre el conjunto agregado de tests de Friedman ejecutados a lo largo de las distintas métricas y fases del
+  estudio, y complementar los tests de significancia con medidas de tamaño del efecto, para distinguir con mayor
+  precisión entre diferencias estadísticamente significativas y diferencias de relevancia práctica reducida.
+\end{itemize}
+ 
+\section{Reflexión final}
+El trabajo desarrollado responde a las tres justificaciones planteadas en la introducción de esta memoria. Desde el
+punto de vista académico, aporta una comparación exhaustiva y cara a cara entre cuatro rutas de implementación y dos
+técnicas de compresión y optimización, evaluadas bajo un protocolo común sobre clasificación y regresión. Desde el
+punto de vista industrial, ofrece una guía orientativa, fundamentada en evidencias contrastadas y no en intuición, que
+puede acelerar la toma de decisiones de equipos de desarrollo que se enfrenten a un problema de selección similar.
+Desde el punto de vista práctico, tanto el protocolo experimental como la infraestructura de software desarrollada,
+quedan disponibles como punto de partida para extender este estudio en cualquiera de las direcciones señaladas en la
+sección previa, reduciendo el coste de entrada de futuras investigaciones sobre el mismo problema.\\
+ 
+En definitiva, si algo queda demostrado tras esta batería de experimentos es que la promesa de TinyML, dotar de
+inteligencia a los dispositivos más modestos del ecosistema de cómputo actual, es alcanzable con las herramientas
+disponibles hoy en día, siempre que la elección del framework, la técnica de compresión y su combinación se aborden
+con el mismo rigor metodológico con el que se encara, tradicionalmente, el diseño del propio modelo predictivo.
 
 
 % --- Referencias no citadas explícitamente ---
@@ -6251,23 +6595,556 @@ la complejidad intrínseca de los conjuntos de datos impacta en la viabilidad op
 \chapter{Manual de usuario}
 \label{anexo:manual_usuario}
 \section{Introducción}
+El presente manual de usuario tiene como objetivo proporcionar al usuario final una guía detallada y estructurada para
+la instalación, configuración y correcta ejecución del software desarrollado en el marco del este Trabajo de Fin de
+Grado. A través de las siguientes secciones, se detallan los requisitos técnicos necesarios, el procedimiento paso a
+paso para la puesta en marcha del entorno de experimentación, que abarca desde la adquisición de las dependencias hasta
+la ejecución de los scripts de evaluación estadística y análisis de compromisos, así como las directrices para su
+posterior desinstalación. Este manual está orientado tanto a evaluadores como a desarrolladores que deseen reproducir,
+verificar o ampliar los experimentos comparativos de modelos de aprendizaje automático en entornos TinyML.
 
+\section{Requisitos del sistema}
+Para garantizar una ejecución fluida y sin incidencias de los módulos implementados, además de poder almacenar todos los
+recursos necesarios, el equipo anfitrión debe cumplir con una serie de especificaciones técnicas mínimas.
+
+\subsection{Requisitos hardware}
+\begin{itemize}
+    \item \textbf{Procesador (CPU)}. Arquitectura de 64 bits, preferiblemente de 2 o 4 núcleos y
+    2.0 GHz.
+    \item \textbf{Memoria RAM}. De 4 GB a 8 GB de RAM.
+    \item \textbf{Almacenamiento}. Alrededor de 10 GB de espacio libre en disco para albergar el repositorio del
+    proyecto, el directorio de resultados y gráficos generados y las librería instaladas.
+\end{itemize}
+
+\subsection{Requisitos software}
+\begin{itemize}
+    \item \textbf{Sistema operativo}. Windows 10/11, distribuciones GNU/Linux o macOS.
+    \item \textbf{Entorno de ejecución}. Intérprete de Python en su versión 3.13.
+    \item \textbf{Librerías}. Las librerías necesarias para la ejecución del software, que se mostrarán más adelante en 
+    \textit{Instalación de librerías}.
+\end{itemize}
+
+\section{Instalación}
+El proceso de despliegue comprende la obtención del código fuente, la configuración del intérprete de Python en el
+sistema operativo anfitrión y la instalación del ecosistema de librerías necesarias.
+
+\subsection{Instalación del software}
+Dado que no se ha desarrollado una aplicación ni publicado un paquete instalable, la instalación del software se limita
+a la descarga del repositorio de código fuente. Para ello, solo es necesario clonar el repositorio donde está alojado el
+código, accesible en \url{https://github.com/jsersaz/TFG}, simplemente ejecutando \path{git} \path{clone}:
+\begin{verbatim}
+    git clone https://github.com/jsersaz/TFG.git
+\end{verbatim}
+
+Alternativamente, se puede descargar el código comprimido directamente desde la interfaz web del repositorio y
+descomprimirlo en el directorio de trabajo deseado.
+
+\subsection{Instalación de Python}
+El núcleo computacional del proyecto requiere un entorno Python actualizado. Si el sistema no dispone de él, debe
+instalarse previamente. El proceso dependerá del sistema operativo anfitrión donde se vaya a ejecutar el código.
+
+\subsubsection{Windows}
+Tiene tres alternativas para la instalación de Python en Windows.
+\begin{itemize}
+    \item Con el instalador oficial de Python, descargado desde la web oficial. Acceda al sitio web oficial de Python
+    (\url{https://www.python.org/}) y descargue el instalador ejecutable para la última versión estable de la versión
+    3.13. Durante la ejecución del asistente, es crucial marcar la casilla inferior que indica ``Add python.exe to PATH'',
+    lo que asegurará que el intérprete y el gestor de paquetes pip queden registrados globalmente en el sistema.
+    \item Desde la terminal. Desde la terminal de Windows o PowerShell, ejecute el comando
+    \begin{verbatim}
+        winget install Python.Python.3.13    
+    \end{verbatim}
+    A continuación, cierre y vuelva a abrir la terminal para aplicar los cambios.
+    \item Por último, también puede realizarse descargando la aplicación oficial de Python 3.13 desde Microsoft Store.
+    Windows se encargará de descargar, instalar y configurar las variables de entorno de forma automática.
+\end{itemize}
+
+\subsubsection{GNU/Linux}
+La mayoría de distribuciones GNU/Linux, pero si no es así o la versión no coincide, la instalación es rápida. Se
+recomienda utilizar el reposiorio oficial de paquetes Deadsnakes, siguiendo los comandos que se muestran.
+\begin{verbatim}
+    sudo apt install software-properties-common
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt install python3.13
+\end{verbatim}
+
+\subsubsection{Mac OS}
+En macOS, la instalación puede realizarse mediante Homebrew o descargando el instalador desde la web oficial de Python.
+\begin{itemize}
+    \item Para hacerlo con Homebrew, simplemente ejecute el comando
+    \begin{verbatim}
+        \path{brew install python@3.13} desde la terminal.
+    \end{verbatim}
+    \item Para la instalación manual, descargue el instalador desde \url{https://www.python.org/}, igual que en Windows.
+\end{itemize}
+
+\subsection{Instalación de librerías}
+Una vez instalado y configurado Python, se recomienda crear diferentes entornos virtuales para la ejecución, con el fin
+de aislar las dependencias y evitar conflictos entre librerías. De este modo, serán cuatro entornos virtuales, que
+corresponden a la ejecución de ONNX, PyTorch, TensorFlow y los tests estadísticos y análisis de compromisos. Los modelos
+de scikit-learn pueden ejecutarse en cualquiera de los tres primeros entornos. Las librerías de cada entorno se
+instalan mediante el gestor de paquetes pip, usando
+\begin{verbatim}
+    pip install <nombre_librería>
+\end{verbatim}
+Los entornos virtuales se crean con el módulo \path{venv} de Python, ejecutando
+\begin{verbatim}
+    python -m venv <nombre_entorno>
+\end{verbatim}
+Para activar el entorno virtual, ejecute
+\begin{itemize}
+    \item En Linux y macOS: \path{source venv/bin/activate}.
+    \item En Windows: \path{venv\Scripts\activate.bat}.
+\end{itemize}
+
+A continuación se detallan los árboles de dependencias de cada entorno virtual, con las librerías necesarias en cada uno.
+
+\subsubsection{Scikit-learn $+$ ONNX}
+\begin{verbatim}
+venv_onnx
+|-- arff==0.9
+|-- onnxconverter-common==1.16.0
+|   |-- numpy==2.5.0
+|   |-- onnx==1.22.0
+|   |   |-- ml_dtypes==0.5.4
+|   |   |   |-- numpy==2.5.0
+|   |   |-- numpy==2.5.0
+|   |   |-- protobuf==7.35.1
+|   |   |-- typing_extensions==4.15.0
+|   |-- packaging==26.2
+|   |-- protobuf==7.35.1
+|-- onnxruntime==1.27.0
+|   |-- flatbuffers==25.12.19
+|   |-- numpy==2.5.0
+|   |-- packaging==26.2
+|   |-- protobuf==7.35.1
+|-- pandas==3.0.3
+|   |-- numpy==2.5.0
+|   |-- python-dateutil==2.9.0.post0
+|       |-- six==1.17.0
+|-- pip==26.1.2
+|-- pipdeptree==3.1.0
+|   |-- packaging==26.2
+|-- setuptools==82.0.1
+|-- skl2onnx==1.20.0
+    |-- onnx==1.22.0
+    |   |-- ml_dtypes==0.5.4
+    |   |   |-- numpy==2.5.0
+    |   |-- numpy==2.5.0
+    |   |-- protobuf==7.35.1
+    |   |-- typing_extensions==4.15.0
+    |-- scikit-learn==1.9.0
+        |-- joblib==1.5.3
+        |-- narwhals==2.22.1
+        |-- numpy==2.5.0
+        |-- scipy==1.18.0
+        |   |-- numpy==2.5.0
+        |-- threadpoolctl==3.6.0
+\end{verbatim}
+\vspace{-2em}
+\begin{figure}[ht]
+  \centering
+  \caption{Árbol de dependencias del flujo scikit-learn $+$ ONNX.}
+  \label{fig:dependencias_onnx}
+\end{figure}
+
+\subsubsection{PyTorch}
+\begin{verbatim}
+venv_pytorch
+|-- arff==0.9
+|-- pandas==3.0.3
+|   |-- numpy==2.5.0
+|   |-- python-dateutil==2.9.0.post0
+|       |-- six==1.17.0
+|-- pip==26.1.2
+|-- pipdeptree==3.1.0
+|   |-- packaging==26.2
+|-- scikit-learn==1.9.0
+|   |-- joblib==1.5.3
+|   |-- narwhals==2.22.1
+|   |-- numpy==2.5.0
+|   |-- scipy==1.18.0
+|   |   |-- numpy==2.5.0
+|   |-- threadpoolctl==3.6.0
+|-- torchaudio==2.11.0
+|-- torchvision==0.27.1
+    |-- numpy==2.5.0
+    |-- pillow==12.2.0
+    |-- torch==2.12.1
+        |-- cuda-bindings==13.3.1
+        |   |-- cuda-pathfinder==1.5.5
+        |-- cuda-toolkit==13.0.2
+        |   |-- nvidia-cuda-cupti==13.0.85, extra: cupti
+        |   |-- nvidia-cuda-nvrtc==13.0.88, extra: nvrtc
+        |   |-- nvidia-cuda-runtime==installed: 13.0.96, extra: cudart
+        |   |-- nvidia-cufft==12.0.0.61, extra: cufft
+        |   |   |-- nvidia-nvjitlink==13.0.88
+        |   |-- nvidia-cufile==1.15.1.6, extra: cufile
+        |   |-- nvidia-curand==installed: 10.4.0.35, extra: curand
+        |   |-- nvidia-cusolver==12.0.4.66, extra: cusolver
+        |   |   |-- nvidia-cublas==13.1.1.3
+        |   |   |   |-- nvidia-cuda-nvrtc==13.0.88
+        |   |   |-- nvidia-cusparse==12.6.3.3
+        |   |   |   |-- nvidia-nvjitlink==13.0.88
+        |   |   |-- nvidia-nvjitlink==13.0.88
+        |   |-- nvidia-cusparse==12.6.3.3, extra: cusparse
+        |   |   |-- nvidia-nvjitlink==13.0.88
+        |   |-- nvidia-nvjitlink==13.0.88, extra: nvjitlink
+        |   |-- nvidia-nvtx==13.0.85, extra: nvtx
+        |-- filelock==3.29.4
+        |-- fsspec==2026.6.0
+        |-- Jinja2==3.1.6
+        |   |-- MarkupSafe==3.0.3
+        |-- networkx==3.6.1
+        |-- nvidia-cublas==13.1.1.3
+        |   |-- nvidia-cuda-nvrtc==13.0.88
+        |-- nvidia-cudnn-cu13==9.20.0.48
+        |   |-- nvidia-cublas==13.1.1.3
+        |       |-- nvidia-cuda-nvrtc==13.0.88
+        |-- nvidia-cusparselt-cu13==0.8.1
+        |-- nvidia-nccl-cu13==2.29.7
+        |-- nvidia-nvshmem-cu13==3.4.5
+        |-- setuptools==81.0.0
+        |-- sympy==1.14.0
+        |   |-- mpmath==1.3.0
+        |-- triton==3.7.1
+        |-- typing_extensions==4.15.0
+\end{verbatim}
+\vspace{-2em}
+\begin{figure}[ht]
+  \centering
+  \caption{Árbol de dependencias del flujo PyTorch.}
+  \label{fig:dependencias_pytorch}
+\end{figure}
+
+\subsubsection{TensorFlow Lite (LiteRT)}
+\begin{verbatim}
+venv_tflite
+|-- ai-edge-litert==2.1.5
+|   |-- backports.strenum==1.2.8
+|   |-- flatbuffers==25.12.19
+|   |-- numpy==2.5.0
+|   |-- protobuf==7.35.1
+|   |-- tqdm==4.68.3
+|   |-- typing_extensions==4.15.0
+|-- arff==0.9
+|-- pandas==3.0.3
+|   |-- numpy==2.5.0
+|   |-- python-dateutil==2.9.0.post0
+|       |-- six==1.17.0
+|-- pip==26.1.2
+|-- pipdeptree==3.1.0
+|   |-- packaging==26.2
+|-- scikit-learn==1.9.0
+|   |-- joblib==1.5.3
+|   |-- narwhals==2.22.1
+|   |-- numpy==2.5.0
+|   |-- scipy==1.18.0
+|   |   |-- numpy==2.5.0
+|   |-- threadpoolctl==3.6.0
+|-- tensorflow==2.21.0
+    |-- absl-py==2.4.0
+    |-- astunparse==1.6.3
+    |   |-- six==1.17.0
+    |   |-- wheel==0.47.0
+    |       |-- packaging==26.2
+    |-- flatbuffers==25.12.19
+    |-- gast==installed: 0.7.0
+    |-- google-pasta==0.2.0
+    |   |-- six==1.17.0
+    |-- grpcio==1.81.1
+    |   |-- typing_extensions==4.15.0
+    |-- h5py==3.14.0
+    |   |-- numpy==2.5.0
+    |-- keras==3.14.1
+    |   |-- absl-py==2.4.0
+    |   |-- h5py==3.14.0
+    |   |   |-- numpy==2.5.0
+    |   |-- ml_dtypes==0.5.4
+    |   |   |-- numpy==2.5.0
+    |   |-- namex==0.1.0
+    |   |-- numpy==2.5.0
+    |   |-- optree==0.19.1
+    |   |   |-- typing_extensions==4.15.0
+    |   |-- packaging==26.2
+    |   |-- rich==15.0.0
+    |       |-- markdown-it-py==4.2.0
+    |       |   |-- mdurl==0.1.2
+    |       |-- Pygments==2.20.0
+    |-- libclang==18.1.1
+    |-- ml_dtypes==0.5.4
+    |   |-- numpy==2.5.0
+    |-- numpy==2.5.0
+    |-- opt_einsum==3.4.0
+    |-- packaging==26.2
+    |-- protobuf==7.35.1
+    |-- requests==2.34.2
+    |   |-- certifi==2026.6.17
+    |   |-- charset-normalizer==3.4.7
+    |   |-- idna==3.18
+    |   |-- urllib3==2.7.0
+    |-- setuptools==82.0.1
+    |-- six==1.17.0
+    |-- termcolor==3.3.0
+    |-- typing_extensions==4.15.0
+    |-- wrapt==2.2.2
+\end{verbatim}
+\vspace{-2em}
+\begin{figure}[ht]
+  \centering
+  \caption{Árbol de dependencias del flujo TensorFlow Lite (LiteRT).}
+  \label{fig:dependencias_litert}
+\end{figure}
+
+\subsubsection{Tests y análisis de resultados}
+\begin{verbatim}
+venv_tets
+|-- adjustText==1.4.0
+|   |-- matplotlib== 3.11.0
+|   |   |-- contourpy==1.3.3
+|   |   |   |-- numpy==2.5.0
+|   |   |-- cycler==0.12.1
+|   |   |-- fonttools==4.63.0
+|   |   |-- kiwisolver==1.5.0
+|   |   |-- numpy==2.5.0
+|   |   |-- packaging==26.2
+|   |   |-- pillow==12.2.0
+|   |   |-- pyparsing==3.3.2
+|   |   |-- python-dateutil==2.9.0.post0
+|   |       |-- six==1.17.0
+|   |-- numpy==2.5.0
+|   |-- scipy==1.18.0
+|      |-- numpy==2.5.0
+|-- arff==0.9
+|-- pip==26.2.1
+|-- pipdeptree==3.1.0
+|   |-- packaging==26.2
+|-- plotly==6.9.0
+|   |-- narwhals==2.24.0
+|   |-- packaging==26.2
+|-- seaborn==0.13.2
+|   |-- matplotlib==3.11.0
+|   |   |-- contourpy==1.3.3
+|   |   |   |-- numpy==2.5.0
+|   |   |-- cycler==0.12.1
+|   |   |-- fonttools==4.63.0
+|   |   |-- kiwisolver==1.5.0
+|   |   |-- numpy==2.5.0
+|   |   |-- packaging==26.2
+|   |   |-- pillow==12.2.0
+|   |   |-- pyparsing==3.3.2
+|   |   |-- python-dateutil==2.9.0.post0
+|   |       |-- six==1.17.0
+|   |-- numpy==2.5.0
+|   |-- pandas==3.0.3
+|       |-- numpy==2.5.0
+|       |-- python-dateutil==2.9.0.post0
+|           |-- six==1.17.0
+|-- statds==1.1.7
+   |-- matplotlib==3.11.0
+   |   |-- contourpy==1.3.3
+   |   |   |-- numpy==2.5.0
+   |   |-- cycler==0.12.1
+   |   |-- fonttools==4.63.0
+   |   |-- kiwisolver==1.5.0
+   |   |-- numpy==2.5.0
+   |   |-- packaging==26.2
+   |   |-- pillow==12.2.0
+   |   |-- pyparsing==3.3.2
+   |   |-- python-dateutil==2.9.0.post0
+   |       |-- six==1.17.0
+   |-- numpy==2.5.0
+   |-- pandas==3.0.3
+       |-- numpy==2.5.0
+       |-- python-dateutil==2.9.0.post0
+           |-- six==1.17.0
+\end{verbatim}
+\vspace{-2em}
+\begin{figure}[ht]
+  \centering
+  \caption{Árbol de dependencias del entorno de tests y análisis de resultados.}
+  \label{fig:dependencias_tests}
+\end{figure}
+
+\section{Desinstalación}
+Si se requiere limpiar el entorno de trabajo o eliminar por completo los componentes del proyecto del equipo anfitrión,
+siga los pasos descritos a continuación.
+
+\subsection{Desinstalación del software}
+Basta con eliminar de forma definitiva el directorio raíz del proyecto clonado o descargado previamente en el equipo
+(\path{code/} o la carpeta contenedora del repositorio). Esto eliminará tanto el código fuente como los directorios
+locales de resultados generados.
+
+\subsection{Desinstalación de Python}
+Si Python se instaló exclusivamente para los fines de este proyecto y ya no se requiere en el sistema, puede suprimirse
+de sus sitema.
+
+\subsubsection{Windows}
+Según el método de instalación empleado, la desinstalación puede realizarse de distintas maneras.
+\begin{itemize}
+    \item Si se instaló mediante el instalador oficial, acceda a \textit{Configuración} > \textit{Aplicaciones} >
+    \textit{Aplicaciones instaladas}, busque la entrada correspondiente a Python y seleccione la opción de desinstalar.
+    Asimismo, puede eliminar manualmente la carpeta de caché y configuraciones de usuario ubicada en el perfil del
+    usuario si lo desea.
+    \item Si se hizo con la terminal, simplemente debe ejecutar el comando
+    \begin{verbatim}
+        winget uninstall Python.Python.3.13.
+    \end{verbatim}
+        
+    \item Si se optó por la instalación desde Microsoft Store, siga los mismos pasos que para el instalador oficial.
+\end{itemize}
+
+\subsubsection{GNU/Linux}
+Para la desinstalación en GNU/Linux, basta con ejecutar
+\begin{verbatim}
+    sudo apt remove --purge python3    
+\end{verbatim}
+
+
+\subsubsection{Mac OS}
+Según cómo se instaló Python, la desinstalación puede variar.
+\begin{itemize}
+    \item Si se realizó mediante Homebrew, ejecute
+    \begin{verbatim}
+        brew uninstall python@3.13
+    \end{verbatim}
+    \item Si optó por usar el instalador oficial, siga estos pasos.
+    \begin{enumerate}
+        \item Elimine el entorno de desarrollo visual y el lanzador de accesos directos moviéndolo a la papelera usando
+        \begin{verbatim}
+            sudo rm -rf /Applications/Python\ 3.13/
+        \end{verbatim}
+        \item El grueso del programa, sus librerías esenciales y los paquetes descargados se guardan de forma oculta en la
+        librería del sistema. Bórrelos con
+
+        \texttt{sudo rm -rf /Library/Frameworks/Python.framework/Versions/3.13/}
+        \item El instalador crea accesos directos en la ruta del sistema para que pueda llamarlo desde la terminal. Entra
+        en el directorio y límpielos.
+        
+        \texttt{cd /usr/local/bin}
+
+        \texttt{ls -l | grep '../Library/Frameworks/Python.framework/Versions/3.13' | awk '{print \$9}' | xargs sudo rm -f}
+        \item Finalmente, para limpiar el historial del perfil del PATH, abra su perfil con el editor de la terminal:
+        \path{nano ~/.zprofile} o \path{nano ~/.zshrc}. A continuación, busque una líneas similares a esta:
+
+        \texttt{\# Setting PATH for Python 3.13}
+
+        \texttt{export PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:\${PATH}"}
+
+        Borre esas líneas, guarde los cambios con \path{Control + O}, con \path{Enter} y salga del editor con
+        \path{Control + X}.
+    \end{enumerate}
+\end{itemize}
+
+\subsection{Desinstalación de librerías}
+La desinstalación de todas librerías es inmediata y segura. Basta con eliminar por completo la carpeta o carpetas del
+entorno virtual creadas en el directorio del proyecto.\\
+
+Si por el contrario instaló las dependencias de forma global en el sistema, puede purgarlas ejecutando
+\begin{verbatim}
+    pip uninstall <nombre_librería>
+\end{verbatim}
+
+\section{Ejecución del flujo de experimentación}
+Para reproducir los experimentos realizados en este proyecto, se debe ejecutar el flujo de experimentación completo.
+Para ello, se usarán los scripts \path{run_classification.py} y \path{run_regression.py}, ubicados en
+\path{code/src/scripts/}. Debido al gran volumen de modelos y configuraciones a probar, se ha optado por no incluir el
+uso de argumentos de línea de comandos en esta fase. Para guardar los resultados correspondientes a cada modelo y
+configuración en los archivos correctos, siga los pasos siguientes.
+\begin{itemize}
+    \item Para elegir los modelos que se ejecutarán, abra el fichero \path{models_classification.py} o
+    \path{models_regression.py}, según corresponda. En cada ejecución se usarán los modelos correspondientes a un solo
+    framework. Están señalizados con comentarios que los distinguen.
+    \item Para el uso de destilación de conocimiento en los MLP de PyTorch y TensorFlow, basta con cambiar el parámetro
+    \path{teacher_model} a \path{None} o al nombre del modelo profesor. El parámetro de temperatura en clasificación
+    se puede ajustar de la misma forma. Para la cuantización no es necesario cambiar nada.
+    \item Según el framework elegido, habrá que nombrar el archivo de destino de los resultados de una forma u otra
+    en los ficheros \path{classification_benchmark.py} y \path{regression_benchmark.py} en la parte final de la función
+    \path{save_global_results_to_csv()}. Debe seguir el patrón \path{{framework}_({technique})_{task}.csv}, donde
+    \begin{itemize}
+        \item \textbf{Framework} puede ser: ``\path{sklearn}'', ``\path{onnx}'', ``\path{pytorch}'' o ``\path{tflite}''.
+        \item \textbf{Technique} puede ser: ``\path{static}'' (cuantización), ``\path{distill}'', ``\path{distill_t1}'',
+        ``\path{distill_t2}'' o la combinación de ambas, poniendo ``\path{distill}'' siempre en primer lugar.
+        \item \textbf{Task} puede ser: ``\path{classification}'' o ``\path{regression}''.
+    \end{itemize}
+\end{itemize}
+
+Situándose en el directorio raíz del proyecto, los scripts de ejecución se lanzan desde la terminal con los siguientes
+comandos.
+\begin{verbatim}
+    python src/scripts/run_classification.py
+    python src/scripts/run_regression.py
+\end{verbatim}
+
+A medida que termine la ejecución de cada modelo, los resultados se irán almacenando de forma automática en ficheros CSV
+en el directorio \path{code/results/}.
+
+\section{Ejecución de los tests y análisis de datos}
+Una vez finalizada la ejecución de los experimentos, se pueden ejecutar los tests estadísticos y análisis de compromisos.
+En esta fase sí se han implementado argumentos de línea de comandos para permitir la selección de la tarea y métrica a
+evaluar.
+
+\subsection{Argumentos para los tests estadísticos}
+\begin{itemize}
+    \item \path{--help} / \path{-h}: muestra el mensaje de ayuda y los argumentos disponibles.
+    \item \path{--task} / \path{-t} [TAREA]: especifica la tarea a evaluar. Puede ser ``\path{classification}'' o
+    ``\path{regression}''.
+    \item \path{--metric} / \path{-m} [MÉTRICA]: indica la métrica a evaluar. Para clasificación, puede ser
+    ``\path{accuracy}'', ``\path{precision}'', ``\path{recall}'' o ``\path{f1}''. Para regresión, puede ser
+    ``\path{mse}'', ``\path{mae}'' o ``\path{r2}''. Las métricas de eficiencia son comunes para ambas tareas y son
+    ``\path{train}'', \path{inference} y ``\path{size}''.
+\end{itemize}
+
+\subsection{Argumentos para el análisis de compromisos}
+\begin{itemize}
+    \item \path{--help} / \path{-h}: muestra el mensaje de ayuda y los argumentos disponibles.
+    \item \path{--task} / \path{-t} [TAREA]: especifica la tarea a evaluar. Puede ser ``\path{classification}'' o
+    ``\path{regression}''.
+    \item \path{--metric} / \path{-m} [MÉTRICA]: indica la métrica a evaluar. Para clasificación, ``\path{f1}'' y
+    ``\path{r2}'' para regresión.
+\end{itemize}
+
+Para los tests, se ejecuta el fichero \path{tests_statistical.py}, usando
+\begin{verbatim}
+    python src/tests/tests_statistical.py -t {task} -m {metric}
+\end{verbatim}
+
+Igualmente, para el análisis de compromisos, se ejecuta el fichero \path{tradeoffs_analysis.py}, usando
+\begin{verbatim}
+    python src/tests/tradeoffs.py -t {task} -m {metric}
+\end{verbatim}
+
+Los gráficos generados por los scripts de análisis se almacenan en el directorio \path{code/results/graphs/tests/}, y
+\path{code/results/tests/graphs/tradeoffs/} respectivamente, organizados en subcarpetas según la tarea.
 
 \chapter{Manual de código}
 \label{anexo:manual_codigo}
+
 \section{Introducción}
+Este apéndice documenta a nivel técnico el código fuente desarrollado para la realización del presente Trabajo de Fin
+de Grado, \textit{Análisis comparativo de modelos de aprendizaje automático en entornos TinyML}. Su propósito es
+facilitar la comprensión de la lógica implementada, mostrando de forma transparente cómo se ha programado y estructurado
+el software. A lo largo de las siguientes páginas se detalla, en primer lugar, la organización física de las carpetas y,
+a continuación, se expone la funcionalidad, estructura, organización y contenido íntegro de los ficheros que orquestan
+los flujos de entrenamiento, exportación, evaluación y análisis estadístico de los modelos.
 
 \section{Estructura de directorios}
+El repositorio del proyecto sigue una organización jerárquica y modular basada en la separación de responsabilidades. El
+objetivo de esta disposición es aislar de forma clara los datos de entrada, el núcleo del código fuente y los artefactos
+generados tras las ejecuciones. La siguiente figura muestra el árbol de directorios del proyecto detallando brevemente
+la función que cumple cada carpeta principal dentro del flujo de trabajo.
+
 \begin{figure}[htbp]
 \centering
 \makebox[\textwidth][c]{%
   \begin{minipage}{1.15\textwidth}
     \dirtree{%
       .1 code/\quad\dots{} Raíz del proyecto.
+      .2 data/\quad\dots{} Datasets de entrada.
       .2 results/\quad\dots{} Figuras, gráficas y resultados de ejecución.
       .3 graphs/\quad\dots{} Gráficas generadas por los scripts de análisis.
       .4 tests/\quad\dots{} Resultados de ejecución de los tests estadísticos.
-      .4 tradeoffs/\quad\dots{} Resultados de ejecución de los trade-offs.
+      .4 tradeoffs/\quad\dots{} Resultados de ejecución de los \textit{trade-offs}.
       .2 src/\quad\dots{} Código fuente principal.
       .3 core/\quad\dots{} Lógica central de la ejecución.
       .3 datasets/\quad\dots{} Funciones que definen la estructura y carga de los datasets.
@@ -6285,8 +7162,16 @@ la complejidad intrínseca de los conjuntos de datos impacta en la viabilidad op
 \end{figure}
 
 \section{Ficheros de código}
+Finalmente, se expone la organización interna y el código fuente de los scripts que conforman el núcleo operativo del
+proyecto. Se ha hecho una inclusión directa de los ficheros, lo que permite analizar en detalle las funciones
+implementadas, las transformaciones de datos y la lógica algorítmica utilizada, conservando los comentarios originales
+de la implementación para facilitar su lectura.
 
+\newpage
 \subsection{Lógica de la ejecución del proyecto}
+Estos ficheros, localizados en \path{code/src/core/}, contienen la lógica de ejecución del proyecto y la definición de
+los experimentos. Encapsulan el entrenamiento de los modelos y la inferencia, además de medir las métricas de
+rendimiento y eficiencia de los mismos.
 
 \subsubsection{Pipeline de ejecución}
 \begin{lstlisting}[language=Python, caption={tinyml\_pipeline.py}, label={lst:tinyml_pipeline}]
@@ -7102,7 +7987,12 @@ def save_global_results_to_csv(all_results, filename="tflite_distill_static_regr
         print(f"Tabla pivote de {col} guardada en {file_path}")
 \end{lstlisting}
 
+\newpage
 \subsection{Modelos e implementaciones}
+Aquí se encuentran las definiciones de los modelos empleados en ambas tareas, clasificación y regresión, junto con las
+implementaciones de las clases para ONNX, PyTorch y TensorFlow. Estos ficheros están alojados en \path{code/src/models/}
+y \path{code/src/models/wrappers/}.
+
 \subsubsection{Modelos de clasificación}
 \begin{lstlisting}[language=Python, caption={models\_classification.py}, label={lst:models_classification}]
 from sklearn.ensemble import RandomForestClassifier
@@ -7526,6 +8416,7 @@ def get_regression_models(input_dim=None, output_dim=1):
     return models
 \end{lstlisting}
 
+\newpage
 \subsubsection{Implentación de ONNX}
 \begin{lstlisting}[language=Python, caption={onnx\_wrapper.py}, label={lst:onnx_wrapper}]
 import logging
@@ -8506,6 +9397,7 @@ class ONNXModelFromSklearnRegression(BaseEstimator):
                 pass
 \end{lstlisting}
 
+\newpage
 \subsubsection{Implementación de PyTorch}
 \begin{lstlisting}[language=Python, caption={pytorch\_wrapper.py}, label={lst:pytorch_wrapper}]
 import copy
@@ -10067,6 +10959,11 @@ class TFLiteModelWrapperRegression(BaseEstimator):
 \end{lstlisting}
 
 \subsection{Carga de datos}
+La carga de los conjuntos de datos se realiza mediante funciones específicas para cada dataset. Estas funciones se
+encuentran en \path{src/datasets/loaders}. Cada función de carga devuelve un conjunto de características \textit{X} y un
+vector objetivo \textit{y}, listos para ser utilizados en modelos de aprendizaje automático. Estas funciones se agrupan
+en diccionarios mediante los archivos principales de \path{src/datasets/}.
+
 \subsubsection{Agrupación de funciones de carga de clasificación}
 \begin{lstlisting}[language=Python, caption={datasets\_classification.py}, label={lst:datasets_classification}]%
 from src.datasets.loaders.load_car import load_car
@@ -10814,6 +11711,7 @@ if __name__ == "__main__":
     print("Dimensiones X:", X.shape)
 \end{lstlisting}
 
+\newpage
 \subsubsection{Carga del dataset de regresión APPLIANCES ENERGY PREDICTION}
 \begin{lstlisting}[language=Python, caption={load\_energy\_data.py}, label={lst:load_energy_data}]
 import numpy as np
@@ -11342,6 +12240,7 @@ if __name__ == "__main__":
     print("Primeras 5 valores de y:", y[:5])
 \end{lstlisting}
 
+\newpage
 \subsubsection{Carga de los datasets de clasificación y regresión WINE Y WINE QUALITY}
 \begin{lstlisting}[language=Python, caption={load\_wine.py}, label={lst:load_wine}]
 import numpy as np
@@ -11467,6 +12366,9 @@ if __name__ == "__main__":
 \end{lstlisting}
 
 \subsection{Funciones auxiliares}
+Este es el código correspondiente al fichero \path{utils.py}, en \path{src/core/utils/}, que contiene las funciones
+que asisten a la ejecución del flujo de trabajo principal.
+
 \begin{lstlisting}[language=Python, caption={utils.py}, label={lst:utils}]
 import os
 
@@ -11500,7 +12402,11 @@ def get_project_root():
         path = parent
 \end{lstlisting}
 
+\newpage
 \subsection{Scripts de ejecución}
+En \path{code/src/scripts/} se encuentran los scripts de ejecución de los flujos de trabajo de clasificación y
+regresión, que invocan a las funciones de los módulos de \path{src/core/} y generan los resultados finales.
+
 \subsubsection{Script de ejecución de clasificación}
 \begin{lstlisting}[language=Python, caption={run\_classification.py}, label={lst:run_classification}]
 import os
@@ -11550,6 +12456,10 @@ if __name__ == "__main__":
 \end{lstlisting}
 
 \subsection{Análisis de resultados}
+En el último subdirectorio, \path{code/src/tests/}, están los scripts de análisis de resultados, que realizan los tests
+estadísticos y generan los gráficos de comparación de los resultados obtenidos, además del análisis de escalabilidad de
+los modelos frente a la dimensionalidad de los datos.
+
 \subsubsection{Tests estadísticos}
 \begin{lstlisting}[language=Python, caption={tests\_statistical.py}, label={lst:tests_statistical}]
 import argparse
@@ -12185,6 +13095,7 @@ if __name__ == "__main__":
         print("No se han encontrado datos para la Fase 7. Verifique las rutas de los archivos.")
 \end{lstlisting}
 
+\newpage
 \subsubsection{Análisis de compromisos}
 \begin{lstlisting}[language=Python, caption={tradeoffs.py}, label={lst:tradeoffs}]
     import argparse

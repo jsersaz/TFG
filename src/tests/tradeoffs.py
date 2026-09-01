@@ -201,7 +201,7 @@ def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir
     if task == 'regression':
         plt.ylim(bottom=0)    
 
-    plt.title("Trade-off global: Tamaño vs Rendimiento vs Latencia", fontsize=16)
+    plt.title("Trade-off global: tamaño vs rendimiento vs latencia", fontsize=16)
     plt.xlabel("Tamaño medio del modelo (KB)", fontsize=12)
     plt.ylabel(f"Rendimiento medio ({col_perf})", fontsize=12)
 
@@ -250,7 +250,7 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
         max_f1 = df_avg[col_perf].max()
         max_pareto_size = pareto_df[col_size].max()
         
-        zoom_df = df_avg[(df_avg[col_perf] >= max_f1 - 0.0444) & (df_avg[col_size] <= max_pareto_size * 5)]
+        zoom_df = df_avg[(df_avg[col_perf] >= max_f1 - 0.04575) & (df_avg[col_size] <= max_pareto_size * 5)]
         
         min_y_zoom = zoom_df[col_perf].min() * 0.98
         
@@ -316,7 +316,7 @@ def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir
         hover_name='Model',
         hover_data={col_size: ':.2f', col_perf: ':.4f', col_time: ':.4f'},
         log_x=True,
-        title="Explorador Interactivo: Trade-off de Modelos (Pase el ratón para detalles)",
+        title="Explorador interactivo: Trade-off de modelos (Pase el ratón para detalles)",
         size_max=40, template="plotly_white"
     )
 
@@ -393,7 +393,7 @@ def plot_complexity_plotly(df, x_col, y_col, x_label, y_label, plot_title, outpu
         hover_name='Model',
         hover_data={'Dataset': True, x_col: True, y_col: ':.4f'},
         log_x=True, log_y=True,
-        title=f"Explorador Interactivo: {plot_title} (Pase el ratón para detalles)",
+        title=f"Explorador interactivo: {plot_title} (Pase el ratón para detalles)",
         opacity=0.6, template="plotly_white"
     )
 

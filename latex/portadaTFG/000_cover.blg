@@ -1,0 +1,21 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is '000_cover.blg'
+[48] biber:340> INFO - === Tue Sep  1, 2026, 19:31:41
+[59] Biber.pm:419> INFO - Reading '000_cover.bcf'
+[117] Biber.pm:979> INFO - Found 83 citekeys in bib section 0
+[126] Biber.pm:4419> INFO - Processing section 0
+[132] Biber.pm:4610> INFO - Looking for bibtex file 'bibliografia.bib' for section 0
+[135] bibtex.pm:1713> INFO - LaTeX decoding ...
+[184] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliografia.bib'
+[705] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[705] UCollate.pm:68> INFO - Overriding locale 'es-ES' defaults 'variable = shifted' with 'variable = non-ignorable'
+[705] Biber.pm:4239> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'es-ES'
+[736] bbl.pm:660> INFO - Writing '000_cover.bbl' with encoding 'UTF-8'
+[763] bbl.pm:763> INFO - Output to 000_cover.bbl
+[764] Biber.pm:131> WARN - Duplicate entry key: 'saha2022ieeejsen' in file 'bibliografia.bib', skipping ...
+[764] Biber.pm:131> WARN - Duplicate entry key: 'novac2021sensors' in file 'bibliografia.bib', skipping ...
+[764] Biber.pm:131> WARN - Duplicate entry key: 'vicente2023fedcsis' in file 'bibliografia.bib', skipping ...
+[764] Biber.pm:131> WARN - BibTeX subsystem: /tmp/biber_tmp_ppk2/499af1e6906591d6961f19d66c065a09_41179.utf8, line 169, warning: 1 characters of junk seen at toplevel
+[764] Biber.pm:131> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[764] Biber.pm:131> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[764] Biber.pm:133> INFO - WARNINGS: 6

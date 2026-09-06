@@ -48,7 +48,6 @@ class CalibDataReader(CalibrationDataReader):
         # en lugar de indexación directa [index] que devolvería 1D (num_features).
         # ONNX Runtime espera estrictamente tensores de Rango 2 para la entrada.
         sample = self.data[self.index:self.index+1]
-        # sample = self.data[self.index]
         self.index += 1
         return {"input": sample.astype(np.float32)}
 
@@ -248,7 +247,6 @@ class ONNXModelFromSklearnClassification(BaseEstimator):
             # Label por mayoría (mejor que asumir clase)
             y_cluster = []
             for i in range(len(kmeans.cluster_centers_)):
-                # cluster_labels = y[(y == cls) & (labels == i)]
                 cluster_labels = y[(y == cls)][labels == i] if len(X_cls) == len(labels) else y[y == cls]
                 if len(cluster_labels) == 0:
                     y_cluster.append(cls)

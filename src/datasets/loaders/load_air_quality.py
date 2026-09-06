@@ -35,7 +35,6 @@ def load_air_quality(data_dir=None,
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'AirQualityUCI.csv')
-    # file_path = f'{data_dir}AirQualityUCI.csv'
     
     # Leer el archivo
     df = pd.read_csv(filepath, sep=';', decimal=',', na_values=['-200', '-200.0'],
@@ -52,7 +51,6 @@ def load_air_quality(data_dir=None,
     # Eliminar filas con fecha inválida
     initial_len = len(df)
     df = df.dropna(subset=['datetime'])
-    # print(f"Eliminadas {initial_len - len(df)} filas por fecha inválida")
     
     # Extraer características temporales
     df['hour'] = df['datetime'].dt.hour
@@ -87,7 +85,6 @@ def load_air_quality(data_dir=None,
         for col in df.columns:
             if df[col].isnull().any():
                 median_val = df[col].median()
-                # df[col].fillna(median_val, inplace=True)
                 df[col] = df[col].fillna(median_val)
         print("Valores faltantes imputados con mediana en todas las columnas.")
     else:
@@ -139,11 +136,6 @@ def load_air_quality(data_dir=None,
     
     # Convertir a arrays numpy
     X = X_raw.values.astype(np.float32)
-    
-    # print(f"\nAir Quality cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Target '{target}': min={y.min():.4f}, max={y.max():.4f}, media={y.mean():.4f}")
-    # if log_target:
-    #     print("(Target transformado con log(1+x))")
     
     return X, y
 

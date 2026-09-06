@@ -22,7 +22,6 @@ def load_automobile(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'imports-85.data')
-    # filepath = f'{data_dir}imports-85.data'
     
     # Asignar nombres a las columnas
     columns = [
@@ -60,9 +59,6 @@ def load_automobile(data_dir=None):
     # Codificar variables categóricas (One-Hot Encoding)
     X_encoded = pd.get_dummies(X_raw, columns=categorical_cols, drop_first=False, dtype=np.uint8)
     X = X_encoded.values.astype(np.float32)
-
-    # print(f"Automobile dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Precios: min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
 
     return X, y
 

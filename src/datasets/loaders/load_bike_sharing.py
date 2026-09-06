@@ -29,7 +29,6 @@ def load_bike_sharing(aggregation='hour', data_dir=None):
     else:
         raise ValueError("aggregation debe ser 'hour' o 'day'")
     filepath = os.path.join(data_dir, filename)
-    # filepath = f'{data_dir}{filename}'
 
     # Leer el archivo
     df = pd.read_csv(filepath)
@@ -44,9 +43,6 @@ def load_bike_sharing(aggregation='hour', data_dir=None):
 
     # Convertir a arrays numpy
     X = X_raw.values.astype(np.float32)
-
-    # print(f"Bike Sharing ({aggregation}ly) cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Alquileres cnt: min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
 
     return X, y
 

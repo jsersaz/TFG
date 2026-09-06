@@ -22,7 +22,6 @@ def load_student_dropout(data_dir=None):
     
     # Cargar y leer el archivo
     filepath = os.path.join(data_dir, 'data.csv')
-    # filepath = f'{data_dir}data.csv'
     df = pd.read_csv(filepath, sep=';')
     
     # Separar objetivo y características
@@ -37,9 +36,7 @@ def load_student_dropout(data_dir=None):
     # Codificar clases: Dropout -> 0, Enrolled -> 1, Graduate -> 2
     class_mapping = {'Dropout': 0, 'Enrolled': 1, 'Graduate': 2}
     y = np.array([class_mapping[label] for label in y_raw], dtype=np.float32)
-    
-    # print(f"Student Dropout dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Distribución de clases: Dropout={np.sum(y==0)}, Enrolled={np.sum(y==1)}, Graduate={np.sum(y==2)}")
+
     return X, y
 
 

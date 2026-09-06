@@ -22,7 +22,6 @@ def load_communities_crime(data_dir=None):
     
     # Leer el archivo
     filepath = os.path.join(data_dir, 'communities.data')
-    # filepath = f'{data_dir}communities.data'
     
     # Asignar nombres a las columnas
     columns = [
@@ -72,7 +71,6 @@ def load_communities_crime(data_dir=None):
     missing_ratio = X_raw.isnull().mean()
     cols_to_keep = missing_ratio[missing_ratio < 0.3].index
     X_raw = X_raw[cols_to_keep]
-    # print(f"Columnas eliminadas por alto missing: {list(missing_ratio[missing_ratio >= 0.3].index)}")
     
     # Imputar el resto con la mediana de cada columna
     for col in X_raw.columns:
@@ -90,9 +88,6 @@ def load_communities_crime(data_dir=None):
     
     # Convertir a arrays numpy
     X = X_raw.values.astype(np.float32)
-    
-    # print(f"Communities and Crime cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"ViolentCrimesPerPop: min={y.min():.4f}, max={y.max():.4f}, media={y.mean():.4f}")
     
     return X, y
 

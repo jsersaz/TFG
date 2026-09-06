@@ -22,7 +22,6 @@ def load_real_estate_valuation(data_dir=None):
     
     # Leer el archivo
     filepath = os.path.join(data_dir, 'real_estate_valuation.csv')
-    # filepath = f'{data_dir}real_estate_valuation.csv'
     
     # Cargar el archivo
     df = pd.read_csv(filepath)
@@ -30,9 +29,6 @@ def load_real_estate_valuation(data_dir=None):
     # Separar características y objetivo
     X = df.iloc[:, :-1].values.astype(np.float32)
     y = df.iloc[:, -1].values.astype(np.float32)
-
-    # print(f"Real Estate dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Precio unitario: min={y.min():.2f}, max={y.max():.2f}, media={y.mean():.2f}")
 
     return X, y
 

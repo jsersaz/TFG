@@ -22,7 +22,6 @@ def load_letter_recognition(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'letter-recognition.data')
-    # filepath = f'{data_dir}letter-recognition.data'
     
     # Asignar nombres a las columnas
     columns = [
@@ -41,9 +40,7 @@ def load_letter_recognition(data_dir=None):
     # Codificar clases: A-Z -> 0-25
     class_mapping = {chr(ord('A') + i): i for i in range(26)}
     y = np.array([class_mapping[ch] for ch in y_raw], dtype=np.float32)
-    
-    # print(f"Letter Recognition dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Distribución de clases (A-Z): {np.bincount(y.astype(int))}")
+
     return X, y
 
 

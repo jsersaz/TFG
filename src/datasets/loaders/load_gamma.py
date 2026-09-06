@@ -22,7 +22,6 @@ def load_gamma(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'magic04.data')
-    # filepath = f'{data_dir}magic04.data'
     
     # Asignar nombres a las columnas
     columns = [
@@ -40,9 +39,7 @@ def load_gamma(data_dir=None):
     
     # Codificar clases: g=0 (gamma), h=1 (hadron)
     y = np.where(y_raw == 'h', 1, 0).astype(np.float32)
-    
-    # print(f"MAGIC Gamma Telescope dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Distribución de clases: gamma (0) = {np.sum(y==0)}, hadron (1) = {np.sum(y==1)}")
+
     return X, y
 
 

@@ -35,11 +35,6 @@ def load_har(data_dir=None):
     x_test_path = os.path.join(data_dir, 'test', 'X_test.txt')
     y_test_path = os.path.join(data_dir, 'test', 'y_test.txt')
     
-    # # Verificar que los archivos existan
-    # for path in [x_train_path, y_train_path, x_test_path, y_test_path]:
-    #     if not os.path.exists(path):
-    #         raise FileNotFoundError(f"No se encontró el archivo: {path}")
-    
     # Leer los archivos
     X_train = pd.read_csv(x_train_path, sep=r'\s+', header=None).values
     y_train = pd.read_csv(y_train_path, sep=r'\s+', header=None).values.ravel()
@@ -49,10 +44,7 @@ def load_har(data_dir=None):
     # Separar objetivo y características, unificando train y test
     X = np.concatenate((X_train, X_test), axis=0)
     y = np.concatenate((y_train, y_test), axis=0)
-    
-    # print(f"Dataset HAR cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Etiquetas únicas: {np.unique(y)} (1: Caminar, 2: Subir, 3: Bajar, 4: Sentarse, 5: Pararse, 6: Acostarse)")
-    
+
     return X, y
 
 

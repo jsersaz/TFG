@@ -40,9 +40,6 @@ def load_abalone(data_dir=None):
     X_encoded = pd.get_dummies(X_raw, columns=['Sex'], drop_first=False, dtype=np.uint8)
     X = X_encoded.values.astype(np.float32)
     
-    # print(f"Abalone dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Rings: min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
-    
     return X, y
 
 

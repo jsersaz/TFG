@@ -22,7 +22,6 @@ def load_obesity_levels(data_dir=None):
     
     # Leer el archivo
     filepath = os.path.join(data_dir, 'obesity_levels.csv')
-    # filepath = f'{data_dir}obesity_levels.csv'
     
     # Cargar el archivo
     df = pd.read_csv(filepath)
@@ -52,10 +51,7 @@ def load_obesity_levels(data_dir=None):
         'Obesity_Type_III': 6
     }
     y = np.array([obesity_mapping[label] for label in y_raw], dtype=np.float32)
-    
-    # print(f"Obesity dataset (regresión) cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Objetivo (nivel de obesidad): min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
-    # print("Mapeo: 0=Insufficient_Weight, 1=Normal_Weight, 2=Overweight_I, 3=Overweight_II, 4=Obesity_I, 5=Obesity_II, 6=Obesity_III")
+
     return X, y
 
 

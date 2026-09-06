@@ -161,7 +161,7 @@ def get_pareto_front(df, x_col, y_col, maximize_x=False, maximize_y=True):
 # ===========================
 # FUNCIONES DE VISUALIZACIÓN
 # ===========================
-def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir, task):
+def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir, task, maximize_perf=True):
     """
     Genera un gráfico estático de burbujas mostrando el trade-off global de todos los modelos.
     El tamaño de la burbuja representa la latencia.
@@ -185,7 +185,7 @@ def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir
     )
 
     # Calcular y añadir la línea del frente de Pareto visual
-    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
+    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf, maximize_y=maximize_perf)
     plt.plot(pareto_df[col_size], pareto_df[col_perf],
              color='red', linestyle='--', linewidth=2, label='Frente de Pareto', zorder=1)
 
@@ -201,16 +201,18 @@ def plot_pareto_bubble(df_avg, metric_perf, metric_time, metric_size, output_dir
     if task == 'regression':
         plt.ylim(bottom=0)    
 
+    direccion = "↑ Mejor" if maximize_perf else "↓ Mejor"
+    
     plt.title("Trade-off global: tamaño vs rendimiento vs latencia", fontsize=16)
     plt.xlabel("Tamaño medio del modelo (KB)", fontsize=12)
-    plt.ylabel(f"Rendimiento medio ({col_perf})", fontsize=12)
+    plt.ylabel(f"Rendimiento medio ({col_perf}) [{direccion}]", fontsize=12)
 
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0, fontsize='small')
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, "global_tradeoff_pareto.png"), dpi=300)
+    plt.savefig(os.path.join(output_dir, f"global_tradeoff_pareto_{metric_perf}.png"), dpi=300)
     plt.close()
 
-def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir, task):
+def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir, task, maximize_perf=True):
     """
     Genera un gráfico estático que hace zoom sobre la zona del frente de Pareto.
     Filtra los modelos que están lejos del óptimo para mejorar la legibilidad.
@@ -227,7 +229,8 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
     col_time = metric_time.upper()
     col_size = metric_size.upper()
 
-    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
+    # pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
+    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf, maximize_y=maximize_perf)
     
     # Configurar límites y datos según el tipo de tarea
     if task == 'regression':
@@ -237,13 +240,18 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
         min_pareto_x = pareto_df[col_size].min()
         max_pareto_x = pareto_df[col_size].max()
         
-        # Filtrar el DataFrame original para incluir solo los modelos que caigan dentro del rango del frente
-        zoom_df = df_avg[(df_avg[col_perf] >= min_pareto_y * 0.95) & (df_avg[col_size] <= max_pareto_x * 1.5)]
+        if maximize_perf:
+            # R2: Queremos acercarnos a los valores altos, recortamos los muy bajos
+            zoom_df = df_avg[(df_avg[col_perf] >= min_pareto_y * 0.95) & (df_avg[col_size] <= max_pareto_x * 1.5)]
+            y_lim = (min_pareto_y * 0.95, max_pareto_y * 1.05)
+        else:
+            # NMAE: Queremos acercarnos al 0, recortamos los errores altísimos (outliers)
+            # Fijamos un margen del 20% por encima del peor modelo que está en el frente de Pareto
+            zoom_df = df_avg[(df_avg[col_perf] <= max_pareto_y * 1.20) & (df_avg[col_size] <= max_pareto_x * 1.5)]
+            y_lim = (0, max_pareto_y * 1.10)
         
         x_lim = (min_pareto_x * 0.5, max_pareto_x * 2.0)
-        y_lim = (min_pareto_y * 0.95, max_pareto_y * 1.05)
-        # Mantener escala logarítmica es mejor para la gran dispersión en regresión
-        x_scale = 'log' 
+        x_scale = 'log'
     else:
         # En clasificación, los mejores modelos suelen estar fuertemente aglomerados en la parte alta.
         # Enfocamos el zoom solo en esa cima.
@@ -285,16 +293,17 @@ def plot_pareto_zoomed(df_avg, metric_perf, metric_time, metric_size, output_dir
         
     plt.ylim(y_lim)
 
+    direccion = "↑ Mejor" if maximize_perf else "↓ Mejor"
     plt.title("Frente de Pareto - ZOOM", fontsize=16)
     plt.xlabel("Tamaño medio del modelo (KB)", fontsize=12)
-    plt.ylabel(f"Rendimiento medio ({col_perf})", fontsize=12)
+    plt.ylabel(f"Rendimiento medio ({col_perf}) [{direccion}]", fontsize=12)
 
     plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0, fontsize='small')
     plt.tight_layout()
-    plt.savefig(os.path.join(output_dir, "global_tradeoff_pareto_ZOOM.png"), dpi=300)
+    plt.savefig(os.path.join(output_dir, f"global_tradeoff_pareto_ZOOM_{metric_perf}.png"), dpi=300)
     plt.close()
 
-def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir, task):
+def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir, task, maximize_perf=True):
     """
     Genera un archivo HTML interactivo con Plotly para visualizar el trade-off global.
     Permite hacer hover (pasar el ratón) para ver los datos exactos de cada modelo.
@@ -320,7 +329,8 @@ def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir
         size_max=40, template="plotly_white"
     )
 
-    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
+    # pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf)
+    pareto_df = get_pareto_front(df_avg, x_col=col_size, y_col=col_perf, maximize_y=maximize_perf)
 
     # Añadir traza manual para la línea del frente de Pareto
     fig.add_trace(
@@ -337,7 +347,7 @@ def plot_pareto_plotly(df_avg, metric_perf, metric_time, metric_size, output_dir
         max_y = df_avg[col_perf].max()
         fig.update_yaxes(range=[0, max_y * 1.05])
 
-    html_path = os.path.join(output_dir, "global_tradeoff_interactive.html")
+    html_path = os.path.join(output_dir, f"global_tradeoff_interactive_{metric_perf}.html")
     fig.write_html(html_path)
 
 def plot_complexity_scatter(df, x_col, y_col, x_label, y_label, plot_title, output_filename, output_dir):
@@ -441,10 +451,18 @@ if __name__ == "__main__":
     METRIC_TIME = "inference"
     METRIC_SIZE = "size"
 
+    # Si la métrica es NMAE o MAE, se busca minimizar.
+    if METRIC_PERF.lower() in ["nmae", "mae", "rmse", "mse"]:
+        MAXIMIZE_PERF = False
+        print(f"Métrica {METRIC_PERF.upper()} detectada. Optimizando hacia el MÍNIMO (abajo a la izquierda).")
+    else:
+        MAXIMIZE_PERF = True
+        print(f"Métrica {METRIC_PERF.upper()} detectada. Optimizando hacia el MÁXIMO (arriba a la izquierda).")
+    
     # Definir rutas relativas seguras usando el directorio absoluto del propio script
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    RESULTS_DIR = os.path.abspath(os.path.join(script_dir, "../../results2"))
-    OUTPUT_GRAPHS_DIR = os.path.join(RESULTS_DIR, f"graphs/tradeoffs/{TASK}")
+    RESULTS_DIR = os.path.abspath(os.path.join(script_dir, "../../results3"))
+    OUTPUT_GRAPHS_DIR = os.path.join(RESULTS_DIR, f"graphs/tradeoffs_r3/{TASK}")
     os.makedirs(OUTPUT_GRAPHS_DIR, exist_ok=True) 
 
     print(f"Cargando datos para el análisis de compromisos ({TASK.upper()})...")
@@ -497,9 +515,12 @@ if __name__ == "__main__":
     col_size_upper = METRIC_SIZE.upper()
 
     # 8. Generación de gráficos de trade-off general y frente de Pareto
-    plot_pareto_bubble(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
-    plot_pareto_zoomed(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
-    plot_pareto_plotly(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
+    plot_pareto_bubble(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK, MAXIMIZE_PERF)
+    plot_pareto_zoomed(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK, MAXIMIZE_PERF)
+    plot_pareto_plotly(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK, MAXIMIZE_PERF)
+    # plot_pareto_bubble(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
+    # plot_pareto_zoomed(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
+    # plot_pareto_plotly(df_avg_models, METRIC_PERF, METRIC_TIME, METRIC_SIZE, OUTPUT_GRAPHS_DIR, TASK)
     
     # 9. Gráficos estáticos de complejidad computacional (características e instancias vs tiempo y tamaño)
     plot_complexity_scatter(

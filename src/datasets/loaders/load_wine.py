@@ -25,7 +25,6 @@ def load_wine_classification(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'wine.data')
-    # filepath = f'{data_dir}wine.data'
     
     # Leer el archivo
     df = pd.read_csv(filepath, header=None)
@@ -59,7 +58,6 @@ def load_wine_quality_classification(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'winequality-white.csv')
-    # filepath = f'{data_dir}winequality-white.csv'
     
     # Leer el archivo
     df = pd.read_csv(filepath, sep=";")
@@ -99,7 +97,6 @@ def load_wine_quality_regression(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'winequality-white.csv')
-    # filepath = f'{data_dir}winequality-white.csv'
     
     # Leer el archivo
     df = pd.read_csv(filepath, sep=";")
@@ -108,17 +105,8 @@ def load_wine_quality_regression(data_dir=None):
     X = df.iloc[:, :-1].values.astype(np.float32)
     y = df.iloc[:, -1].values.astype(np.float32)
 
-    # print(f"Wine Quality ({wine_type}) cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Calidad: min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
-
     return X, y
 
-    
-# if __name__ == "__main__":
-#     X, y = load_wine_cv()
-
-#     print("X:", X.shape)
-#     print("y:", y.shape)
 
 if __name__ == "__main__":
     X, y = load_wine_quality_regression(None)

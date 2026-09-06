@@ -23,7 +23,6 @@ def load_diabetes(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'diabetes.arff')
-    # filepath = f'{data_dir}diabetes.arff'
     
     # Leer el archivo
     data, meta = arff.loadarff(filepath)
@@ -39,9 +38,7 @@ def load_diabetes(data_dir=None):
     
     # Asignar características a X
     X = df.iloc[:, :-1].values.astype(np.float32)
-    
-    # print(f"Diabetes dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Distribución: tested_negative={np.sum(y==0)}, tested_positive={np.sum(y==1)}")
+
     return X, y
 
 

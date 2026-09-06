@@ -644,7 +644,6 @@ class TFLiteModelWrapperRegression(BaseEstimator):
         dataset = tf.data.Dataset.from_tensor_slices(X).batch(1)
         for input_value in dataset.take(100):
             yield [input_value.numpy()]
-            # yield [input_value]
 
     def _build_model(self):
         """

@@ -107,8 +107,13 @@ def evaluate_regression(model, X_test, y_test):
     rmse = np.sqrt(mse)
     mae = mean_absolute_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
+    
+    # Cálculo del NMAE usando el rango (max - min)
+    y_range = np.max(y_test) - np.min(y_test)
+    # Evitamos división por cero por si algún fold tiene varianza cero en test
+    nmae = mae / y_range if y_range > 0 else 0.0
 
-    return mae, rmse, r2
+    return mae, nmae, rmse, r2
 
 
 # --------------------------------------
@@ -303,6 +308,7 @@ def run_regression(
 
 	# Listas para almacenar resultados de cada fold
     mae_list = []
+    nmae_list = []
     rmse_list = []
     r2_list = []
     size_list = []
@@ -352,7 +358,7 @@ def run_regression(
             conversion_time = 0.0
 
 		# Evaluación del modelo
-        mae, rmse, r2 = evaluate_regression(model, X_test, y_test)
+        mae, nmae, rmse, r2 = evaluate_regression(model, X_test, y_test)
         
 		# Calcular tiempo de inferencia
         inference_time = measure_inference_time(model, X_test[:1])
@@ -364,6 +370,7 @@ def run_regression(
 
 		# Almacenar resultados del fold
         mae_list.append(mae)
+        nmae_list.append(nmae)
         rmse_list.append(rmse)
         r2_list.append(r2)
         time_list.append(inference_time)
@@ -378,6 +385,9 @@ def run_regression(
         
         "MAE_mean": np.mean(mae_list),
         "MAE_std": np.std(mae_list),
+        
+        "NMAE_mean": np.mean(nmae_list),
+        "NMAE_std": np.std(nmae_list),
         
         "RMSE_mean": np.mean(rmse_list),
         "RMSE_std": np.std(rmse_list),
@@ -467,13 +477,13 @@ def print_results_table_regression(results_list):
 
     # Definir la cabecera de la tabla según corresponda
     if show_conversion:
-        header = "{:<15} {:<18} {:<18} {:<18} {:<12} {:<15} {:<15} {:<15}".format(
-            "Model", "MAE", "RMSE", "R2",
+        header = "{:<15} {:<18} {:<18} {:<18} {:<18} {:<12} {:<15} {:<15} {:<15}".format(
+            "Model", "MAE", "NMAE", "RMSE", "R2",
             "Size(KB)", "Train time(s)", "Conversion time(s)", "Infer time(s)"
         )
     else:
-        header = "{:<15} {:<18} {:<18} {:<18} {:<12} {:<15} {:<15}".format(
-            "Model", "MAE", "RMSE", "R2",
+        header = "{:<15} {:<18} {:<18} {:<18} {:<18} {:<12} {:<15} {:<15}".format(
+            "Model", "MAE", "NMAE", "RMSE", "R2",
             "Size(KB)", "Train time(s)", "Infer time(s)"
         )
     print(header)
@@ -482,22 +492,21 @@ def print_results_table_regression(results_list):
 	# Iterar sobre cada resultado (cada modelo/dataset)
     for r in results_list:
         mae = f"{r['MAE_mean']:.3f} ± {r['MAE_std']:.3f}"
+        nmae = f"{r['NMAE_mean']:.3f} ± {r['NMAE_std']:.3f}"
         rmse = f"{r['RMSE_mean']:.3f} ± {r['RMSE_std']:.3f}"
         r2 = f"{r['R2_mean']:.3f} ± {r['R2_std']:.3f}"
 
-		# Imprimir fila
         if show_conversion:
-            print("{:<15} {:<18} {:<18} {:<18} {:<12.3f} {:<15.3e} {:<15.3e} {:<15.3e}".format(
-                r["Model"], mae, rmse, r2,
+            print("{:<15} {:<18} {:<18} {:<18} {:<18} {:<12.3f} {:<15.3e} {:<15.3e} {:<15.3e}".format(
+                r["Model"], mae, nmae, rmse, r2,
                 r["Size_KB"],
                 r["Train_time_s"],
                 r["Conversion_time_s"],
-                # r.get("Conversion_time_s", 0.0),
                 r["Inference_time_s"]
             ))
         else:
-            print("{:<15} {:<18} {:<18} {:<18} {:<12.3f} {:<15.3e} {:<15.3e}".format(
-                r["Model"], mae, rmse, r2,
+            print("{:<15} {:<18} {:<18} {:<18} {:<18} {:<12.3f} {:<15.3e} {:<15.3e}".format(
+                r["Model"], mae, nmae, rmse, r2,
                 r["Size_KB"],
                 r["Train_time_s"],
                 r["Inference_time_s"]

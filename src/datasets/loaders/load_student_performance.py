@@ -32,13 +32,9 @@ def load_student_performance(subject='math', data_dir=None):
     elif subject == 'both':
         df_math = pd.read_csv(os.path.join(data_dir, 'student-mat.csv'), sep=';')
         df_por = pd.read_csv(os.path.join(data_dir, 'student-por.csv'), sep=';')
-        # df_math = pd.read_csv(f'{data_dir}student-mat.csv', sep=';')
-        # df_por = pd.read_csv(f'{data_dir}student-por.csv', sep=';')
         df = pd.concat([df_math, df_por], axis=0, ignore_index=True)
     else:
         raise ValueError("subject debe ser 'math', 'por' o 'both'")
-    # if subject != 'both':
-    #     df = pd.read_csv(f'{data_dir}{filename}', sep=';')
     
     # Separar características y objetivo
     X_raw = df.drop(columns=['G3'])
@@ -50,15 +46,7 @@ def load_student_performance(subject='math', data_dir=None):
     # Codificar variables categóricas (One-Hot Encoding)
     X_encoded = pd.get_dummies(X_raw, columns=categorical_cols, drop_first=False, dtype=np.uint8)
     X = X_encoded.values.astype(np.float32)
-    
-    # # Label Encoding
-    # for col in categorical_cols:
-    #     le = LabelEncoder()
-    #     X_df[col] = le.fit_transform(X_df[col])
-    
-    # print(f"Student Performance ({subject}) cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Notas G3: min={y.min():.0f}, max={y.max():.0f}, media={y.mean():.2f}")
-    
+
     return X, y
 
 

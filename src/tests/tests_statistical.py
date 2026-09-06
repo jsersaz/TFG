@@ -245,7 +245,7 @@ def determine_minimization(metric_name):
     """
     metric_lower = metric_name.lower()
     # Lista de palabras clave que implican minimización (tiempo, peso)
-    min_metrics = ['mae', 'rmse', 'train', 'inference', 'size']
+    min_metrics = ['mae', 'nmae' 'rmse', 'train', 'inference', 'size']
     return any(m in metric_lower for m in min_metrics)
 
 
@@ -406,7 +406,7 @@ if __name__ == "__main__":
         '-m', '--metric',
         type=str,
         required=True,
-        help="Métrica a evaluar ('accuracy', 'precision', 'recall', 'f1', 'mae', 'rmse', 'r2', 'train', 'inference', 'size')")
+        help="Métrica a evaluar ('accuracy', 'precision', 'recall', 'f1', 'mae', 'nmae', 'rmse', 'r2', 'train', 'inference', 'size')")
     
     args = parser.parse_args()
     TASK = args.task.lower()
@@ -415,7 +415,7 @@ if __name__ == "__main__":
     # Validación de métricas: evita ejecutar el script si se pide una métrica de clasificación para regresión, etc.
     valid_metrics = {
         "classification": ["accuracy", "precision", "recall", "f1", "train", "inference", "size"],
-        "regression": ["mae", "rmse", "r2", "train", "inference", "size"]
+        "regression": ["mae", "nmae", "rmse", "r2", "train", "inference", "size"]
     }
     
     if METRIC not in valid_metrics[TASK]:
@@ -425,8 +425,8 @@ if __name__ == "__main__":
     
     # Gestión de rutas de archivos relativas y directorios de salida
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    RESULTS_DIR = os.path.abspath(os.path.join(script_dir, "../../results2"))
-    OUTPUT_GRAPHS_DIR = os.path.join(RESULTS_DIR, f"graphs/tests3/{TASK}", METRIC)
+    RESULTS_DIR = os.path.abspath(os.path.join(script_dir, "../../results"))
+    OUTPUT_GRAPHS_DIR = os.path.join(RESULTS_DIR, f"graphs/tests_nmae/{TASK}", METRIC)
     
     print(f"Iniciando análisis para TAREA: {TASK.upper()} | MÉTRICA: {METRIC.upper()}")
     print(f"Buscando archivos en: {RESULTS_DIR}")

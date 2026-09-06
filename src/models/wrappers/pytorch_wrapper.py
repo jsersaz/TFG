@@ -303,7 +303,6 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
         elif self.quantization_mode == 'static':
             # Cuantización estática con FX: se requiere calibración con datos representativos
             # (La fusión de Linear + ReLU y stubs es automática)
-            # backend = "qnnpack" if "qnnpack" in torch.backends.quantized.supported_engines else "x86"
             backend = "x86"
             torch.backends.quantized.engine = backend
             qconfig_mapping = get_default_qconfig_mapping(backend)
@@ -387,7 +386,6 @@ class TorchScriptModelWrapperClassification(BaseEstimator):
         # 1. Estandarizar características y convertir a tensor
         X_scaled = self.scaler.transform(X).astype(np.float32)
         X_t = torch.from_numpy(X_scaled)
-        # X_t = torch.tensor(X_scaled, dtype=torch.float32)
         
         # 2. Inferencia
         self.scripted_model_.eval()

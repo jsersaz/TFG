@@ -22,7 +22,6 @@ def load_car(data_dir=None):
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'car.data')
-    # filepath = f'{data_dir}car.data'
     
     # Asignar nombres a las columnas
     columns = ['buying', 'maint', 'doors', 'persons', 'lug_boot', 'safety', 'class']
@@ -41,9 +40,7 @@ def load_car(data_dir=None):
     # Codificar clases: unacc=0, acc=1, good=2, v-good=3
     class_mapping = {'unacc': 0, 'acc': 1, 'good': 2, 'vgood': 3}
     y = np.array([class_mapping[label] for label in y_raw], dtype=np.float32)
-    
-    # print(f"Car Evaluation dataset cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # print(f"Distribución de clases: unacc={np.sum(y==0)}, acc={np.sum(y==1)}, good={np.sum(y==2)}, v-good={np.sum(y==3)}")
+
     return X, y
 
 

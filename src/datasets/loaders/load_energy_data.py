@@ -29,7 +29,6 @@ def load_energy_data(data_dir=None,
     
     # Cargar el archivo
     filepath = os.path.join(data_dir, 'energydata.csv')
-    # filepath = f'{data_dir}energydata.csv'
     
     # Leer el archivo
     df = pd.read_csv(filepath, parse_dates=['date'])
@@ -67,20 +66,14 @@ def load_energy_data(data_dir=None,
     # Convertir a arrays numpy
     X = X_raw.values.astype(np.float32)
     
-    # print(f"Appliances Energy cargado: {X.shape[0]} muestras, {X.shape[1]} características")
-    # if log_target:
-    #     print(f"log(Appliances+1): min={y.min():.4f}, max={y.max():.4f}, media={y.mean():.4f}")
-    # else:
-    #     print(f"Appliances (Wh): min={y.min():.2f}, max={y.max():.2f}, media={y.mean():.2f}")
-    
     return X, y
 
 
 if __name__ == "__main__":
     X, y = load_energy_data(None,
-                                   add_time_features=True,
-                                   target_lags=3,
-                                   log_target=True)
+                            add_time_features=True,
+                            target_lags=3,
+                            log_target=True)
     print("Dimensiones de X:", X.shape)
     print("Primeras 5 filas de X:\n", X[:5])
     print("Primeros 5 valores de y (log):", y[:5])
